@@ -1,0 +1,8 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/base_script.php';
+
+show_run("Clear up dev cache", "php composer.phar dump-autoload --optimize");
+
+exit(0);

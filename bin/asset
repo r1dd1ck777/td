@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/base_script.php';
+
+build_bootstrap();
+
+show_run("assets:install", "app/console assets:install --symlink");
+show_run("assets:install", "app/console assetic:dump --env=prod");
+
+
+exit(0);

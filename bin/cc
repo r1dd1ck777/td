@@ -1,0 +1,15 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/base_script.php';
+
+build_bootstrap();
+
+show_run("Destroying cache dir manually", "rm -rf app/cache/*");
+
+show_run("Clear up dev cache", "php app/console -e=dev cache:warmup");
+show_run("Clear up dev cache", "php app/console -e=test cache:warmup");
+show_run("Clear up dev cache", "php app/console -e=prod cache:warmup");
+show_run("Clear up dev cache", "php app/console -e=light cache:warmup");
+
+exit(0);

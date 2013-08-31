@@ -1,0 +1,6 @@
+imports:
+    - { resource: light_config.yml }
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/light_routing.yml"

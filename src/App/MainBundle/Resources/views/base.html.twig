@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+<head>
+    <meta charset="UTF-8" />
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}
+        {#filter="yui_css"#}
+        {% stylesheets
+
+        output='css/compiled/main.css'
+        "@AppMainBundle/Resources/assets/css/main.scss"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+
+    {% block javascripts %}{% endblock %}
+</head>
+<body>
+{% block body %}
+    {% block content %}
+    {% endblock %}
+{% endblock %}
+</body>
+</html>

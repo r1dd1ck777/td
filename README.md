@@ -1,0 +1,1 @@
+sudo setfacl -R -m u:www-data:rwX -m u:ruslan:rwX app/cache app/logs web/uploads web/css && sudo setfacl -dR -m u:www-data:rwx -m u:ruslan:rwx app/cache app/logs web/uploads web/css

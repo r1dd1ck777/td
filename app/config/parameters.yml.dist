@@ -1,0 +1,17 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: td
+    database_user: root
+    database_password: admin
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: null
+    mailer_password: null
+    locale: ru
+    secret: asddas89797asb789yndayd789abd
+
+    ruby_dir: '/home/ruslan/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
+    sass_dir: '/home/ruslan/.rvm/gems/ruby-2.0.0-p0/bin/sass'

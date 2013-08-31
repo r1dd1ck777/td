@@ -1,0 +1,11 @@
+app_admin_security_login:
+    pattern: /login
+    defaults: { _controller:AppAdminBundle:Security:login }
+
+app_admin_security_check:
+    pattern: /login/check
+    defaults: { _controller:AppAdminBundle:Security:check }
+
+app_admin_security_logout:
+    pattern: /login/logout
+    defaults: { _controller:AppAdminBundle:Security:logout }

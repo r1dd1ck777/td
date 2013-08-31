@@ -1,0 +1,12 @@
+rid_image:
+    presets:
+        categoryImage:
+            path: uploads/category/
+            thumbnails:
+                mid:
+                    width: 379
+                    height: 220
+
+    fields:
+        App\MainBundle\Entity\Category:
+            image: categoryImage

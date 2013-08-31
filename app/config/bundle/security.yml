@@ -1,0 +1,43 @@
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            context:  common_context
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        admin_area:
+            pattern: ^/admin
+            context:  common_context
+            provider: in_memory
+            anonymous: ~
+            form_login:
+                default_target_path: /admin/dashboard
+                login_path:  app_admin_security_login
+                check_path:  app_admin_security_check
+            logout:
+                path:   app_admin_security_logout
+                target: /admin/dashboard
+#                invalidate_session: true
+
+        main_area:
+            context:  common_context
+            anonymous: ~
+
+    access_control:
+        - { path: ^/admin/security/login, role: IS_AUTHENTICATED_ANONYMOUSLY  }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
