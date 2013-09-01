@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html {{ sonata_seo_html_attributes() }}>
+<head>
+    <meta charset="UTF-8" />
+    {{ sonata_seo_title() }}
+    {{ sonata_seo_metadatas() }}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}
+        {#filter="yui_css"#}
+        {% stylesheets
+
+        output='css/compiled/main.css'
+        "@AppMainBundle/Resources/assets/css/main.scss"
+        %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+<body class="layout">
+{% block body %}
+    <div class="layout-header">
+        <div class="navbar">
+            <ul class="first">
+                <li class="">
+                    <a href="">
+                        Обратная связь
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        Контакты
+                    </a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+            <ul class="second">
+                <li class="">
+                    <a href="">
+                        О Компании
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        Оплата и Доставка
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        Кредит
+                    </a>
+                </li>
+                <li class="">
+                    <a href="">
+                        Сервис
+                    </a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+            <ul class="third">
+                <li class="login">
+                    <a href="">
+                        Вход в магазин
+                    </a>
+                </li>
+                <div class="clearfix"></div>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="layout-search">
+        <h1 class="logo">
+            <a href="{{ path('app_main_homepage') }}">
+                technodevice.com.ua
+            </a>
+        </h1>
+        <div class="search-block">
+            <div class="content">
+                <span class="phones">0472 00-00-00, 093 000-00-00</span>
+                <a class="cart" href="#">
+                    Моя корзина
+                </a>
+                <div class="clearfix"></div>
+                <div class="input-group">
+                    <form>
+                        <input class="form-control" type="text" placeholder="Поиск среди 60 000 товаров">
+                        <button class="">Поиск</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="layout-site">
+        <div class="layout-left">
+            <div class="info-block">
+                <h2 class="header">КАТАЛОГ</h2>
+                <ul class="navbar">
+                    <li>
+                        <a href="#">
+                            Компьютерная техника
+                            <span class="arrow-box-right"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            Компьютерная техника
+                            <span class="arrow-box-right"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="info-block">
+                <h2 class="header">
+                    <a href="#">
+                        АКЦИИ И СКИДКИ
+                    </a>
+                </h2>
+                <img src="{{ asset('img/fix-action.png') }}">
+            </div>
+        </div>
+        <div class="layout-main">
+            <div class="breadcrumbs">{% block breadcrumbs %}{% endblock %}</div>
+            <div class="layout-content">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+</body>
+
+{% block javascripts %}
+    {#filter="yui_js"#}
+    {% javascripts
+
+    output='js/compiled/main.js'
+    "../vendor/jlong/sass-twitter-bootstrap/assets/js/jquery.js"
+    "../vendor/jlong/sass-twitter-bootstrap/js/dropdown.js"
+    "../vendor/jlong/sass-twitter-bootstrap/js/tooltip.js"
+    "../vendor/jlong/sass-twitter-bootstrap/js/carousel.js"
+    "../vendor/jlong/sass-twitter-bootstrap/js/modal.js"
+    "../vendor/jlong/sass-twitter-bootstrap/js/transition.js"
+    %}
+    {#"../web/libs/lightbox/js/lightbox-2.6.min.js"#}
+    <script src="{{ asset_url }}" type="text/javascript"></script>
+    {% endjavascripts %}
+{% endblock %}
+</html>

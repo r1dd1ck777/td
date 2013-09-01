@@ -1,0 +1,66 @@
+@mixin gradient($bottom, $top){
+  background-color: $bottom;
+  background-image: -moz-linear-gradient(top,$bottom 0,$top 100%);
+  background-image: -ms-linear-gradient(top,$bottom 0,$top 100%);
+  background-image: -o-linear-gradient(top,$bottom 0,$top 100%);
+  background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0,$bottom),color-stop(100%,$top));
+  background-image: -webkit-linear-gradient(top,$bottom 0,$top 100%);
+  background-image: linear-gradient(to bottom,$bottom 0,$top 100%);
+  filter: progid:DXImageTransform.Microsoft.Gradient(GradientType=0,StartColorStr=#{$bottom}00,EndColorStr=#{$top}00);
+}
+
+@mixin transition($all, $duration, $easing : 'linear', $delay : 0s){
+  -webkit-transition: $all, $duration, $easing, $delay;
+  transition: $all, $duration, $easing, $delay;
+}
+
+@mixin box-shadow($x, $y, $smooth, $color){
+  -moz-box-shadow: $x $y $smooth $color;
+  -webkit-box-shadow: $x $y $smooth $color;
+  box-shadow: $x $y $smooth $color;
+  filter: progid:DXImageTransform.Microsoft.shadow(direction=120, color=$color, strength=$x);
+}
+
+@mixin layout-center{
+  width: $layout-width;
+  margin: 0 auto;
+}
+
+@mixin font-h2{
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: 0px 0px 1px #333333;
+}
+
+@mixin border-red{
+  border: 1px solid #fe0000;
+}
+
+@mixin border-radius($all){
+  -webkit-border-radius: $all;
+  -moz-border-radius: $all;
+  border-radius: $all;
+}
+
+.arrow-box-right {
+  position: relative;
+  background: #bebebe;
+}
+.arrow-box-right:after {
+  left: 100%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.arrow-box-right:after {
+  border-color: rgba(255, 255, 253, 0);
+  border-left-color: #bebebe;
+  border-width: 7px;
+  top: 50%;
+  margin-top: -7px;
+}

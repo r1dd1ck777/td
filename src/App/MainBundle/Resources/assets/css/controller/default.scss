@@ -1,0 +1,12 @@
+&.default{
+  &.index{
+    .carousel-control{
+      &.right{
+        background-image: none;
+      }
+      &.left{
+        background-image: none;
+      }
+    }
+  }
+}
