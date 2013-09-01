@@ -1,7 +1,7 @@
 {% extends 'AppMainBundle::layout.html.twig' %}
 {% block content %}
     <div class="app-main default index">
-        <div id="carousel-example-captions" class="carousel slide bs-docs-carousel-example">
+        <div id="carousel-example-captions" class="apply-carousel carousel slide bs-docs-carousel-example">
             <ol class="carousel-indicators">
                 <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
                 <li data-target="#carousel-example-captions" data-slide-to="1"></li>
@@ -37,6 +37,69 @@
                 <span class="icon-next"></span>
             </a>
         </div>
+        <div class="clearfix"></div>
+        <ul class="category-list">
+            <li class="category-block">
+                <a href="#">
+                    <div class="img-wrapper">
+                        <img src="{{ asset('img/fix-product.png') }}" alt="">
+                    </div>
+                    <div class="clearfix"></div>
+                    <h3>
+                        title ad as
+                    </h3>
+                    <div class="clearfix"></div>
+                </a>
+                <div class="clearfix"></div>
+            </li>
+            <li class="category-block last-in-row">
+                <a href="#">
+                    <div class="img-wrapper">
+                        <img src="{{ asset('img/fix-product.png') }}" alt="">
+                    </div>
+                    <div class="clearfix"></div>
+                    <h3>
+                        title ad as
+                    </h3>
+                    <div class="clearfix"></div>
+                </a>
+                <div class="clearfix"></div>
+            </li><li class="category-block">
+                <a href="#">
+                    <div class="img-wrapper">
+                        <img src="{{ asset('img/fix-product.png') }}" alt="">
+                    </div>
+                    <div class="clearfix"></div>
+                    <h3>
+                        title ad as
+                    </h3>
+                    <div class="clearfix"></div>
+                </a>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+        <div class="clearfix"></div>
+        <div class="rid-page">
+            <div class="page-block">
+                <h2>orange title asd asd sda</h2>
+                <hr>
+                <div class="page-body">
+                    lorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum
+                    dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit ama
+                    osdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kas
+                    dm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem i
+                    psum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor si
+                    t amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasd
+                    m kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdl
+                    orem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum do
+                    lor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaos
+                    dokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm
+                    asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsu
+                    m dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit
+                    amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asd
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -44,7 +107,7 @@
     {{ parent() }}
     <script type="text/javascript">
         jQuery(document).ready(function(){
-            jQuery('.carousel').carousel();
+            jQuery('.apply-carousel').carousel();
         });
     </script>
 {% endblock %}
