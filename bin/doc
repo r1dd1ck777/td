@@ -3,6 +3,6 @@
 
 require_once __DIR__.'/base_script.php';
 
-//show_run("Generate getters and setters for MocMainBundle", "php app/console doctrine:generate:entities RidPageBundle");
+show_run("Generate getters and setters for MocMainBundle", "php app/console doctrine:generate:entities AppMainBundle");
 
 exit(0);

@@ -7,9 +7,237 @@ $layout-left-width: 280px;
 $layout-main-width: 640px;
 $color-gradient-yellow: #fbb321;
 $color-gradient-red: #eb4909;
-
+$color-blue: #00457c;
 
 @import "layout";
+
+.layout{
+  .layout-header{
+    height: 33px;
+    line-height: 33px;
+    background-color: #ededed;
+
+    .navbar{
+      @include layout-center;
+      height: inherit;
+      min-height: inherit;
+      padding: 0;
+      ul{
+        margin: 0;
+        list-style: none;
+        float: left;
+        li{
+          float: left;
+          margin-left: 15px;
+          a{
+            color: #5a5a5a;
+            @include transition(all 0.5s);
+            &:hover{
+              color: #eb490b;
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+      .second{
+        margin-left: 50px;
+      }
+      .third{
+        float: right;
+        .login{
+          padding-left: 26px;
+          background: url('/img/icon-key.png') no-repeat 0px 9px;
+        }
+      }
+    }
+  }
+
+  .layout-search{
+    @include layout-center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .logo{
+      float: left;
+      display: block;
+      width: $layout-left-width;
+      margin: 0 20px 0 0;
+      a{
+        padding-top: 72px;
+        background: url('/img/logo.png') no-repeat center top;
+        text-align: center;
+        display: block;
+        font-size: 16px;
+
+        color: #5a5a5a;
+        @include transition(all 0.5s);
+        &:hover{
+          color: #eb490b;
+          text-decoration: underline;
+        }
+      }
+    }
+    .search-block{
+      @include border-red;
+      @include gradient($color-gradient-yellow, $color-gradient-red);
+      float: left;
+      width: $layout-main-width;
+      height: 85px;
+      .content{
+        padding: 5px 12px 0 12px;
+        margin: 0;
+        .phones{
+          @include font-h2;
+        }
+        .cart{
+          color: #114a75;
+          font-size: 16px;
+          text-decoration: underline;
+          float: right;
+          padding-left: 30px;
+          background: url("/img/icon-cart.png") no-repeat 0px 1px;
+          margin-top: 2px;
+        }
+        .input-group{
+          padding: 1px;
+          background-color: #ffffff;
+          width: 100%;
+          input[type="text"]{
+            background: url("/img/icon-search.png") no-repeat 5px 6px;
+            padding-left: 25px;
+            height: 24px;
+            float: left;
+            border: none;
+            border-radius: 0px;
+            width: 88%;
+          }
+
+          button{
+            width: 12%;
+            height: 24px;
+            line-height: 22px;
+            float: right;
+            background: $color-blue;
+            border: none;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  .layout-site{
+    @include layout-center;
+    .layout-left{
+      float: left;
+      width: $layout-left-width;
+      margin-right: 20px;
+      .info-block{
+        margin-bottom: 20px;
+        .header{
+          @include font-h2;
+          @include border-red;
+          @include gradient($color-gradient-yellow, $color-gradient-red);
+          @include border-radius(3px);
+          padding: 5px 20px;
+          margin-bottom: 0;
+          margin-top: 0;
+
+          a{
+            @include font-h2;
+            &:hover{
+              text-decoration: none;
+            }
+          }
+        }
+
+        .navbar.level-1{
+          border-radius: 0px;
+          background-color: #fdfdfd;
+          @include box-shadow(2px 2px 3px #f5f5f5);
+          padding: 0;
+          position: relative;
+          .menu-row{
+            display: none;
+          }
+          & > li{
+            a{
+              display: block;
+              width: 100%;
+              padding: 12px 0 12px 20px;
+              color: #868686;
+              border-bottom: 1px solid #ededed;
+              @include transition(all, 0.15s);
+
+              &:hover, &.maintain-hover{
+                text-decoration: none;
+                background-color: $color-gradient-red;
+                color: #ffffff;
+
+                .arrow-box-right{
+                  background-color: #ffffff;
+                }
+
+                .arrow-box-right:after{
+                  border-left-color: #ffffff;
+                }
+              }
+              .arrow-box-right{
+                float: right;
+                margin-top: 9px;
+                margin-right: 20px;
+              }
+            }
+            .menu-row{
+              z-index: 100;
+              width: 570px;
+              position: absolute;
+              background: #ffffff;
+              border: 1px solid #bdb9ba;
+              a{
+                color: $color-blue;
+                border-bottom: none;
+                &:hover, &.maintain-hover{
+                  color: $color-blue;
+                  background: none;
+                  text-decoration: underline;
+                }
+                padding: 2px 0 2px 10px;
+              }
+
+              .level-2{
+                width: 250px;
+                float: left;
+                font-size: 16px;
+                li{
+                  float: none;
+                  clear: both;
+                }
+              }
+              .level-3{
+                display: none;
+                margin-left: 7px;
+                width: 300px;
+                float: left;
+                li{
+                  a{
+                    color: #868686;
+                  }
+                  float: none;
+                  clear: both;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .layout-main{
+      width: $layout-main-width;
+      float: left;
+    }
+  }
+}
 
 .app-main{
   @import "controller/default";

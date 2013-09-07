@@ -19,7 +19,7 @@
 <body class="layout">
 {% block body %}
     <div class="layout-header">
-        <div class="navbar">
+        <div class="navbar" role="navigation">
             <ul class="first">
                 <li class="">
                     <a href="">
@@ -96,20 +96,7 @@
         <div class="layout-left">
             <div class="info-block">
                 <h2 class="header">КАТАЛОГ</h2>
-                <ul class="navbar">
-                    <li>
-                        <a href="#">
-                            Компьютерная техника
-                            <span class="arrow-box-right"></span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            Компьютерная техника
-                            <span class="arrow-box-right"></span>
-                        </a>
-                    </li>
-                </ul>
+                {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
             </div>
             <div class="info-block">
                 <h2 class="header">
@@ -203,6 +190,7 @@
 
     output='js/compiled/main.js'
     "../vendor/jlong/sass-twitter-bootstrap/assets/js/jquery.js"
+    "../src/App/MainBundle/Resources/assets/js/jquery.menu-aim.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/dropdown.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/tooltip.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/carousel.js"
@@ -212,5 +200,66 @@
     {#"../web/libs/lightbox/js/lightbox-2.6.min.js"#}
     <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
+
+    <script type="text/javascript">
+        "use strict";
+        var jmenu;
+        jQuery(document).ready(function(){
+            jmenu = $(".menu-aim");
+
+            // jQuery-menu-aim: <meaningful part of the example>
+            // Hook up events to be fired on menu row activation.
+            jmenu.menuAim({
+                activate: window.activateSubmenu,
+                deactivate: window.deactivateSubmenu
+            });
+
+            jQuery(document).click(function() {
+                // Simply hide the submenu on any click. Again, this is just a hacked
+                // together menu/submenu structure to show the use of jQuery-menu-aim.
+                jQuery(".menu-row").css("display", "none");
+                jQuery("a.maintain-hover").removeClass("maintain-hover");
+                jmenu.trigger('mouseleave');
+            });
+        });
+
+        var activateSubmenu = function(row){
+            var jrow = jQuery(row),
+                    jsubmenu = jrow.find('.menu-row'),
+                    jrow_height = jrow.outerHeight(),
+                    jsubmenu_height = jsubmenu.outerHeight(),
+                    jrow_width = jrow.outerWidth();
+
+            if (jrow.data('rowId') !== undefined){
+                jsubmenu = jQuery('#'+jrow.data('rowId'));
+            }else{
+                jsubmenu.css({
+                    top: 0,
+                    left: jrow_width - 0  // main should overlay submenu
+                });
+            }
+
+            jsubmenu.css({
+                display: "block"
+            });
+
+            // Keep the currently activated row's highlighted look
+            jrow.find("> a").addClass("maintain-hover");
+        }
+
+        var deactivateSubmenu= function(row) {
+            var jrow = jQuery(row),
+                    jsubmenu = jrow.find('.menu-row'),
+                    height = jmenu.outerHeight(),
+                    width = jmenu.outerWidth();
+            if (jrow.data('rowId') !== undefined){
+                jsubmenu = jQuery('#'+jrow.data('rowId'));
+            }
+
+            // Hide the submenu and remove the row's highlighted look
+            jsubmenu.css("display", "none");
+            jrow.find("a").removeClass("maintain-hover");
+        }
+    </script>
 {% endblock %}
 </html>

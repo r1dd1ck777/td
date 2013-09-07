@@ -41,7 +41,7 @@
 
         "sylius/resource-bundle": "v0.3.0",
         "sylius/cart-bundle": "0.5.*",
-        "friendsofsymfony/user-bundle": "2.0.*@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev"
 
     },
     "scripts": {

@@ -6,7 +6,9 @@ imports:
     - { resource: bundle/sonata_formatter.yml }
     - { resource: bundle/sonata_seo.yml }
     - { resource: bundle/stof_doctrine_extensions.yml }
-    - { resource: bundle/stof_doctrine_extensions.yml }
+    - { resource: bundle/sylius_resource.yml }
+    - { resource: bundle/fos_user.yml }
+    - { resource: bundle/rid_image.yml }
 
 framework:
     router:
@@ -46,3 +48,28 @@ assetic:
 #            presets:
 #                my_variable: "#000"
         cssrewrite: ~
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        types:
+            rid_image: Rid\Bundle\ImageBundle\DBAL\Types\RidImageType
+            rid_file: Rid\Bundle\ImageBundle\DBAL\Types\RidFileType
+        mapping_types:
+            rid_image: rid_image
+            rid_file: rid_file
+        driver:   %database_driver%
+        host:     %database_host%
+        port:     %database_port%
+        dbname:   %database_name%
+        user:     %database_user%
+        password: %database_password%
+        charset:  UTF8
+        # if using pdo_sqlite as your database driver, add the path in parameters.yml
+        # e.g. database_path: %kernel.root_dir%/data/data.db3
+        # path:     %database_path%
+
+    orm:
+        auto_generate_proxy_classes: %kernel.debug%
+        auto_mapping: true
+
