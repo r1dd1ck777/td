@@ -1,0 +1,32 @@
+<ul class="navbar level-1 menu-aim" role="navigation">
+    {% for category1 in categories %}
+        <li>
+            <a href="{{ path('app_main_category_show', {id:category1.id}) }}">
+                {{ category1.name }}
+                <span class="arrow-box-right"></span>
+            </a>
+            <div class="menu-row">
+                <ul class="level-2 menu-aim">
+                    {% for category2 in category1.childs %}
+                        <li data-row-id="level-2-row-{{ category2.id }}">
+                            <a href="{{ path('app_main_category_show', {id:category2.id}) }}">
+                                {{ category2.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                {% for category2 in category1.childs %}
+                    <ul class="level-3" id="level-2-row-{{ category2.id }}">
+                        {% for category3 in category2.childs %}
+                            <li>
+                                <a href="{{ path('app_main_category_show', {id:category3.id}) }}">
+                                    {{ category3.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>

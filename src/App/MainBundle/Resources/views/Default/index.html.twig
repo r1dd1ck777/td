@@ -38,68 +38,9 @@
             </a>
         </div>
         <div class="clearfix"></div>
-        <ul class="category-list">
-            <li class="category-block">
-                <a href="#">
-                    <div class="img-wrapper">
-                        <img src="{{ asset('img/fix-product.png') }}" alt="">
-                    </div>
-                    <div class="clearfix"></div>
-                    <h3>
-                        title ad as
-                    </h3>
-                    <div class="clearfix"></div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
-            <li class="category-block last-in-row">
-                <a href="#">
-                    <div class="img-wrapper">
-                        <img src="{{ asset('img/fix-product.png') }}" alt="">
-                    </div>
-                    <div class="clearfix"></div>
-                    <h3>
-                        title ad as
-                    </h3>
-                    <div class="clearfix"></div>
-                </a>
-                <div class="clearfix"></div>
-            </li><li class="category-block">
-                <a href="#">
-                    <div class="img-wrapper">
-                        <img src="{{ asset('img/fix-product.png') }}" alt="">
-                    </div>
-                    <div class="clearfix"></div>
-                    <h3>
-                        title ad as
-                    </h3>
-                    <div class="clearfix"></div>
-                </a>
-                <div class="clearfix"></div>
-            </li>
-        </ul>
+        {% include 'AppMainBundle:Category/partials:_list_wrapper.html.twig' with { categories: categories } %}
         <div class="clearfix"></div>
-        <div class="rid-page">
-            <div class="page-block">
-                <h2>orange title asd asd sda</h2>
-                <hr>
-                <div class="page-body">
-                    lorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum
-                    dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit ama
-                    osdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kas
-                    dm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem i
-                    psum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor si
-                    t amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasd
-                    m kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdl
-                    orem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum do
-                    lor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaos
-                    dokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm
-                    asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsu
-                    m dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asdlorem ipsum dolor sit
-                    amaosdokasdm kasdm asdlorem ipsum dolor sit amaosdokasdm kasdm asd
-                </div>
-            </div>
-        </div>
+        {% render(controller('RidPageBundle:Page:renderPage', {slug: 'homepage'})) %}
     </div>
 {% endblock %}
 

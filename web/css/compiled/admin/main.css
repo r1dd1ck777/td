@@ -1,0 +1,12 @@
+.app-admin.security.login {
+  width: 350px;
+  height: 300px;
+  position: absolute;
+  margin: auto;
+  top: 0px;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+.layout.logout-block .btn {
+  margin-top: 4px; }

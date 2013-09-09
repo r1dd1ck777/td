@@ -1,0 +1,7 @@
+{% extends 'AppMainBundle::layout.html.twig' %}
+{% block content %}
+    <div class="app-main category show">
+        {% include 'AppMainBundle:Category/partials:_list_wrapper.html.twig' with { categories: category.getChilds } %}
+        {% include 'AppMainBundle:Product/partials:_list_wrapper.html.twig' with { products: category.getProducts } %}
+    </div>
+{% endblock %}

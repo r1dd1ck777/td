@@ -12,3 +12,25 @@ services:
             - 'SonataAdminBundle:CRUD'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
+
+    app.admin.admin.brand:
+        class: App\AdminBundle\Admin\BrandAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Бренды', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Brand
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]
+
+    app.admin.admin.product:
+        class: App\AdminBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Продукты', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Product
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]

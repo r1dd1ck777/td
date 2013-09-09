@@ -1,0 +1,15 @@
+sylius_resource:
+    resources:
+        app.category:
+            driver: doctrine/orm
+            templates: AppMainBundle:Category
+            classes:
+                model: App\MainBundle\Entity\Category
+                repository: App\MainBundle\Entity\CategoryRepository
+
+        app.product:
+            driver: doctrine/orm
+            templates: AppMainBundle:Product
+            classes:
+                model: App\MainBundle\Entity\Product
+                repository: App\MainBundle\Entity\ProductRepository

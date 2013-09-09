@@ -1,0 +1,9 @@
+app_main_product_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: app.controller.product:showAction
+        _sylius:
+            template: AppMainBundle:Product:show.html.twig
+            criteria:
+                id: $id

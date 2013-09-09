@@ -247,12 +247,16 @@ $color-blue: #00457c;
       margin-right: 25px;
       margin-bottom: 15px;
       float: left;
+      width: 307px;
+      height: 222px;
+      overflow: hidden;
 
       &.last-in-row{
         margin-right: 0;
       }
 
       a{
+        display: block;
         text-decoration: none;
         color: #5b5b5b;
         @include transition(all, 0.25s);
@@ -276,11 +280,89 @@ $color-blue: #00457c;
           text-align: center;
           height: 24px;
           line-height: 24px;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          display: block;
           margin: 5px 0;
           font-size: 18px;
+          width: 100%;
+          overflow: hidden;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: normal;
+        }
+      }
+    }
+  }
+
+  .product-list{
+    .product-block{
+      margin-right: 25px;
+      margin-bottom: 15px;
+      float: left;
+
+
+      &.last-in-row{
+        margin-right: 0;
+      }
+
+      a{
+        text-decoration: none;
+        color: #5b5b5b;
+        @include transition(all, 0.25s);
+        text-align: center;
+        display: block;
+
+        &:hover{
+          color: #125186;
+          .img-wrapper{
+            @include border-red;
+          }
+        }
+        .img-wrapper{
+          width: 200px;
+          height: 140px;
+          border: 1px solid #eef0ef;
+          overflow: hidden;
+          @include transition(all, 0.25s);
+          @include border-radius(3px);
+          position: relative;
+          .btn-cart{
+            width: 38px;
+            height: 35px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            @include gradient(white, #bcbcbc);
+            @include border-radius(3px);
+            borders: 1px solid #5b5b5b;
+            .icon-cart{
+              background: url("/img/icon-cart.png") no-repeat;
+              width: 28px;
+              height: 20px;
+              margin: 8px 0 0 4px;
+            }
+          }
+        }
+
+        h3{
+          text-align: center;
+          height: 24px;
+          line-height: 24px;
+          margin: 1px 0;
+          font-size: 18px;
+          width: 100%;
+          overflow: hidden;
+          display: block;
+          text-overflow: ellipsis;
+          word-wrap: normal;
+        }
+
+        .price{
+          font-size: 20px;
+          color: $color-gradient-red;
+        }
+
+        .price-desc{
+          font-size: 16px;
+          color: $color-gradient-red;
         }
       }
     }

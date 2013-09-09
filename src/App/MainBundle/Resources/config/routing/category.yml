@@ -1,0 +1,20 @@
+app_main_category_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: app.controller.category:showAction
+        _sylius:
+            template: AppMainBundle:Category:show.html.twig
+            criteria:
+                id: $id
+
+
+app_main_product_show:
+    pattern: /{id}
+    methods: [GET]
+    defaults:
+        _controller: app.controller.category:showAction
+        _sylius:
+            template: AppMainBundle:Category:show.html.twig
+            criteria:
+                id: $id

@@ -1,0 +1,19 @@
+{% for product in products %}
+    <li class="product-block {{ perRow is defined and loop.index % perRow == 0 ? 'last-in-row' }} {{ perRow is defined and loop.index % perRow == 1 ? 'first-in-row' }}">
+        <a href="{{ path('app_main_product_show', {id:product.id}) }}">
+            <div class="img-wrapper">
+                <img src="{{ asset(product.image.mid) }}" alt="{{ product.name }}">
+                <div class="btn-cart">
+                    <div class="icon-cart"></div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <h3>
+                {{ product.name }}
+            </h3>
+            <div class="clearfix"></div>
+            <span class="price">{{ product.price|number_format(0, ' ', ' ') }}</span><span class="price-desc"> грн.</span>
+        </a>
+        <div class="clearfix"></div>
+    </li>
+{% endfor %}

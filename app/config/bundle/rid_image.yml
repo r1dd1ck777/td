@@ -4,9 +4,19 @@ rid_image:
             path: uploads/category/
             thumbnails:
                 mid:
-                    width: 379
-                    height: 220
+                    width: 305
+                    height: 180
+                    type: outbound
+        productImage:
+            path: uploads/produt/
+            thumbnails:
+                mid:
+                    width: 200
+                    height: 140
+                    type: outbound
 
     fields:
         App\MainBundle\Entity\Category:
             image: categoryImage
+        App\MainBundle\Entity\Product:
+            image: productImage

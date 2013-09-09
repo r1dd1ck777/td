@@ -8,7 +8,17 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('AppMainBundle:Default:index.html.twig');
+        $page = $this->get('rid.page.repository.page')->getOneBySlug('homepage');
+
+        /** @var \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository $repository */
+        $repository = $this->get('app.repository.category');
+        $categories = $repository->findTop()->getQuery()->execute();
+
+        return $this->render('AppMainBundle:Default:index.html.twig'
+            ,array(
+               'categories' => $categories
+            )
+        );
     }
 
     public function renderCategoryMenuAction()

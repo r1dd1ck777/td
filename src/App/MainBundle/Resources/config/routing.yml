@@ -1,3 +1,7 @@
 app_main_homepage:
     pattern:  /
     defaults: { _controller: AppMainBundle:Default:index }
+
+_app_main_category:
+    prefix:  /category
+    resource: 'routing/category.yml'
