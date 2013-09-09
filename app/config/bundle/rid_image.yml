@@ -8,7 +8,7 @@ rid_image:
                     height: 180
                     type: outbound
         productImage:
-            path: uploads/produt/
+            path: uploads/product/
             thumbnails:
                 mid:
                     width: 200
