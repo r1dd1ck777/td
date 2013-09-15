@@ -22,25 +22,31 @@ class Property
     private $id;
 
     /**
-     * @var string
-     *
      * @ORM\Column(name="type", type="string", length=50)
      */
     private $type;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=100)
+     * @ORM\Column(type="string", length=100)
      */
-    private $name;
+    private $title;
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $pid;
+
+    public function __toString()
+    {
+        return (string)$this->getTitle();
+    }
 
     //--
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -50,20 +56,20 @@ class Property
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string   $type
      * @return Property
      */
     public function setType($type)
     {
         $this->type = $type;
-    
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
     public function getType()
     {
@@ -71,25 +77,48 @@ class Property
     }
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param  string   $title
      * @return Property
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
-    
+        $this->title = $title;
+
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
-     * @return string 
+     * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
+    }
+
+    /**
+     * Set pid
+     *
+     * @param  string   $pid
+     * @return Property
+     */
+    public function setPid($pid)
+    {
+        $this->pid = $pid;
+
+        return $this;
+    }
+
+    /**
+     * Get pid
+     *
+     * @return string
+     */
+    public function getPid()
+    {
+        return $this->pid;
     }
 }

@@ -24,6 +24,17 @@ services:
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
 
+    app.admin.admin.prototype:
+        class: App\AdminBundle\Admin\PrototypeAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Прототипы', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Prototype
+            - 'AppAdminBundle:Prototype'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]
+
     app.admin.admin.product:
         class: App\AdminBundle\Admin\ProductAdmin
         tags:
@@ -35,3 +46,5 @@ services:
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
             - [ setCategoryRepository, [ @app.repository.category ]]
+            - [ setSession, [@session]]
+            - [ setPrototypeRepository, [@app.repository.prototype]]

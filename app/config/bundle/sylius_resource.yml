@@ -12,4 +12,10 @@ sylius_resource:
             templates: AppMainBundle:Product
             classes:
                 model: App\MainBundle\Entity\Product
+
+        app.prototype:
+            driver: doctrine/orm
+            templates: AppMainBundle:Prototype
+            classes:
+                model: App\MainBundle\Entity\Prototype
 #                repository: App\MainBundle\Entity\ProductRepository

@@ -45,12 +45,17 @@ class ProductProperty
         return $this->getProperty()->getType();
     }
 
+    public function getTitle()
+    {
+        return $this->getProperty()->getTitle();
+    }
+
     //--
 
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -60,20 +65,20 @@ class ProductProperty
     /**
      * Set value
      *
-     * @param string $value
+     * @param  string          $value
      * @return ProductProperty
      */
     public function setValue($value)
     {
         $this->value = $value;
-    
+
         return $this;
     }
 
     /**
      * Get value
      *
-     * @return string 
+     * @return string
      */
     public function getValue()
     {
@@ -83,20 +88,20 @@ class ProductProperty
     /**
      * Set property
      *
-     * @param \App\MainBundle\Entity\Property $property
+     * @param  \App\MainBundle\Entity\Property $property
      * @return ProductProperty
      */
     public function setProperty(\App\MainBundle\Entity\Property $property)
     {
         $this->property = $property;
-    
+
         return $this;
     }
 
     /**
      * Get property
      *
-     * @return \App\MainBundle\Entity\Property 
+     * @return \App\MainBundle\Entity\Property
      */
     public function getProperty()
     {
@@ -106,20 +111,20 @@ class ProductProperty
     /**
      * Set product
      *
-     * @param \App\MainBundle\Entity\Product $product
+     * @param  \App\MainBundle\Entity\Product $product
      * @return ProductProperty
      */
     public function setProduct(\App\MainBundle\Entity\Product $product)
     {
         $this->product = $product;
-    
+
         return $this;
     }
 
     /**
      * Get product
      *
-     * @return \App\MainBundle\Entity\Product 
+     * @return \App\MainBundle\Entity\Product
      */
     public function getProduct()
     {

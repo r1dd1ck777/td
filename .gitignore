@@ -13,6 +13,7 @@ composer.phar
 *.remote
 
 web/uploads/*
+web/sandbox/*
 web/bundles/*
 app/bootstrap.php.cache
 app/cache/*

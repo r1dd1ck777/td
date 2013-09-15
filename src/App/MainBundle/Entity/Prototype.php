@@ -45,11 +45,11 @@ class Prototype
     {
         $this->properties = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -59,20 +59,20 @@ class Prototype
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string    $name
      * @return Prototype
      */
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -82,13 +82,13 @@ class Prototype
     /**
      * Add properties
      *
-     * @param \App\MainBundle\Entity\Property $properties
+     * @param  \App\MainBundle\Entity\Property $properties
      * @return Prototype
      */
     public function addPropertie(\App\MainBundle\Entity\Property $properties)
     {
         $this->properties[] = $properties;
-    
+
         return $this;
     }
 
@@ -105,7 +105,7 @@ class Prototype
     /**
      * Get properties
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProperties()
     {

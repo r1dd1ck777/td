@@ -320,13 +320,13 @@ class Product
     /**
      * Add productProperties
      *
-     * @param \App\MainBundle\Entity\ProductProperty $productProperties
+     * @param  \App\MainBundle\Entity\ProductProperty $productProperties
      * @return Product
      */
     public function addProductPropertie(\App\MainBundle\Entity\ProductProperty $productProperties)
     {
         $this->productProperties[] = $productProperties;
-    
+
         return $this;
     }
 
@@ -343,7 +343,7 @@ class Product
     /**
      * Get productProperties
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getProductProperties()
     {

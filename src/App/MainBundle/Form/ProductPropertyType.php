@@ -2,7 +2,6 @@
 
 namespace App\MainBundle\Form;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -33,17 +32,10 @@ class ProductPropertyType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event){
-            $type = $event->getData()->getType();
+            $data = $event->getData();
             $form = $event->getForm();
-
-            if ($type == 'type'){
-                $form->add('value', 'text');
-            }
-            if ($type == '1'){
-                $form->add('value', 'text');
-            }
-            if ($type == '2'){
-                $form->add('value', 'integer');
+            if ($data->getType() == 'text') {
+                $form->add('value', 'text', array('label' => $data->getTitle()));
             }
         });
     }

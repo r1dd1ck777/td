@@ -13,35 +13,25 @@ use Sonata\AdminBundle\Show\ShowMapper;
 class ProductAdmin extends Admin
 {
     /** @var \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository $categoryRepository */
-    protected  $categoryRepository;
+    protected $categoryRepository;
+
+    protected $session;
+    protected $prototypeRepository;
+
+    public function setSession($session)
+    {
+        $this->session = $session;
+    }
+
+    public function setPrototypeRepository($prototypeRepository)
+    {
+        $this->prototypeRepository = $prototypeRepository;
+    }
 
     public function setCategoryRepository($categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
     }
-//    protected $form;
-//
-//    protected function buildForm()
-//    {
-//        if ($this->form) {
-//            return;
-//        }
-//
-//        // append parent object if any
-//        // todo : clean the way the Admin class can retrieve set the object
-//        if ($this->isChild() && $this->getParentAssociationMapping()) {
-//            $parent = $this->getParent()->getObject($this->request->get($this->getParent()->getIdParameter()));
-//
-//            $propertyAccessor = PropertyAccess::getPropertyAccessor();
-//            $propertyPath = new PropertyPath($this->getParentAssociationMapping());
-//
-//            $object = $this->getSubject();
-//
-//            $propertyAccessor->setValue($object, $propertyPath, $parent);
-//        }
-//
-//        $this->form = $this->getFormBuilder()->getForm();
-//    }
 
     /**
      * {@inheritdoc}
@@ -49,29 +39,21 @@ class ProductAdmin extends Admin
     public function getNewInstance()
     {
         $object = $this->getModelManager()->getModelInstance($this->getClass());
-        foreach($this->getExtensions() as $extension) {
+        foreach ($this->getExtensions() as $extension) {
             $extension->alterNewInstance($this, $object);
         }
 
-        $p = new Property();
-        $p->setName('prop');
-        $p->setType('1');
-
-        $pp = new ProductProperty();
-        $pp->setProperty($p);
-        $pp->setProduct($object);
-
-        $object->addProductPropertie($pp);
-
-        $p = new Property();
-        $p->setName('prop2');
-        $p->setType('2');
-
-        $pp = new ProductProperty();
-        $pp->setProperty($p);
-        $pp->setProduct($object);
-
-        $object->addProductPropertie($pp);
+        $prototype = $this->prototypeRepository->find($this->session->get('prototype'));
+        if ($prototype)
+        {
+            $properties = $prototype->getProperties();
+            foreach($properties as $property){
+                $pp = new ProductProperty();
+                $pp->setProperty($property);
+                $pp->setProduct($object);
+                $object->addProductPropertie($pp);
+            }
+        }
 
         return $object;
     }
@@ -86,7 +68,6 @@ class ProductAdmin extends Admin
             ->add('id')
             ->add('name')
             ->add('category')
-
         ;
     }
 

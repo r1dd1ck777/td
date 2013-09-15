@@ -16,10 +16,7 @@ show_run("Clear up dev cache", "php app/console -e=dev cache:warmup");
 //show_run("Clear up dev cache", "php app/console -e=test cache:warmup");
 show_run("Clear up dev cache", "php app/console -e=prod cache:warmup");
 
-show_run("Drop DB", "app/console doctrine:database:drop --force");
-show_run("Create DB", "app/console doctrine:database:create");
-show_run("Create schema", "app/console doctrine:schema:create");
-
+show_run("fixtures:load", "bin/doc");
 show_run("fixtures:load", "bin/fixtures");
 
 show_run("assets:install", "app/console assets:install --symlink");
