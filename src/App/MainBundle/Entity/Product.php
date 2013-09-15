@@ -77,6 +77,11 @@ class Product
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="ProductProperty", mappedBy="product", cascade={"persist", "remove"})
+     */
+    protected $productProperties;
+
     public function __construct()
     {
         $this->image = new RidImage();
@@ -310,5 +315,38 @@ class Product
     public function getDescriptionTitle()
     {
         return $this->descriptionTitle;
+    }
+
+    /**
+     * Add productProperties
+     *
+     * @param \App\MainBundle\Entity\ProductProperty $productProperties
+     * @return Product
+     */
+    public function addProductPropertie(\App\MainBundle\Entity\ProductProperty $productProperties)
+    {
+        $this->productProperties[] = $productProperties;
+    
+        return $this;
+    }
+
+    /**
+     * Remove productProperties
+     *
+     * @param \App\MainBundle\Entity\ProductProperty $productProperties
+     */
+    public function removeProductPropertie(\App\MainBundle\Entity\ProductProperty $productProperties)
+    {
+        $this->productProperties->removeElement($productProperties);
+    }
+
+    /**
+     * Get productProperties
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProductProperties()
+    {
+        return $this->productProperties;
     }
 }

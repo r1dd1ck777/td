@@ -2,6 +2,8 @@ parameters:
 #    app_main.example.class: App\MainBundle\Example
 
 services:
-#    app_main.example:
-#        class: %app_main.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    app.main.form_type.product_property:
+            class: App\MainBundle\Form\ProductPropertyType
+            tags:
+                - { name: form.type, alias: app_product_property }
+#            arguments: [ @doctrine.orm.entity_manager, @translator ]

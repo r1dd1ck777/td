@@ -5,3 +5,7 @@ app_main_homepage:
 _app_main_category:
     prefix:  /category
     resource: 'routing/category.yml'
+
+_app_main_product:
+    prefix:  /product
+    resource: 'routing/product.yml'

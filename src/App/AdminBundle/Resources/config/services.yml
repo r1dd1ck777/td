@@ -31,6 +31,7 @@ services:
         arguments:
             - ~
             - App\MainBundle\Entity\Product
-            - 'SonataAdminBundle:CRUD'
+            - 'AppAdminBundle:Product'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
+            - [ setCategoryRepository, [ @app.repository.category ]]

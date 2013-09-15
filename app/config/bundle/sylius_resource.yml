@@ -12,4 +12,4 @@ sylius_resource:
             templates: AppMainBundle:Product
             classes:
                 model: App\MainBundle\Entity\Product
-                repository: App\MainBundle\Entity\ProductRepository
+#                repository: App\MainBundle\Entity\ProductRepository
