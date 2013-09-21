@@ -44,10 +44,10 @@ class ProductAdmin extends Admin
         }
 
         $prototype = $this->prototypeRepository->find($this->session->get('prototype'));
-        if ($prototype)
-        {
+        if ($prototype) {
+            $object->selectedPrototype = $prototype;
             $properties = $prototype->getProperties();
-            foreach($properties as $property){
+            foreach ($properties as $property) {
                 $pp = new ProductProperty();
                 $pp->setProperty($property);
                 $pp->setProduct($object);
@@ -160,5 +160,17 @@ class ProductAdmin extends Admin
     protected function configureRoutes(RouteCollection $collection)
     {
 //        $collection->remove('create');
+    }
+
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'edit':
+                return 'AppAdminBundle:Product:edit.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 }

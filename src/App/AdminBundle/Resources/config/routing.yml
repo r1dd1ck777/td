@@ -1,3 +1,13 @@
 app_admin_security:
     resource: "routing/security.yml"
     prefix:  /admin/security
+
+app_admin_xls_form:
+    pattern: /admin/import/form
+    defaults: { _controller: AppAdminBundle:Xls:form }
+    methods: [GET]
+
+app_admin_xls_save:
+    pattern: /admin/import/save
+    defaults: { _controller: AppAdminBundle:Xls:save }
+    methods: [POST]

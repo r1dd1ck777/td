@@ -38,7 +38,7 @@ class Property
 
     public function __toString()
     {
-        return (string)$this->getTitle();
+        return (string) $this->getTitle();
     }
 
     //--

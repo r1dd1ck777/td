@@ -82,8 +82,11 @@ class Product
      */
     protected $productProperties;
 
+    public $selectedPrototype;
+
     public function __construct()
     {
+        $this->selectedPrototype = new  Prototype();
         $this->image = new RidImage();
     }
 

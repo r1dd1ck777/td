@@ -27,16 +27,16 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
     public function load(ObjectManager $manager)
     {
         $properties = array(
+            array(
+                'pid' => 'base_brand',
+                'title' => 'Производитель',
+                'type' => 'choice_brand'
+            ),
             // Бытовая техника
             array(
                 'pid' => 'bt_price',
                 'title' => 'Цена',
                 'type' => 'text'
-            ),
-            array(
-                'pid' => 'bt_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
             ),
             array(
                 'pid' => 'bt_power',
@@ -122,11 +122,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'text'
             ),
             array(
-                'pid' => 'pc_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
                 'pid' => 'pc_netbook',
                 'title' => 'Нетбуки',
                 'type' => 'text'
@@ -174,11 +169,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             ),
             // Оперативная память
             array(
-                'pid' => 'ram_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
                 'pid' => 'ram_volume',
                 'title' => 'Объем',
                 'type' => 'text'
@@ -194,11 +184,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'choice'
             ),
             // Видеокарты
-            array(
-                'pid' => 'gpu_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
             array(
                 'pid' => 'gpu_chipset',
                 'title' => 'Графический чипсет',
@@ -231,21 +216,11 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             ),
             // HDD
             array(
-                'pid' => 'hdd_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand',
-            ),
-            array(
                 'pid' => 'hdd_size',
                 'title' => 'Объем',
                 'type' => 'text'
             ),
             // SDD
-            array(
-                'pid' => 'sdd_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand',
-            ),
             array(
                 'pid' => 'sdd_interface',
                 'title' => 'Интерфейс',
@@ -263,11 +238,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             ),
             // ODD
             array(
-                'pid' => 'odd_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
                 'pid' => 'odd_class',
                 'title' => 'Класс',
                 'type' => 'choice'
@@ -283,11 +253,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'choice'
             ),
             // Материнские платы
-            array(
-                'pid' => 'mb_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
             array(
                 'pid' => 'mb_proc',
                 'title' => 'Процессорная совместимость',
@@ -320,11 +285,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             ),
             // Корпус
             array(
-                'pid' => 'box_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
                 'pid' => 'box_class',
                 'title' => 'Класс корпуса',
                 'type' => 'choice'
@@ -345,11 +305,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'checkbox'
             ),
             // Блок питания
-            array(
-                'pid' => 'bp_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
             array(
                 'pid' => 'bp_power',
                 'title' => 'Мощность',
@@ -382,11 +337,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'choice'
             ),
             // Клавиатура
-            array(
-                'pid' => 'pid_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
             array(
                 'pid' => 'pid_type',
                 'title' => 'Тип',
@@ -456,11 +406,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             ),
             // Принтеры, МФУ
             array(
-                'pid' => 'printer_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
                 'pid' => 'printer_functions',
                 'title' => 'Функции устройства',
                 'type' => 'choice'
@@ -523,16 +468,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'choice'
             ),
             // ИБП
-            array(
-                'pid' => 'ups_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
-                'pid' => 'ups_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
         );
 
         foreach ($properties as $data) {

@@ -13,6 +13,12 @@ sylius_resource:
             classes:
                 model: App\MainBundle\Entity\Product
 
+        app.property:
+            driver: doctrine/orm
+            templates: AppMainBundle:Property
+            classes:
+                model: App\MainBundle\Entity\Property
+
         app.prototype:
             driver: doctrine/orm
             templates: AppMainBundle:Prototype

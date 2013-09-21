@@ -9,8 +9,8 @@
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
-        "doctrine/orm": ">=2.2.3,<2.4-dev",
-        "doctrine/doctrine-bundle": "1.2.*",
+        "doctrine/orm": "2.4.0-RC2",
+        "doctrine/doctrine-bundle": "v1.2.0",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
@@ -41,8 +41,8 @@
 
         "sylius/resource-bundle": "v0.3.0",
         "sylius/cart-bundle": "0.5.*",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
-
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "codeplex/phpexcel": "1.7.8"
     },
     "scripts": {
         "post-install-cmd": [

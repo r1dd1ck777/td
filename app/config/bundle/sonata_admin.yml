@@ -1,6 +1,7 @@
 sonata_admin:
     templates:
          layout:  AppAdminBundle::standard_layout.html.twig
+         dashboard: AppAdminBundle::dashboard.html.twig
 #    dashboard:
 #        groups:
 #            group_name:

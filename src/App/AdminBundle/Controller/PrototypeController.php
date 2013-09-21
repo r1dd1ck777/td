@@ -2,10 +2,6 @@
 
 namespace App\AdminBundle\Controller;
 
-use Symfony\Component\HttpFoundation\Request;
-
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
-
 class PrototypeController extends CRUDController
 {
     public function createProductAction()
