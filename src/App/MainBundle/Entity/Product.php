@@ -32,6 +32,13 @@ class Product
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $info;
+
+    /**
      * @ORM\Column(name="description", type="text", nullable=true)
      */
     private $description;
@@ -78,6 +85,21 @@ class Product
      * @ORM\Column(type="rid_image", length=255, options={"default" = ""})
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="rid_image", length=255, options={"default" = ""})
+     */
+    private $image2;
+
+    /**
+     * @ORM\Column(type="rid_image", length=255, options={"default" = ""})
+     */
+    private $image3;
+
+    /**
+     * @ORM\Column(type="rid_image", length=255, options={"default" = ""})
+     */
+    private $image4;
 
     /**
      * @ORM\OneToMany(targetEntity="ProductProperty", mappedBy="product", cascade={"persist", "remove"})
@@ -399,5 +421,97 @@ class Product
     public function removeProductProperty(\App\MainBundle\Entity\ProductProperty $productProperties)
     {
         $this->productProperties->removeElement($productProperties);
+    }
+
+    /**
+     * Set info
+     *
+     * @param  string  $info
+     * @return Product
+     */
+    public function setInfo($info)
+    {
+        $this->info = $info;
+
+        return $this;
+    }
+
+    /**
+     * Get info
+     *
+     * @return string
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * Set image2
+     *
+     * @param rid_image $image2
+     * @return Product
+     */
+    public function setImage2($image2)
+    {
+        $this->image2 = $image2;
+
+        return $this;
+    }
+
+    /**
+     * Get image2
+     *
+     * @return rid_image 
+     */
+    public function getImage2()
+    {
+        return $this->image2;
+    }
+
+    /**
+     * Set image3
+     *
+     * @param rid_image $image3
+     * @return Product
+     */
+    public function setImage3($image3)
+    {
+        $this->image3 = $image3;
+
+        return $this;
+    }
+
+    /**
+     * Get image3
+     *
+     * @return rid_image 
+     */
+    public function getImage3()
+    {
+        return $this->image3;
+    }
+
+    /**
+     * Set image4
+     *
+     * @param rid_image $image4
+     * @return Product
+     */
+    public function setImage4($image4)
+    {
+        $this->image4 = $image4;
+
+        return $this;
+    }
+
+    /**
+     * Get image4
+     *
+     * @return rid_image 
+     */
+    public function getImage4()
+    {
+        return $this->image4;
     }
 }

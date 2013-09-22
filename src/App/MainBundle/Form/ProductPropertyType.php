@@ -43,6 +43,7 @@ class ProductPropertyType extends AbstractType
             if ($data->getType() == 'choice_brand') {
                 $form->add('value', 'entity', array(
                         'label' => $data->getTitle(),
+                        'required' => false,
                         'class' => 'AppMainBundle:Brand'
                     )
                 );
@@ -50,7 +51,23 @@ class ProductPropertyType extends AbstractType
             if ($data->getType() == 'choice') {
                 $form->add('value', 'choice', array(
                         'label' => $data->getTitle(),
+                        'required' => false,
                         'choices' => Choices::get($data->getPid())
+                    )
+                );
+            }
+            if ($data->getType() == 'checkbox') {
+                $form->add('value', 'checkbox', array(
+                        'label' => $data->getTitle(),
+                        'required' => false,
+                    )
+                );
+            }
+
+            if ($data->getType() == 'integer') {
+                $form->add('value', 'integer', array(
+                        'label' => $data->getTitle(),
+                        'required' => false,
                     )
                 );
             }

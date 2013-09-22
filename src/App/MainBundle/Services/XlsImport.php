@@ -47,9 +47,10 @@ class XlsImport extends Xls
         $category = $this->getCategory($row[1]);
         $product = $this->getProduct($row[0]);
         $product->setCategory($category);
-        $product->setName($row[2]);
+        $product->setName(ucfirst($row[2]));
         $product->setPrice($row[3]);
         $product->setDescription($row[4]);
+        $product->setInfo($row[4]);
         $product->setIsPresent($row[5]);
 
         $this->em->persist($product);

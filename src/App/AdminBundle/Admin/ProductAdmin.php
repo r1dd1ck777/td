@@ -82,7 +82,7 @@ class ProductAdmin extends Admin
                 'choices' => $categories
             ))
             ->add('brand')
-            ->add('price')
+            ->add('price', 'integer')
             ->add('code')
             ->add('isPresent', null, array('data' => $isPresent))
             ->add('descriptionF', 'sonata_formatter_type', array(
@@ -100,6 +100,7 @@ class ProductAdmin extends Admin
                     'allow_add'    => false,
                     'allow_delete'    => false,
                     'label' => 'Параметры',
+                    'required' => false,
                     'data' => $data->getProductProperties()
                 )
             )

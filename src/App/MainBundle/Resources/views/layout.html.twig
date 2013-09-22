@@ -6,15 +6,16 @@
     {{ sonata_seo_metadatas() }}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('libs/lightbox/css/lightbox.css') }}" media="screen"/>
         {#filter="yui_css"#}
         {% stylesheets
-
         output='css/compiled/main.css'
         "@AppMainBundle/Resources/assets/css/main.scss"
         %}
         <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
     {% endblock %}
+
 </head>
 <body class="layout">
 {% block body %}
@@ -94,8 +95,20 @@
     <div class="clearfix"></div>
     <div class="layout-site">
         <div class="layout-left">
+            <h2 class="header">КАТАЛОГ</h2>
+        </div>
+        <div class="layout-main">
+            <div class="breadcrumbs">
+                {% block breadcrumbs %}
+                <a href="#">asdasdasd  ad</a> &rarr; <span class="text-muted">asd ad asd asd asd</span>
+                {% endblock %}
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="layout-site">
+        <div class="layout-left">
             <div class="info-block">
-                <h2 class="header">КАТАЛОГ</h2>
                 {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
             </div>
             <div class="info-block">
@@ -108,7 +121,6 @@
             </div>
         </div>
         <div class="layout-main">
-            <div class="breadcrumbs">{% block breadcrumbs %}{% endblock %}</div>
             <div class="layout-content">
                 {% block content %}
 
@@ -200,6 +212,7 @@
     {#"../web/libs/lightbox/js/lightbox-2.6.min.js"#}
     <script src="{{ asset_url }}" type="text/javascript"></script>
     {% endjavascripts %}
+    <script src="{{ asset('libs/lightbox/js/lightbox-2.6.min.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
         "use strict";

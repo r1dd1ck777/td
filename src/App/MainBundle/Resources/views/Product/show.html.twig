@@ -1,7 +1,13 @@
 {% extends 'AppMainBundle::layout.html.twig' %}
 {% block content %}
-    <div class="app-main category show">
-        {% include 'AppMainBundle:Category/partials:_list_wrapper.html.twig' with { categories: category.getChilds } %}
-        {% include 'AppMainBundle:Product/partials:_list_wrapper.html.twig' with { products: category.getProducts } %}
+    <div class="app-main product show">
+        <h2>{{ product.name }}</h2>
+        <span class="text-muted">Код товара: {{ product.code }}</span>
+        <div class="clearfix"></div>
+        <p class="short-info">{{ product.info }}</p>
+        <div class="clearfix"></div>
+        <span class="price">{{ product.price|number_format(0, ' ', ' ') }} <span class="price-desc">грн.</span></span>
+        <div class="clearfix"></div>
+        <a class="btn btn-default btn-large" href="#">Купить</a>
     </div>
 {% endblock %}

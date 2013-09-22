@@ -13,3 +13,14 @@
     {% endif %}
     {{ parent() }}
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('select').select2({
+                width: '220'
+            });
+        });
+    </script>
+{% endblock %}

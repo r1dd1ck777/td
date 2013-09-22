@@ -27,21 +27,21 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
     public function load(ObjectManager $manager)
     {
         $properties = array(
-            array(
-                'pid' => 'base_brand',
-                'title' => 'Производитель',
-                'type' => 'choice_brand'
-            ),
-            array(
-                'pid' => 'base_price',
-                'title' => 'Цена',
-                'type' => 'text'
-            ),
+//            array(
+//                'pid' => 'base_brand',
+//                'title' => 'Производитель',
+//                'type' => 'choice_brand'
+//            ),
+//            array(
+//                'pid' => 'base_price',
+//                'title' => 'Цена',
+//                'type' => 'integer'
+//            ),
             // Бытовая техника
             array(
                 'pid' => 'bt_power',
                 'title' => 'Мощность Вт',
-                'type' => 'text'
+                'type' => 'integer'
             ),
             array(
                 'pid' => 'bt_class',
@@ -51,7 +51,7 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             array(
                 'pid' => 'bt_diagonal',
                 'title' => 'Диагональ',
-                'type' => 'text'
+                'type' => 'integer'
             ),
             array(
                 'pid' => 'bt_color',
@@ -67,17 +67,17 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             array(
                 'pid' => 'guard_street',
                 'title' => 'Уличная',
-                'type' => 'text'
+                'type' => 'checkbox'
             ),
             array(
                 'pid' => 'guard_kupol',
                 'title' => 'Купольная',
-                'type' => 'text'
+                'type' => 'checkbox'
             ),
             array(
                 'pid' => 'guard_ik',
                 'title' => 'с ИК подсветкой',
-                'type' => 'text'
+                'type' => 'checkbox'
             ),
             array(
                 'pid' => 'guard_dimension',
@@ -111,41 +111,41 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'text'
             ),
             // Компьютерная техника
-            array(
-                'pid' => 'pc_netbook',
-                'title' => 'Нетбуки',
-                'type' => 'text'
-            ),
-            array(
-                'pid' => 'pc_sys_block',
-                'title' => 'Готовые сист.блоки',
-                'type' => 'text'
-            ),
-            array(
-                'pid' => 'pc_mb',
-                'title' => 'Материнская плата',
-                'type' => 'text'
-            ),
-            array(
-                'pid' => 'pc_cpu',
-                'title' => 'Процессор',
-                'type' => 'text'
-            ),
-            array(
-                'pid' => 'pc_ram',
-                'title' => 'Опертивная память',
-                'type' => 'text'
-            ),
-            array(
-                'pid' => 'pc_hdd',
-                'title' => 'Жесткий диск',
-                'type' => 'text'
-            ),
-            array(
-                'pid' => 'pc_video',
-                'title' => 'Видеоплата',
-                'type' => 'text'
-            ),
+//            array(
+//                'pid' => 'pc_netbook',
+//                'title' => 'Нетбуки',
+//                'type' => 'text'
+//            ),
+//            array(
+//                'pid' => 'pc_sys_block',
+//                'title' => 'Готовые сист.блоки',
+//                'type' => 'text'
+//            ),
+//            array(
+//                'pid' => 'pc_mb',
+//                'title' => 'Материнская плата',
+//                'type' => 'text'
+//            ),
+//            array(
+//                'pid' => 'pc_cpu',
+//                'title' => 'Процессор',
+//                'type' => 'text'
+//            ),
+//            array(
+//                'pid' => 'pc_ram',
+//                'title' => 'Опертивная память',
+//                'type' => 'text'
+//            ),
+//            array(
+//                'pid' => 'pc_hdd',
+//                'title' => 'Жесткий диск',
+//                'type' => 'text'
+//            ),
+//            array(
+//                'pid' => 'pc_video',
+//                'title' => 'Видеоплата',
+//                'type' => 'text'
+//            ),
             // Процессор
             array(
                 'pid' => 'cpu_socket',
