@@ -13,6 +13,8 @@ use Rid\Bundle\ImageBundle\Model\RidImage;
  */
 class Product
 {
+    const FORMATTER_RICHHTML = 'richhtml';
+
     /**
      * @var integer
      *
@@ -37,7 +39,7 @@ class Product
     /**
      * @ORM\Column(name="descriptionFormatter", type="string", length=50)
      */
-    private $descriptionFormatter;
+    private $descriptionFormatter = self::FORMATTER_RICHHTML;
 
     /**
      * @var float
@@ -82,7 +84,15 @@ class Product
      */
     protected $productProperties;
 
-    public $selectedPrototype;
+    protected $selectedPrototype;
+
+    /**
+     * @return \App\MainBundle\Entity\Prototype
+     */
+    public function getSelectedPrototype()
+    {
+        return $this->selectedPrototype;
+    }
 
     public function __construct()
     {
@@ -100,6 +110,34 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set isPresent
+     *
+     * @param  boolean $isPresent
+     * @return Product
+     */
+    public function setIsPresent($isPresent)
+    {
+        if (is_string($isPresent)) {
+            if ($isPresent == 'Да') {$isPresent=true;} else {$isPresent=false;}
+        }
+        $this->isPresent = $isPresent;
+
+        return $this;
+    }
+
+    public function mergeProperties(Prototype $prototype)
+    {
+        $this->selectedPrototype = $prototype;
+        $properties = $prototype->getProperties();
+        foreach ($properties as $property) {
+            $pp = new ProductProperty();
+            $pp->setProperty($property);
+            $pp->setProduct($this);
+            $this->addProductPropertie($pp);
+        }
     }
     //--
 
@@ -203,19 +241,6 @@ class Product
     public function getCode()
     {
         return $this->code;
-    }
-
-    /**
-     * Set isPresent
-     *
-     * @param  boolean $isPresent
-     * @return Product
-     */
-    public function setIsPresent($isPresent)
-    {
-        $this->isPresent = $isPresent;
-
-        return $this;
     }
 
     /**
@@ -351,5 +376,28 @@ class Product
     public function getProductProperties()
     {
         return $this->productProperties;
+    }
+
+    /**
+     * Add productProperties
+     *
+     * @param  \App\MainBundle\Entity\ProductProperty $productProperties
+     * @return Product
+     */
+    public function addProductProperty(\App\MainBundle\Entity\ProductProperty $productProperties)
+    {
+        $this->productProperties[] = $productProperties;
+
+        return $this;
+    }
+
+    /**
+     * Remove productProperties
+     *
+     * @param \App\MainBundle\Entity\ProductProperty $productProperties
+     */
+    public function removeProductProperty(\App\MainBundle\Entity\ProductProperty $productProperties)
+    {
+        $this->productProperties->removeElement($productProperties);
     }
 }

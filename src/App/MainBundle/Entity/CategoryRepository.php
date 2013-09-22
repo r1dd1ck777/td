@@ -21,7 +21,7 @@ class CategoryRepository extends EntityRepository
             ->where(
                 $qb->expr()->notIn(
                     'c.id',
-                    $qb2->select('DISTINCT(IDENTITY(c2.parent))')
+                    $qb2->select('IDENTITY(c2.parent)')
                         ->from('AppMainBundle:Category', 'c2')
                         ->where('c2.parent IS NOT NULL')
                         ->getDQL()

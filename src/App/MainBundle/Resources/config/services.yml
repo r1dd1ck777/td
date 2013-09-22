@@ -3,7 +3,16 @@ parameters:
 
 services:
     app.main.form_type.product_property:
-            class: App\MainBundle\Form\ProductPropertyType
-            tags:
-                - { name: form.type, alias: app_product_property }
+        class: App\MainBundle\Form\ProductPropertyType
+        tags:
+            - { name: form.type, alias: app_product_property }
 #            arguments: [ @doctrine.orm.entity_manager, @translator ]
+
+    app.main.services.xls_import:
+        class: App\MainBundle\Services\XlsImport
+        calls:
+            - [ setProductRepository, [ @app.repository.product ] ]
+            - [ setCategoryRepository, [ @app.repository.category ] ]
+            - [ setPrototypeRepository, [ @app.repository.prototype ] ]
+            - [ setEm, [ @doctrine.orm.entity_manager ] ]
+            - [ setWebPath, [ %kernel.web_dir% ] ]

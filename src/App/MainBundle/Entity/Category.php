@@ -49,7 +49,8 @@ class Category
     private $name;
 
     /**
-     * @ORM\Column(name="page", type="string", length=255, nullable=true)
+     * @ORM\ManyToOne(targetEntity="Rid\Bundle\PageBundle\Entity\Page")
+     * @ORM\JoinColumn(name="page_id", nullable=true)
      */
     private $page;
 

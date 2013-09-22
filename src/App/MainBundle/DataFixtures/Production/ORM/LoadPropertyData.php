@@ -32,12 +32,12 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'title' => 'Производитель',
                 'type' => 'choice_brand'
             ),
-            // Бытовая техника
             array(
-                'pid' => 'bt_price',
+                'pid' => 'base_price',
                 'title' => 'Цена',
                 'type' => 'text'
             ),
+            // Бытовая техника
             array(
                 'pid' => 'bt_power',
                 'title' => 'Мощность Вт',
@@ -86,11 +86,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             ),
             // Климатическая техника
             array(
-                'pid' => 'climat_price',
-                'title' => 'Цена',
-                'type' => 'text'
-            ),
-            array(
                 'pid' => 'climat_square',
                 'title' => 'Площадь охлаждения',
                 'type' => 'text'
@@ -116,11 +111,6 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'text'
             ),
             // Компьютерная техника
-            array(
-                'pid' => 'pc_price',
-                'title' => 'Цена',
-                'type' => 'text'
-            ),
             array(
                 'pid' => 'pc_netbook',
                 'title' => 'Нетбуки',
@@ -220,7 +210,22 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'title' => 'Объем',
                 'type' => 'text'
             ),
+            array(
+                'pid' => 'hdd_buffer',
+                'title' => 'Размер буфера',
+                'type' => 'choice'
+            ),
+            array(
+                'pid' => 'hdd_interface',
+                'title' => 'Интерфейс',
+                'type' => 'choice'
+            ),
             // SDD
+            array(
+                'pid' => 'sdd_size',
+                'title' => 'Объем',
+                'type' => 'choice'
+            ),
             array(
                 'pid' => 'sdd_interface',
                 'title' => 'Интерфейс',
@@ -302,7 +307,7 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
             array(
                 'pid' => 'box_inputs',
                 'title' => 'Внешние разьемы',
-                'type' => 'checkbox'
+                'type' => 'choice'
             ),
             // Блок питания
             array(
@@ -332,23 +337,23 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'choice'
             ),
             array(
-                'pid' => 'fusb_size',
+                'pid' => 'fusb_material',
                 'title' => 'Материал корпуса',
                 'type' => 'choice'
             ),
             // Клавиатура
             array(
-                'pid' => 'pid_type',
+                'pid' => 'key_type',
                 'title' => 'Тип',
                 'type' => 'choice'
             ),
             array(
-                'pid' => 'pid_connection',
+                'pid' => 'key_connection',
                 'title' => 'Тип подключения',
                 'type' => 'choice'
             ),
             array(
-                'pid' => 'pid_connection_interface',
+                'pid' => 'key_connection_interface',
                 'title' => 'Интерфейс подключения',
                 'type' => 'choice'
             ),
@@ -385,7 +390,7 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'type' => 'choice'
             ),
             array(
-                'pid' => 'pad_memory_ddr',
+                'pid' => 'pad_memory_ram',
                 'title' => 'Объем памяти',
                 'type' => 'choice'
             ),
@@ -451,23 +456,17 @@ class LoadPropertyData extends AbstractFixture implements FixtureInterface, Cont
                 'title' => 'Стандарт Wi-Fi',
                 'type' => 'choice'
             ),
-            // Сетевые адаптеры
-            array(
-                'pid' => 'web_adapter_class',
-                'title' => 'Класс',
-                'type' => 'choice'
-            ),
-            array(
-                'pid' => 'web_adapter_cart',
-                'title' => 'Сетевая карта',
-                'type' => 'choice'
-            ),
-            array(
-                'pid' => 'web_adapter_cart_wifi',
-                'title' => 'Сетевая карта Wi-Fi',
-                'type' => 'choice'
-            ),
             // ИБП
+            array(
+                'pid' => 'ups_power',
+                'title' => 'Мощность полная, В*А',
+                'type' => 'choice'
+            ),
+            array(
+                'pid' => 'ups_power_active',
+                'title' => 'Мощность активная, Вт',
+                'type' => 'choice'
+            ),
         );
 
         foreach ($properties as $data) {

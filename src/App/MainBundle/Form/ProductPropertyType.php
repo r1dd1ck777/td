@@ -35,7 +35,24 @@ class ProductPropertyType extends AbstractType
             $data = $event->getData();
             $form = $event->getForm();
             if ($data->getType() == 'text') {
-                $form->add('value', 'text', array('label' => $data->getTitle()));
+                $form->add('value', 'text', array(
+                    'label' => $data->getTitle(),
+                    'required' => false
+                ));
+            }
+            if ($data->getType() == 'choice_brand') {
+                $form->add('value', 'entity', array(
+                        'label' => $data->getTitle(),
+                        'class' => 'AppMainBundle:Brand'
+                    )
+                );
+            }
+            if ($data->getType() == 'choice') {
+                $form->add('value', 'choice', array(
+                        'label' => $data->getTitle(),
+                        'choices' => Choices::get($data->getPid())
+                    )
+                );
             }
         });
     }

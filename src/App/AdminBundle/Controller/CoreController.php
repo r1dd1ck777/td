@@ -18,4 +18,11 @@ class CoreController extends BaseCoreController
             'Content-Disposition' => 'attachment; filename='.$filename
         ));
     }
+
+    public function addFlash($type, $message)
+    {
+        $this->get('session')
+            ->getFlashBag()
+            ->add($type, $message);
+    }
 }

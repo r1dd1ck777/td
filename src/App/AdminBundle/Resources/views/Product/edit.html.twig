@@ -3,6 +3,13 @@
 {% block form %}
     {% if object.selectedPrototype %}
         <h2>{{ object.selectedPrototype.name }}</h2>
+        {% if object.selectedPrototype.id == '' %}
+            <div class="alert alert-block">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <h4>Внимание</h4>
+                <a href="{{ path('admin_app_main_prototype_list') }}">Создайте товар с указанием прототипа (для генерации параметров)</a>
+            </div>
+        {% endif %}
     {% endif %}
     {{ parent() }}
 {% endblock %}

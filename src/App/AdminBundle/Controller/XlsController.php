@@ -38,16 +38,21 @@ class XlsController extends CoreController
 
         $form->handleRequest($this->getRequest());
         $data = $form->getData();
-        if (!$data['file']){
+        if (!$data['file'] || !$form->isValid()) {
             return $response;
         }
         /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $data['file'];
-        if ($file->getClientMimeType() !== 'application/vnd.ms-excel'){
+        if ($file->getClientMimeType() !== 'application/vnd.ms-excel') {
             return $response;
         }
 
-        return $response;
+        $xls = $this->get('app.main.services.xls_import');
+        $xls->createFrom($file->getRealPath());
+        $xls->import();
+        $this->addFlash('sonata_flash_success', 'Готово.');
+
+        return $this->redirect($this->generateUrl('app_admin_xls_form'));
     }
 
     protected function  getForm($data = array(), array $options = array())

@@ -47,7 +47,6 @@ class Brand
         return (string) $this->getName();
     }
     //--
-
     /**
      * Constructor
      */
@@ -96,7 +95,7 @@ class Brand
      * @param  \App\MainBundle\Entity\Category $categories
      * @return Brand
      */
-    public function addCategorie(\App\MainBundle\Entity\Category $categories)
+    public function addCategory(\App\MainBundle\Entity\Category $categories)
     {
         $this->categories[] = $categories;
 
@@ -108,7 +107,7 @@ class Brand
      *
      * @param \App\MainBundle\Entity\Category $categories
      */
-    public function removeCategorie(\App\MainBundle\Entity\Category $categories)
+    public function removeCategory(\App\MainBundle\Entity\Category $categories)
     {
         $this->categories->removeElement($categories);
     }

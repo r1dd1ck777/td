@@ -8,7 +8,7 @@ build_bootstrap();
 
 show_run("Destroying cache dir manually", "rm -rf app/cache/*");
 
-show_run("Creating directories for app kernel", "mkdir -p app/cache/dev app/cache/test app/logs web/uploads web/uploads/media");
+show_run("Creating directories for app kernel", "mkdir -p app/cache/dev app/cache/test app/logs web/uploads web/uploads/media web/uploads/tmp");
 
 //show_run("Generate getters and setters for MocMainBundle", "php app/console doctrine:generate:entities AppMainBundle");
 

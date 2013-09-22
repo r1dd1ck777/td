@@ -30,7 +30,7 @@ class ProductProperty
     /**
      * @var string
      *
-     * @ORM\Column(name="value", type="string", length=255)
+     * @ORM\Column(name="value", type="string", length=255, nullable=true)
      */
     private $value;
 
@@ -48,6 +48,11 @@ class ProductProperty
     public function getTitle()
     {
         return $this->getProperty()->getTitle();
+    }
+
+    public function getPid()
+    {
+        return $this->getProperty()->getPid();
     }
 
     //--

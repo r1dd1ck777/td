@@ -111,4 +111,27 @@ class Prototype
     {
         return $this->properties;
     }
+
+    /**
+     * Add properties
+     *
+     * @param  \App\MainBundle\Entity\Property $properties
+     * @return Prototype
+     */
+    public function addProperty(\App\MainBundle\Entity\Property $properties)
+    {
+        $this->properties[] = $properties;
+
+        return $this;
+    }
+
+    /**
+     * Remove properties
+     *
+     * @param \App\MainBundle\Entity\Property $properties
+     */
+    public function removeProperty(\App\MainBundle\Entity\Property $properties)
+    {
+        $this->properties->removeElement($properties);
+    }
 }
