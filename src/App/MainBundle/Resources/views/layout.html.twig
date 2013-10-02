@@ -95,12 +95,16 @@
     <div class="clearfix"></div>
     <div class="layout-site">
         <div class="layout-left">
-            <h2 class="header">КАТАЛОГ</h2>
+            <h2 class="header">
+                <a href="{{ path('app_main_homepage') }}">
+                    КАТАЛОГ
+                </a>
+            </h2>
         </div>
         <div class="layout-main">
             <div class="breadcrumbs">
                 {% block breadcrumbs %}
-                <a href="#">asdasdasd  ad</a> &rarr; <span class="text-muted">asd ad asd asd asd</span>
+                    <a href="#">asdasdasd  ad</a> &rarr; <span class="text-muted">asd ad asd asd asd</span>
                 {% endblock %}
             </div>
         </div>
@@ -108,17 +112,20 @@
     <div class="clearfix"></div>
     <div class="layout-site">
         <div class="layout-left">
-            <div class="info-block">
-                {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
-            </div>
-            <div class="info-block">
-                <h2 class="header">
-                    <a href="#">
-                        АКЦИИ И СКИДКИ
-                    </a>
-                </h2>
-                <img src="{{ asset('img/fix-action.png') }}">
-            </div>
+            {% block layout_left %}
+                <div class="info-block {% block left_menu_classes %}{% endblock %}">
+                    {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
+                </div>
+
+                <div class="info-block">
+                    <h2 class="header">
+                        <a href="#">
+                            АКЦИИ И СКИДКИ
+                        </a>
+                    </h2>
+                    <img src="{{ asset('img/fix-action.png') }}">
+                </div>
+            {% endblock %}
         </div>
         <div class="layout-main">
             <div class="layout-content">
@@ -127,6 +134,10 @@
                 {% endblock %}
             </div>
         </div>
+        {% block wide_content %}
+            <div class="clearfix"></div>
+            213123 asd asd asdas as d
+        {% endblock %}
     </div>
     <div class="clearfix"></div>
     <div class="layout-footer">
@@ -218,7 +229,7 @@
         "use strict";
         var jmenu;
         jQuery(document).ready(function(){
-            jmenu = $(".menu-aim");
+            jmenu = jQuery(".menu-aim");
 
             // jQuery-menu-aim: <meaningful part of the example>
             // Hook up events to be fired on menu row activation.

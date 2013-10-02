@@ -34,7 +34,11 @@ class PrototypeAdmin extends Admin
         $formMapper
             ->with('General')
             ->add('name')
-            ->add('properties')
+            ->add('properties', 'entity', array(
+                'class' => 'AppMainBundle:Property',
+                'property' => 'fullName',
+                'multiple' => true
+            ))
             ->end();
     }
 
@@ -76,5 +80,17 @@ class PrototypeAdmin extends Admin
             ->add('id')
             ->add('name')
         ;
+    }
+
+    public function getTemplate($name)
+    {
+        switch ($name) {
+            case 'edit':
+                return 'AppAdminBundle:Prototype:edit.html.twig';
+                break;
+            default:
+                return parent::getTemplate($name);
+                break;
+        }
     }
 }

@@ -33,6 +33,10 @@ class ProductPropertyType extends AbstractType
     {
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function(FormEvent $event){
             $data = $event->getData();
+            if (is_null($data)) {
+                // add from prototype
+                return;
+            }
             $form = $event->getForm();
             if ($data->getType() == 'text') {
                 $form->add('value', 'text', array(
@@ -56,13 +60,13 @@ class ProductPropertyType extends AbstractType
                     )
                 );
             }
-            if ($data->getType() == 'checkbox') {
-                $form->add('value', 'checkbox', array(
-                        'label' => $data->getTitle(),
-                        'required' => false,
-                    )
-                );
-            }
+//            if ($data->getType() == 'checkbox') {
+//                $form->add('value', 'checkbox', array(
+//                        'label' => $data->getTitle(),
+//                        'required' => false,
+//                    )
+//                );
+//            }
 
             if ($data->getType() == 'integer') {
                 $form->add('value', 'integer', array(
@@ -87,6 +91,7 @@ class ProductPropertyType extends AbstractType
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $data = $form->getData();
+        if (is_null($data)) {return;}
 
         $view->vars['type'] = $data->getType();
     }

@@ -77,13 +77,14 @@ class ProductAdmin extends Admin
         $formMapper
             ->with('General')
             ->add('name')
-            ->add('image', 'rid_image')
+
             ->add('category', null, array(
                 'choices' => $categories
             ))
             ->add('brand')
             ->add('price', 'integer')
             ->add('code')
+            ->add('info')
             ->add('isPresent', null, array('data' => $isPresent))
             ->add('descriptionF', 'sonata_formatter_type', array(
                 'event_dispatcher' => $formBuilder->getEventDispatcher(),
@@ -95,16 +96,26 @@ class ProductAdmin extends Admin
                 'target_field'   => 'description',
                 'listener'       => true,
             ))
+
+            ->end()
+            ->with('Images')
+            ->add('image', 'rid_image')
+            ->add('image2', 'rid_image')
+            ->add('image3', 'rid_image')
+            ->add('image4', 'rid_image')
+            ->end()
+            ->with('Properties')
             ->add('productProperties', 'collection', array(
                     'type'         => 'app_product_property',
-                    'allow_add'    => false,
-                    'allow_delete'    => false,
+//                    'allow_add'    => true,
+//                    'allow_delete'    => true,
                     'label' => 'Параметры',
                     'required' => false,
                     'data' => $data->getProductProperties()
                 )
             )
-            ->end();
+            ->end()
+        ;
     }
 
     protected function isNew($data)

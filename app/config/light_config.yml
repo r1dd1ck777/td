@@ -66,4 +66,4 @@ swiftmailer:
     spool:     { type: memory }
 
 parameters:
-    kernel.web_dir: %kernel.root_dir%../web/
+    kernel.web_dir: %kernel.root_dir%../www.technodevice.com.ua/

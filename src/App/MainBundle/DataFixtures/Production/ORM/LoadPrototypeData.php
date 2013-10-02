@@ -16,6 +16,7 @@ class LoadPrototypeData extends AbstractFixture implements FixtureInterface, Con
      * @var ContainerInterface
      */
     private $container;
+    protected $properties;
 
     /**
      * {@inheritDoc}
@@ -27,17 +28,56 @@ class LoadPrototypeData extends AbstractFixture implements FixtureInterface, Con
 
     public function load(ObjectManager $manager)
     {
-        $properties = $this->container->get('app.repository.property')->findAll();
+        $this->properties = $this->container->get('app.repository.property')->findAll();
 
+        //
         $prototype= new Prototype();
         $prototype->setName('Базовый продукт');
-        foreach ($properties as $property) {
+        foreach ($this->properties as $property) {
             $prototype->addPropertie($property);
         }
-
         $manager->persist($prototype);
+        //
+        $prefixes = array(
+            'Бытовая техника',
+            'Системы видеонаблюдения',
+            'Климатическая техника',
+            'Процессор',
+            'Оперативная память',
+            'Видеокарты',
+            'HDD',
+            'SDD',
+            'ODD',
+            'Материнские платы',
+            'Корпус',
+            'Блок питания',
+            'Накопители Flash USB',
+            'Клавиатура',
+            'Мышь',
+            'Планшет',
+            'Принтеры, МФУ',
+            'Сетевое оборудование, Маршрутизаторы',
+            'ИБП',
+        );
+        foreach ($prefixes as $prefix) {
+            $prototype = $this->create($prefix);
+            $manager->persist($prototype);
+        }
 
         $manager->flush();
+    }
+
+    protected function create($prefix = null)
+    {
+        $prototype= new Prototype();
+        $prototype->setName($prefix);
+        foreach ($this->properties as $property) {
+            if ($property->getPrefix() == $prefix) {
+                $prototype->addPropertie($property);
+            }
+        }
+
+        return $prototype;
     }
 
     /**

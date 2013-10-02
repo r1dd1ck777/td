@@ -2,6 +2,8 @@
 
 namespace App\MainBundle\Services;
 
+use Doctrine\ORM\NonUniqueResultException;
+
 class XlsImport extends Xls
 {
     protected $productRepository;
@@ -32,7 +34,7 @@ class XlsImport extends Xls
 
     public function import()
     {
-        $this->prototype = $this->prototypeRepository->findOneBy(array());
+        $this->prototype = $this->prototypeRepository->findOneBy(array('name' => 'Базовый продукт'));
 
         $first = true;
         foreach ($this->toArray() as $row) {
@@ -72,11 +74,11 @@ class XlsImport extends Xls
     protected function getCategory($name)
     {
         $object = $this->categoryRepository->findOneBy(array('name' => $name));
+
         if (!$object) {
             $object = $this->categoryRepository->createNew();
             $object->setName($name);
             $this->em->persist($object);
-            $this->em->flush();
         }
 
         return $object;

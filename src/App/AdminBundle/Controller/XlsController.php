@@ -38,7 +38,7 @@ class XlsController extends CoreController
 
         $form->handleRequest($this->getRequest());
         $data = $form->getData();
-        if (!$data['file'] || !$form->isValid()) {
+        if (!isset($data['file']) || !$form->isValid()) {
             return $response;
         }
         /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */

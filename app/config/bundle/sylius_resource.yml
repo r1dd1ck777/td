@@ -25,3 +25,17 @@ sylius_resource:
             classes:
                 model: App\MainBundle\Entity\Prototype
 #                repository: App\MainBundle\Entity\ProductRepository
+
+        app.cart:
+            driver: doctrine/orm
+            templates: AppMainBundle:Cart
+            classes:
+                controller: App\MainBundle\Controller\CartController
+                model: App\MainBundle\Entity\Cart
+
+        app.cart_item:
+            driver: doctrine/orm
+            templates: AppMainBundle:CartItem
+            classes:
+                controller: App\MainBundle\Controller\CartItemController
+                model: App\MainBundle\Entity\CartItem

@@ -1,4 +1,32 @@
 {% extends 'AppMainBundle::layout.html.twig' %}
+
+{% block layout_left %}
+    <div class="info-block hidden">
+        {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
+    </div>
+    <div class="info-block">
+        <div class="app-main product show">
+            <a class="img-wrapper" href="{{ asset(product.image) }}" data-lightbox="roadtrip">
+                <img src="{{ asset(product.image.show) }}" width="280" height="195">
+                <div class="btn-zoom">
+                    <div class="icon-zoom"></div>
+                </div>
+            </a>
+            <div class="small-images">
+                <a class="img-small" href="{{ asset(product.image2) }}" data-lightbox="roadtrip">
+                    <img src="{{ asset(product.image2.tiny) }}">
+                </a>
+                <a class="img-small" href="{{ asset(product.image3) }}" data-lightbox="roadtrip">
+                    <img src="{{ asset(product.image3.tiny) }}">
+                </a>
+                <a class="img-small" href="{{ asset(product.image4) }}" data-lightbox="roadtrip">
+                    <img src="{{ asset(product.image4.tiny) }}">
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
 {% block content %}
     <div class="app-main product show">
         <h2>{{ product.name }}</h2>
@@ -8,6 +36,79 @@
         <div class="clearfix"></div>
         <span class="price">{{ product.price|number_format(0, ' ', ' ') }} <span class="price-desc">грн.</span></span>
         <div class="clearfix"></div>
-        <a class="btn btn-default btn-large" href="#">Купить</a>
+        {% if not product.isPresent %}
+            Нет в наличии.
+        {% else %}
+            <form action="{{ path('app_main_cart_additem', {'id': product.id}) }}" method="post" class="clearfix">
+                <input type="hidden" name="productId">
+                <button class="btn btn-bay"><span class="icon-bay"></span> Купить</button>
+            </form>
+        {% endif %}
+
     </div>
+{% endblock %}
+
+{% block wide_content %}
+    <div class="clearfix"></div>
+    <div class="app-main product show-wide">
+        <ul class="tabs">
+            <li class="active"><a href="#" data-btn="1">Обзор</a></li>
+            <li class=""><a href="#" data-btn="2">Характеристики</a></li>
+            <li class=""><a href="#" data-btn="3">Отзывы</a></li>
+        </ul>
+
+        <div class="tab-content" data-tab="1" style="display: block;">
+            <h2>{{ product.name }}</h2>
+            <div class="description text-muted">
+                {{ product.description|format_text(product.descriptionFormatter)|raw }}
+            </div>
+        </div>
+
+        <div class="tab-content" data-tab="2">
+            <div class="description">
+                <table class="table">
+                    {% for property in product.productProperties %}
+                        <tr>
+                            <td>
+                                {{ property.title }}
+                            </td>
+                            <td>
+                                {{ property.value }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        <div class="tab-content" data-tab="3">
+            <div class="description text-muted">
+                Отзывы
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery('.tabs a').each(function(){
+            jQuery(this).on('click', function(e){
+                jQuery('.tabs li').removeClass('active');
+                var btnN = jQuery(this).data('btn');
+                jQuery('.tab-content').hide();
+                jQuery(this).parent().addClass('active');
+
+                jQuery('.tab-content').each(function(){
+                    var tabN = jQuery(this).data('tab');
+                    if(tabN == btnN){
+                        jQuery(this).show();
+                    }
+                });
+
+                e.preventDefault();
+                return false;
+            });
+        });
+    </script>
 {% endblock %}

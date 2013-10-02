@@ -34,7 +34,17 @@ class Property
     /**
      * @ORM\Column(type="string", length=100)
      */
+    private $prefix = '';
+
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
     private $pid;
+
+    public function getFullName()
+    {
+        return (string) $this->getPrefix(). ' | '.$this->getTitle();
+    }
 
     public function __toString()
     {
@@ -120,5 +130,28 @@ class Property
     public function getPid()
     {
         return $this->pid;
+    }
+
+    /**
+     * Set prefix
+     *
+     * @param  string   $prefix
+     * @return Property
+     */
+    public function setPrefix($prefix)
+    {
+        $this->prefix = $prefix;
+
+        return $this;
+    }
+
+    /**
+     * Get prefix
+     *
+     * @return string
+     */
+    public function getPrefix()
+    {
+        return $this->prefix;
     }
 }

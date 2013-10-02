@@ -120,6 +120,9 @@ class Product
     {
         $this->selectedPrototype = new  Prototype();
         $this->image = new RidImage();
+        $this->image2 = new RidImage();
+        $this->image3 = new RidImage();
+        $this->image4 = new RidImage();
     }
 
     public function setImage(RidImage $image)
@@ -449,7 +452,7 @@ class Product
     /**
      * Set image2
      *
-     * @param rid_image $image2
+     * @param  rid_image $image2
      * @return Product
      */
     public function setImage2($image2)
@@ -462,7 +465,7 @@ class Product
     /**
      * Get image2
      *
-     * @return rid_image 
+     * @return rid_image
      */
     public function getImage2()
     {
@@ -472,7 +475,7 @@ class Product
     /**
      * Set image3
      *
-     * @param rid_image $image3
+     * @param  rid_image $image3
      * @return Product
      */
     public function setImage3($image3)
@@ -485,7 +488,7 @@ class Product
     /**
      * Get image3
      *
-     * @return rid_image 
+     * @return rid_image
      */
     public function getImage3()
     {
@@ -495,7 +498,7 @@ class Product
     /**
      * Set image4
      *
-     * @param rid_image $image4
+     * @param  rid_image $image4
      * @return Product
      */
     public function setImage4($image4)
@@ -508,7 +511,7 @@ class Product
     /**
      * Get image4
      *
-     * @return rid_image 
+     * @return rid_image
      */
     public function getImage4()
     {

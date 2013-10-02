@@ -1,4 +1,6 @@
 rid_image:
+    dir:
+        web: %kernel.web_dir%
     presets:
         categoryImage:
             path: uploads/category/
@@ -14,9 +16,20 @@ rid_image:
                     width: 200
                     height: 140
                     type: outbound
+                show:
+                    width: 280
+                    height: 195
+                    type: outbound
+                tiny:
+                    width: 60
+                    height: 35
+                    type: outbound
 
     fields:
         App\MainBundle\Entity\Category:
             image: categoryImage
         App\MainBundle\Entity\Product:
             image: productImage
+            image2: productImage
+            image3: productImage
+            image4: productImage

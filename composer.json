@@ -10,7 +10,7 @@
         "php": ">=5.3.3",
         "symfony/symfony": "2.3.*",
         "doctrine/orm": "2.4.0-RC2",
-        "doctrine/doctrine-bundle": "v1.2.0",
+        "doctrine/doctrine-bundle": "1.2.*@dev",
         "twig/extensions": "1.0.*",
         "symfony/assetic-bundle": "2.3.*",
         "symfony/swiftmailer-bundle": "2.3.*",
@@ -39,8 +39,7 @@
         "knplabs/knp-paginator-bundle": "2.3.*@dev",
         "genemu/form-bundle": "2.2.*@dev",
 
-        "sylius/resource-bundle": "v0.3.0",
-        "sylius/cart-bundle": "0.5.*",
+        "sylius/resource-bundle": "0.3.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "codeplex/phpexcel": "1.7.8"
     },
