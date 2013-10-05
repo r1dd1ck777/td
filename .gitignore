@@ -12,6 +12,7 @@ composer.phar
 *.orig
 *.remote
 
+www.technodevice.com.ua/uploads/*
 www.technodevice.com.ua/sandbox/*
 www.technodevice.com.ua/bundles/*
 app/bootstrap.php.cache
