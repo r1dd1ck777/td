@@ -12,9 +12,8 @@ composer.phar
 *.orig
 *.remote
 
-web/uploads/*
-web/sandbox/*
-web/bundles/*
+www.technodevice.com.ua/sandbox/*
+www.technodevice.com.ua/bundles/*
 app/bootstrap.php.cache
 app/cache/*
 app/logs/*
@@ -24,6 +23,6 @@ vendor
 /compiled/
 behat.yml
 
-web/sandbox
-web/tmp
-web/robots.txt
+www.technodevice.com.ua/sandbox
+www.technodevice.com.ua/tmp
+www.technodevice.com.ua/robots.txt
