@@ -164,6 +164,11 @@ class Product
             $this->addProductPropertie($pp);
         }
     }
+
+    public function __toString()
+    {
+        return (string)$this->getName();
+    }
     //--
 
     /**

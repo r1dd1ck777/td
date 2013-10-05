@@ -32,6 +32,7 @@ sylius_resource:
             classes:
                 controller: App\MainBundle\Controller\CartController
                 model: App\MainBundle\Entity\Cart
+                repository: App\MainBundle\Entity\CartRepository
 
         app.cart_item:
             driver: doctrine/orm

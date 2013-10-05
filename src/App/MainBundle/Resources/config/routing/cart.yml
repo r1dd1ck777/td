@@ -1,0 +1,17 @@
+app_main_cart_additem:
+    pattern: /items
+    methods: [POST]
+    defaults:
+        _controller: app.controller.cart_item:addAction
+
+app_main_cart_list:
+    pattern: /
+    methods: [GET]
+    defaults:
+        _controller: app.controller.cart:listAction
+
+app_main_cart_save:
+    pattern: /save
+    methods: [POST]
+    defaults:
+        _controller: app.controller.cart:saveAction

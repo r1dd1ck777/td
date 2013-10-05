@@ -17,6 +17,16 @@ services:
             - [ setEm, [ @doctrine.orm.entity_manager ] ]
             - [ setWebPath, [ %kernel.web_dir% ] ]
 
-    app.main.cart_resolver:
-        class: App\MainBundle\Services\ItemResolver
-        arguments: [@doctrine.orm.entity_manager]
+    app.main.services.cart_manager:
+        class: App\MainBundle\Services\CartManager
+        calls:
+            - [ setRepository, [ @app.repository.cart ] ]
+            - [ setSession, [ @session ] ]
+            - [ setEm, [ @doctrine.orm.entity_manager ] ]
+
+    app.main.services.twig_extension.app:
+        class: App\MainBundle\Twig\AppExtension
+        tags:
+            - { name: twig.extension }
+        calls:
+            - [ setCartManager, [ @app.main.services.cart_manager ] ]

@@ -24,7 +24,10 @@ rid_image:
                     width: 60
                     height: 35
                     type: outbound
-
+                cart:
+                    width: 160
+                    height: 110
+                    type: outbound
     fields:
         App\MainBundle\Entity\Category:
             image: categoryImage

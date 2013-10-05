@@ -1,0 +1,22 @@
+<form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <div class="form-group">
+        <label for="username">E-mail*:</label>
+        <input type="text" class="form-control" id="username" placeholder="Введите e-mail" name="_username" value="{{ last_username }}" required="required" />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Пароль*:</label>
+        <input type="password" id="password" name="_password" required="required"  class="form-control" placeholder="Введите пароль"/>
+    </div>
+
+    <div class="form-group">
+        <label for="remember_me">Запомнить меня:</label>
+        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    </div>
+
+    <button id="_submit" name="_submit" class="btn td-btn-bay pull-left">Войти</button>
+    <a href="{{ path('fos_user_registration_register') }}" class="btn td-btn pull-right">Регистрация</a>
+    <div class="clearfix"></div>
+</form>

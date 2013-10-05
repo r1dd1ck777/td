@@ -59,9 +59,23 @@
             </ul>
             <ul class="third">
                 <li class="login">
-                    <a href="">
-                        Вход в магазин
-                    </a>
+                    <a data-toggle="modal" href="#form-sign-up">Вход в магазин</a>
+                    <div class="modal fade" id="form-sign-up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h4 class="modal-title">Вход в магазин</h4>
+                                </div>
+                                <div class="modal-body">
+                                    {{ render(controller('AppMainBundle:Security:sinInForm')) }}
+                                </div>
+                                {#<div class="modal-footer">#}
+                                    {#<a href="{{ path('fos_user_registration_register') }}" class="btn td-btn"></a>#}
+                                {#</div>#}
+                            </div>
+                        </div>
+                    </div>
                 </li>
                 <div class="clearfix"></div>
             </ul>
@@ -78,7 +92,7 @@
         <div class="search-block">
             <div class="content">
                 <span class="phones">0472 00-00-00, 093 000-00-00</span>
-                <a class="cart" href="#">
+                <a class="cart" href="{{ path('app_main_cart_list') }}">
                     Моя корзина
                 </a>
                 <div class="clearfix"></div>
@@ -245,6 +259,10 @@
                 jQuery("a.maintain-hover").removeClass("maintain-hover");
                 jmenu.trigger('mouseleave');
             });
+
+//            jQuery('#form-sign-up').modal({
+//                keyboard: true
+//            });
         });
 
         var activateSubmenu = function(row){

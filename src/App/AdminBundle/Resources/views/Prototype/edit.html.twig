@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_edit.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('select').select2({
+                width: '470'
+            });
+        });
+    </script>
+{% endblock %}

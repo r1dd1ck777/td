@@ -12,6 +12,40 @@ $color-blue: #00457c;
 
 @import "layout";
 
+.btn{
+  &.td-btn{
+    @include gradient(white, #e3e3e3);
+    @include border-radius(3px);
+    @include transition(all, 0.25s);
+    border: 1px solid #cfcfcf;
+    color: 00447b;
+    font-weight: normal;
+    padding: 9px 12px;
+    color: #428bca;
+
+    &:hover{
+      color: #285177;
+      text-decoration: none;
+    }
+  }
+
+  &.td-btn-bay{
+    @include border-red;
+    @include gradient($color-gradient-yellow, $color-gradient-red);
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 18px;
+
+    .icon-bay{
+      background: url("/img/icon-cart-white.png") no-repeat -4px -2px;
+      display: block;
+      width: 29px;
+      height: 22px;
+      float: left;
+    }
+  }
+}
+
 .app-main{
   @import "controller/default";
 
@@ -116,21 +150,6 @@ $color-blue: #00457c;
           font-size: 18px;
         }
       }
-      .btn-bay{
-        @include border-red;
-        @include gradient($color-gradient-yellow, $color-gradient-red);
-        color: #ffffff;
-        text-transform: uppercase;
-        font-size: 18px;
-
-        .icon-bay{
-          background: url("/img/icon-cart-white.png") no-repeat -4px -2px;
-          display: block;
-          width: 29px;
-          height: 22px;
-          float: left;
-        }
-      }
     }
     &.show-wide{
       .tabs{
@@ -227,13 +246,14 @@ $color-blue: #00457c;
           position: relative;
           .btn-cart{
             width: 38px;
-            height: 35px;
             position: absolute;
             bottom: 0;
             right: 0;
             @include gradient(white, #bcbcbc);
             @include border-radius(3px);
             borders: 1px solid #5b5b5b;
+            height: 35px;
+
             .icon-cart{
               background: url("/img/icon-cart-grey.png") no-repeat;
               width: 29px;
@@ -293,8 +313,80 @@ $color-blue: #00457c;
       }
     }
   }
+
+  &.cart{
+    &.list{
+      .cart-table{
+        width: 100%;
+        margin-top: 14px;
+
+        td{
+          padding-left: 10px;
+        }
+        .c1{
+          width: 50px;
+        }
+        .c2{
+          width: 240px;
+        }
+
+        thead{
+          tr{
+            background-color: #ededed;
+            line-height: 35px;
+          }
+        }
+
+        tbody{
+          tr{
+            border-bottom: 1px solid #ededed;
+            td{
+              padding-top: 10px;
+              padding-bottom: 10px;
+              .price{
+                font-size: 20px;
+                color: $color-gradient-red;
+              }
+
+              .price-desc{
+                font-size: 16px;
+                color: $color-gradient-red;
+              }
+            }
+          }
+          .quantity{
+            width: 67px;
+          }
+        }
+      }
+
+      .cart-bottom{
+        margin-top: 15px;
+
+        .price-total{
+          width: 300px;
+
+          .price-label{
+            font-size: 20px;
+            color: $color-blue;
+          }
+          .price{
+            font-size: 20px;
+            color: $color-gradient-red;
+          }
+
+          .price-desc{
+            font-size: 16px;
+            color: $color-gradient-red;
+          }
+        }
+      }
+    }
+  }
 }
 
-
-
-
+#form-sign-up{
+  .modal-dialog{
+    width: 350px;
+  }
+}
