@@ -6,8 +6,14 @@ abstract class Xls
 {
     const PATH = 'uploads/tmp/';
     protected $webPath;
+    /** @var \PHPExcel_Worksheet */
     protected $sheet;
     protected $filepath;
+
+    protected function getMaxRowCount()
+    {
+        return 500;
+    }
 
     public function setWebPath($webPath)
     {
@@ -27,11 +33,13 @@ abstract class Xls
     public function toArray()
     {
         $result = array();
-        for ($row = 1; $row<1000; $row++) {
+        $maxRow = $this->sheet->getHighestRow();
+        for ($row = 1; $row<$maxRow; $row++) {
+            if ($this->getMaxRowCount() > 0 && $row >= $this->getMaxRowCount()) {break;}
             $rowData = $this->getRow($row);
-            if (!$this->isRow($rowData)) {
-                break;
-            }
+//            if (!$this->isRow($rowData)) {
+//                break;
+//            }
             $result[] = $rowData;
         }
 

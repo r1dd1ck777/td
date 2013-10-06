@@ -21,22 +21,30 @@ class Cart
     protected $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="CartItem", cascade={"all"})
+     * @ORM\ManyToMany(targetEntity="CartItem", inversedBy="carts", cascade={"all"})
      * @ORM\JoinTable(name="cart_to_cart_item",
-     *      joinColumns={@ORM\JoinColumn(name="cart_item_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="product_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="cart_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="cart_item_id", referencedColumnName="id")}
      * )
      */
     protected $items;
 
     public function getItemById($id)
     {
-        foreach($this->getItems() as $item){
-            if ($item->getId() === (int)$id){
+        foreach ($this->getItems() as $item) {
+            if ($item->getId() === (int) $id) {
                 return $item;
             }
         }
+
         return null;
+    }
+
+    public function getCount()
+    {
+        $count = $this->getItems()->count();
+
+        return $count > 0 ? "({$count})" : '';
     }
 
     public function getTotal()
@@ -55,7 +63,7 @@ class Cart
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -65,7 +73,7 @@ class Cart
     /**
      * Add items
      *
-     * @param \App\MainBundle\Entity\CartItem $items
+     * @param  \App\MainBundle\Entity\CartItem $items
      * @return Cart
      */
     public function addItem(\App\MainBundle\Entity\CartItem $items)
@@ -88,7 +96,7 @@ class Cart
     /**
      * Get items
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getItems()
     {

@@ -12,6 +12,7 @@ sylius_resource:
             templates: AppMainBundle:Product
             classes:
                 model: App\MainBundle\Entity\Product
+                controller: App\MainBundle\Controller\ProductController
 
         app.property:
             driver: doctrine/orm

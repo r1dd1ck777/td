@@ -15,13 +15,13 @@ security:
             id: fos_user.user_provider.username
     firewalls:
         dev:
-            context:  common_context
+            context:  common_context3
             pattern:  ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
         admin_area:
             pattern: ^/admin
-            context:  common_context
+            context:  common_context2
             provider: in_memory
             anonymous: ~
             form_login:

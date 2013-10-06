@@ -9,6 +9,7 @@ $color-gradient-yellow: #fbb321;
 $color-gradient-red: #eb4909;
 $color-orange: #f35e1b;
 $color-blue: #00457c;
+$color-gray: #5b5b5b;
 
 @import "layout";
 
@@ -20,7 +21,7 @@ $color-blue: #00457c;
     border: 1px solid #cfcfcf;
     color: 00447b;
     font-weight: normal;
-    padding: 9px 12px;
+    padding: 7px 12px;
     color: #428bca;
 
     &:hover{
@@ -32,9 +33,15 @@ $color-blue: #00457c;
   &.td-btn-bay{
     @include border-red;
     @include gradient($color-gradient-yellow, $color-gradient-red);
+    @include transition(all, 0.25s);
     color: #ffffff;
     text-transform: uppercase;
     font-size: 18px;
+    padding: 4px 12px;
+
+    &:hover{
+      @include gradient(#ffc958, $color-gradient-red);
+    }
 
     .icon-bay{
       background: url("/img/icon-cart-white.png") no-repeat -4px -2px;
@@ -65,7 +72,7 @@ $color-blue: #00457c;
       a{
         display: block;
         text-decoration: none;
-        color: #5b5b5b;
+        color: $color-gray;
         @include transition(all, 0.25s);
 
         &:hover{
@@ -131,6 +138,9 @@ $color-blue: #00457c;
           margin-left: 5px;
           display: block;
           float: left;
+          width: 60px;
+          height: 35px;
+          overflow: hidden;
         }
       }
 
@@ -218,7 +228,7 @@ $color-blue: #00457c;
 
       a{
         text-decoration: none;
-        color: #5b5b5b;
+        color: $color-gray;
         @include transition(all, 0.25s);
         text-align: center;
         display: block;
@@ -251,7 +261,7 @@ $color-blue: #00457c;
             right: 0;
             @include gradient(white, #bcbcbc);
             @include border-radius(3px);
-            borders: 1px solid #5b5b5b;
+            borders: 1px solid $color-gray;
             height: 35px;
 
             .icon-cart{
@@ -316,15 +326,29 @@ $color-blue: #00457c;
 
   &.cart{
     &.list{
+      margin-top: 14px;
+
       .cart-table{
         width: 100%;
-        margin-top: 14px;
 
         td{
           padding-left: 10px;
         }
         .c1{
           width: 50px;
+          vertical-align: top;
+          position: relative;
+
+          .index{
+            padding-left: 10px;
+          }
+
+          .btn{
+            padding: 1px 6px;
+            position: absolute;
+            bottom: 3px;
+            left: 11px;
+          }
         }
         .c2{
           width: 240px;
@@ -383,10 +407,38 @@ $color-blue: #00457c;
       }
     }
   }
+
+ &.security{
+   &.registration{
+     width: 300px;
+     margin: 0 auto;
+   }
+ }
 }
 
 #form-sign-up{
   .modal-dialog{
     width: 350px;
+  }
+}
+.fos_user_registration_register{
+  .btn{
+    margin-left: 70px;
+  }
+}
+.pagination{
+  float: right;
+  ul{
+    li{
+      float: left;
+      padding: 0 3px;
+      a{
+        color: $color-gray;
+        @include transition(all, 0.25s);
+        &:hover{
+          color: $color-orange;
+        }
+      }
+    }
   }
 }

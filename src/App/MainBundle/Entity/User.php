@@ -23,24 +23,24 @@ class User extends BaseUser
         parent::__construct();
     }
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $firstname;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    protected $lastname;
-
-    /**
-     * Get the full name of the user (first + last name)
-     * @return string
-     */
-    public function getFullName()
-    {
-        return $this->getFirstname() . ' ' . $this->getLastname();
-    }
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    protected $firstname;
+//
+//    /**
+//     * @ORM\Column(type="string", length=255)
+//     */
+//    protected $lastname;
+//
+//    /**
+//     * Get the full name of the user (first + last name)
+//     * @return string
+//     */
+//    public function getFullName()
+//    {
+//        return $this->getFirstname() . ' ' . $this->getLastname();
+//    }
 
     //--
 

@@ -2,8 +2,6 @@
 
 namespace App\MainBundle\Twig;
 
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-
 class AppExtension extends \Twig_Extension
 {
     protected $cartManager;
@@ -19,7 +17,7 @@ class AppExtension extends \Twig_Extension
     public function getFunctions()
     {
         return array(
-            'get_current_cart' => new \Twig_SimpleFunction('get_class', array( $this, 'getCurrentCart') ),
+            'get_current_cart' => new \Twig_SimpleFunction('get_current_cart', array( $this, 'getCurrentCart') ),
         );
     }
 

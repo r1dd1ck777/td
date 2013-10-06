@@ -1,0 +1,12 @@
+{% block simple_radio_widget %}
+    {% spaceless %}
+        <ul {{ block('widget_container_attributes') }}>
+            {% for key, choice in form.vars.choices %}
+                <li>
+                    <input name="{{ full_name }}" type="radio" id="{{ id ~ '_' ~key  }}" value="{{ key }}" {{ key == value ? 'checked="checked"' }}>
+                    <label for="{{ id ~ '_' ~key  }}" id="{{ id ~ '_' ~key  }}_label">{{ choice|trans }}</label>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endspaceless %}
+{% endblock %}

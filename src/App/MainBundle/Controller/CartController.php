@@ -3,7 +3,6 @@
 namespace App\MainBundle\Controller;
 
 use App\MainBundle\Entity\Cart;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
 
 class CartController extends BaseCardController
@@ -11,6 +10,7 @@ class CartController extends BaseCardController
     public function listAction()
     {
         $cart = $this->getCurrentCart();
+
         return $this->render('AppMainBundle:Cart:list.html.twig', array(
             'cart' => $cart
         ));
@@ -21,7 +21,7 @@ class CartController extends BaseCardController
         $request = $this->getRequest();
         $cart = $this->getCurrentCart();
         $cartData = $request->get('cart');
-        foreach($cartData['items'] as $key => $itemData){
+        foreach ($cartData['items'] as $key => $itemData) {
             $cart->getItemById($key)->setQuantity($itemData['quantity']);
         }
         $this->persistAndFlush($cart);

@@ -1,6 +1,6 @@
 {% for category in categories %}
     <li class="category-block {{ perRow is defined and loop.index % perRow == 0 ? 'last-in-row' }} {{ perRow is defined and loop.index % perRow == 1 ? 'first-in-row' }}">
-        <a href="{{ path('app_main_category_show', {id:category.id}) }}">
+        <a href="{{ path('app_main_product_list', {id:category.id}) }}">
             <div class="img-wrapper">
                 <img src="{{ asset(category.image.mid) }}" alt="{{ category.name }}">
             </div>

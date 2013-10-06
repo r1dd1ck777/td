@@ -1,3 +1,9 @@
-{% block app_product_property_widget %}
-
-{% endblock %}
+{% block form_row %}
+    {% spaceless %}
+        <div class="form-group">
+            {{ form_errors(form) }}
+            {{ form_label(form, label, { 'label_attr': { 'class' :  'control-label' }} ) }}
+            {{ form_widget(form, { 'attr': { 'class' : form.vars.block_prefixes[1] in ['text', 'integer', 'choice'] ? (form.vars.attr.class|default('') ~ ' form-control')|trim }}) }}
+        </div>
+    {% endspaceless %}
+{% endblock form_row %}

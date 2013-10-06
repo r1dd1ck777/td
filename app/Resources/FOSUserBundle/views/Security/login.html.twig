@@ -1,0 +1,14 @@
+{% extends "AppMainBundle::layout.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block content %}
+    {% if error %}
+        <div>{{ error|trans }}</div>
+    {% endif %}
+
+    <div class="app-main security registration">
+        {% include 'AppMainBundle:Security:signInForm.html.twig' %}
+    </div>
+
+{% endblock content %}

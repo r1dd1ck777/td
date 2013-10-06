@@ -36,6 +36,7 @@ class CategoryAdmin extends Admin
             ->add('name')
             ->add('image', 'rid_image')
             ->add('parent')
+            ->add('page')
             ->end();
     }
 

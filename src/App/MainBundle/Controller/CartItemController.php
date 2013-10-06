@@ -2,7 +2,6 @@
 
 namespace App\MainBundle\Controller;
 
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
 
 class CartItemController extends BaseCardController
@@ -17,5 +16,17 @@ class CartItemController extends BaseCardController
         $this->persistAndFlush($cart);
 
         return $this->redirect($this->getRequest()->headers->get('referer'));
+    }
+
+    public function deleteAction()
+    {
+        $resource = $this->findOr404();
+
+        if ($this->getCurrentCart()->getItemById($resource->getId()) === $resource) {
+            $this->delete($resource);
+            $this->setFlash('success', 'delete');
+        }
+
+        return $this->redirectToIndex($resource);
     }
 }

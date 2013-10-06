@@ -1,9 +1,9 @@
 <?php
 
-
 namespace App\MainBundle\Services;
 
 use App\MainBundle\Entity\Cart;
+use Doctrine\ORM\NoResultException;
 
 class CartManager
 {
@@ -40,14 +40,19 @@ class CartManager
     public function getCurrentCart()
     {
         $id = $this->session->get(self::CART_KEY);
-        if (is_null($id)){
+        if (!is_null($id)) {
+            try{
+                $cart = $this->repository->findWithItems($id);
+            }catch(NoResultException $e){
+                $cart = null;
+            }
+        }
+        if (is_null($cart)){
             $cart = $this->repository->createNew();
             $this->em->persist($cart);
             $this->em->flush();
-            $this->setSessionCart($cart);
-        }else{
-            $cart = $this->repository->findWithItems($id);
         }
+        $this->setSessionCart($cart);
 
         return $cart;
     }

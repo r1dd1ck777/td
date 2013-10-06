@@ -4,6 +4,16 @@ app_main_cart_additem:
     defaults:
         _controller: app.controller.cart_item:addAction
 
+app_main_cart_deleteitem:
+    pattern: /items/{id}/delete
+    methods: [GET]
+    defaults:
+        _controller: app.controller.cart_item:deleteAction
+        _sylius:
+            redirect:
+                route: app_main_cart_list
+                parameters: { id: $id }
+
 app_main_cart_list:
     pattern: /
     methods: [GET]

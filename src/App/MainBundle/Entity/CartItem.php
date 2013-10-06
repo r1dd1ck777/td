@@ -26,6 +26,11 @@ class CartItem
     protected $product;
 
     /**
+     * @ORM\ManyToMany(targetEntity="Cart", mappedBy="items", cascade={"detach"})
+     */
+    protected $carts;
+
+    /**
      * @var integer
      *
      * @ORM\Column(type="integer")
@@ -40,12 +45,12 @@ class CartItem
     /**
      * Set quantity
      *
-     * @param integer $quantity
+     * @param  integer  $quantity
      * @return CartItem
      */
     public function setQuantity($quantity)
     {
-        if(is_numeric($quantity) && $quantity > 1){
+        if (is_numeric($quantity) && $quantity > 1) {
             $this->quantity = $quantity;
         }
 
@@ -56,7 +61,7 @@ class CartItem
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -66,7 +71,7 @@ class CartItem
     /**
      * Get quantity
      *
-     * @return integer 
+     * @return integer
      */
     public function getQuantity()
     {
@@ -76,7 +81,7 @@ class CartItem
     /**
      * Set product
      *
-     * @param \App\MainBundle\Entity\Product $product
+     * @param  \App\MainBundle\Entity\Product $product
      * @return CartItem
      */
     public function setProduct(\App\MainBundle\Entity\Product $product)
@@ -89,10 +94,50 @@ class CartItem
     /**
      * Get product
      *
-     * @return \App\MainBundle\Entity\Product 
+     * @return \App\MainBundle\Entity\Product
      */
     public function getProduct()
     {
         return $this->product;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->carts = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add carts
+     *
+     * @param  \App\MainBundle\Entity\Cart $carts
+     * @return CartItem
+     */
+    public function addCart(\App\MainBundle\Entity\Cart $carts)
+    {
+        $this->carts[] = $carts;
+
+        return $this;
+    }
+
+    /**
+     * Remove carts
+     *
+     * @param \App\MainBundle\Entity\Cart $carts
+     */
+    public function removeCart(\App\MainBundle\Entity\Cart $carts)
+    {
+        $this->carts->removeElement($carts);
+    }
+
+    /**
+     * Get carts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCarts()
+    {
+        return $this->carts;
     }
 }

@@ -1,0 +1,8 @@
+{% extends 'AppMainBundle::layout.html.twig' %}
+{% block content %}
+    {% from 'AppMainBundle:Macros:misc.html.twig' import pagination %}
+    <div class="app-main category show">
+        {% include 'AppMainBundle:Product/partials:_list_wrapper.html.twig' with { products: products } %}
+    </div>
+    {{ pagination(products) }}
+{% endblock %}

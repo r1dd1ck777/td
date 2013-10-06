@@ -7,7 +7,7 @@ _app_main_category:
     resource: 'routing/category.yml'
 
 _app_main_product:
-    prefix:  /product
+    prefix:  /
     resource: 'routing/product.yml'
 
 _app_main_cart:

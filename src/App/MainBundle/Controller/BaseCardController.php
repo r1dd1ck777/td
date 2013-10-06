@@ -4,7 +4,6 @@ namespace App\MainBundle\Controller;
 
 use App\MainBundle\Entity\Cart;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Symfony\Component\HttpFoundation\Request;
 
 class BaseCardController extends ResourceController
 {

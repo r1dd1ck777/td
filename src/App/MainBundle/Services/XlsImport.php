@@ -2,8 +2,6 @@
 
 namespace App\MainBundle\Services;
 
-use Doctrine\ORM\NonUniqueResultException;
-
 class XlsImport extends Xls
 {
     protected $productRepository;
@@ -79,6 +77,7 @@ class XlsImport extends Xls
             $object = $this->categoryRepository->createNew();
             $object->setName($name);
             $this->em->persist($object);
+            $this->em->flush();
         }
 
         return $object;
