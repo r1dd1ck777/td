@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html {{ sonata_seo_html_attributes() }}>
+<html {{ sonata_seo_html_attributes() }} {% block html_attr %}{% endblock %}>
 <head>
     <meta charset="UTF-8" />
     {{ sonata_seo_title() }}
@@ -23,12 +23,12 @@
         <div class="navbar" role="navigation">
             <ul class="first">
                 <li class="">
-                    <a href="">
+                    <a href="{{ path('rid_page_show', {slug:'form'}) }}">
                         Обратная связь
                     </a>
                 </li>
                 <li class="">
-                    <a href="">
+                    <a href="{{ path('rid_page_show', {slug:'contacts'}) }}">
                         Контакты
                     </a>
                 </li>
@@ -36,22 +36,22 @@
             </ul>
             <ul class="second">
                 <li class="">
-                    <a href="">
+                    <a href="{{ path('rid_page_show', {slug:'about'}) }}">
                         О Компании
                     </a>
                 </li>
                 <li class="">
-                    <a href="">
+                    <a href="{{ path('rid_page_show', {slug:'delivery'}) }}">
                         Оплата и Доставка
                     </a>
                 </li>
                 <li class="">
-                    <a href="">
+                    <a href="{{ path('rid_page_show', {slug:'credit'}) }}">
                         Кредит
                     </a>
                 </li>
                 <li class="">
-                    <a href="">
+                    <a href="{{ path('rid_page_show', {slug:'service'}) }}">
                         Сервис
                     </a>
                 </li>
@@ -74,9 +74,9 @@
         <div class="search-block">
             <div class="content">
                 <span class="phones">0472 00-00-00, 093 000-00-00</span>
+                {% set cart = get_current_cart() %}
                 <a class="cart" href="{{ path('app_main_cart_list') }}">
-                    {% set cart = get_current_cart() %}
-                    Моя корзина {{ cart.count }}
+                    Моя корзина <span ng-bind="cartCountBind">{{ cart.getCountHtml() }}</span>
                 </a>
                 <div class="clearfix"></div>
                 <div class="input-group">
@@ -101,7 +101,7 @@
         <div class="layout-main">
             <div class="breadcrumbs">
                 {% block breadcrumbs %}
-                    <a href="#">asdasdasd  ad</a> &rarr; <span class="text-muted">asd ad asd asd asd</span>
+                    {#<a href="#">asdasdasd  ad</a> &rarr; <span class="text-muted">asd ad asd asd asd</span>#}
                 {% endblock %}
             </div>
         </div>
@@ -166,27 +166,27 @@
                     <ul>
                         <li>
                             <span class="arrow-box-right"></span>
-                            <a href="">Вопрос - ответ</a>
+                            <a href="{{ path('rid_page_show', {slug:'faq'}) }}">Вопрос - ответ</a>
                         </li>
                         <li>
                             <span class="arrow-box-right"></span>
-                            <a href="">Доставка и оплата</a>
+                            <a href="{{ path('rid_page_show', {slug:'delivery'}) }}">Доставка и оплата</a>
                         </li>
                         <li>
                             <span class="arrow-box-right"></span>
-                            <a href="">Оформить кредит</a>
+                            <a href="{{ path('rid_page_show', {slug:'credit'}) }}">Оформить кредит</a>
                         </li>
                         <li>
                             <span class="arrow-box-right"></span>
-                            <a href="">Сервис и гарантия</a>
+                            <a href="{{ path('rid_page_show', {slug:'service'}) }}">Сервис и гарантия</a>
                         </li>
                         <li>
                             <span class="arrow-box-right"></span>
-                            <a href="">О магазине</a>
+                            <a href="{{ path('rid_page_show', {slug:'about'}) }}">О магазине</a>
                         </li>
                         <li>
                             <span class="arrow-box-right"></span>
-                            <a href="">Контакты</a>
+                            <a href="{{ path('rid_page_show', {slug:'contacts'}) }}">Контакты</a>
                         </li>
                     </ul>
                 </div>
@@ -215,6 +215,7 @@
     "../vendor/jlong/sass-twitter-bootstrap/js/carousel.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/modal.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/transition.js"
+    "../web/libs/angular/js/angular.min.1.1.5.js"
     %}
     {#"../web/libs/lightbox/js/lightbox-2.6.min.js"#}
     <script src="{{ asset_url }}" type="text/javascript"></script>

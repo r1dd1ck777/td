@@ -1,5 +1,7 @@
 {% extends 'AppMainBundle::layout.html.twig' %}
 
+{% block html_attr %}ng-controller="MainCtrl" id="ng-app" ng-app="ProductShowApp"{% endblock %}
+
 {% block layout_left %}
     <div class="info-block hidden">
         {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
@@ -39,9 +41,7 @@
         {% if not product.isPresent %}
             Нет в наличии.
         {% else %}
-            <form action="{{ path('app_main_cart_additem', {'id': product.id}) }}" method="post" class="clearfix">
-                <button class="btn td-btn-bay"><span class="icon-bay"></span> Купить</button>
-            </form>
+            <button class="btn td-btn-bay" ng-click="postBay()"><span class="icon-bay"></span> <span ng-show="!loading">Купить</span><span ng-show="loading" ng-cloak class="ng-cloak">Загрузка...</span></button>
         {% endif %}
 
     </div>
@@ -86,10 +86,59 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="dialog-post-bay-success" tabindex="-1" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    Товар <em><i>{{ product.name }}</i></em> помещен в корзину
+                </div>
+                <div class="modal-body">
+                    {% include 'AppMainBundle:Misc:_btn_back_to_shop.html.twig' %}
+                    <a class="btn td-btn-bay pull-right" href="{{ path('app_main_cart_list') }}"><span class="icon-bay"></span> <span>Оформить заказ</span></a>
+                </div>
+                {#<div class="modal-footer">#}
+                {#<a href="{{ path('fos_user_registration_register') }}" class="btn td-btn"></a>#}
+                {#</div>#}
+            </div>
+        </div>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+
+    {% set cart = get_current_cart() %}
+    <script type="text/javascript">
+        'use strict';
+        var app = angular.module('ProductShowApp', [])
+                .config(['$httpProvider', function($httpProvider) {
+                    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+                }])
+                .controller('MainCtrl', function ($scope, $http) {
+                    $scope.cartCountBind = '';
+                    $scope.loading = false;
+                    var cartCount={{ cart.count }};
+                    var setCartCount = function(count){
+                        $scope.cartCountBind = count<=0 ? '' : '('+count+')';
+                    };
+                    $scope.postBay = function(){
+                        if ($scope.loading) {return;}
+                        $scope.loading = true;
+                        $http.post('{{ path('app_main_cart_additem', {'id': product.id}) }}')
+                                .then(function(response){
+                                    cartCount += response.data.count;
+                                    setCartCount(cartCount);
+                                    angular.element('#dialog-post-bay-success').modal();
+                                    $scope.loading = false;
+                                });
+                    }
+
+                    setCartCount(cartCount);
+                });
+    </script>
+
     <script type="text/javascript">
         jQuery('.tabs a').each(function(){
             jQuery(this).on('click', function(e){

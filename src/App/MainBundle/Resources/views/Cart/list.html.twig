@@ -46,16 +46,16 @@
                         <span class="price-label">Всего: </span>
                         <span class="price">{{ cart.total|number_format(0, ' ', ' ') }} <span class="price-desc">грн.</span></span>
                     </div>
-                    <div class="pull-left">
-                        <a href="{{ app.request.headers.get('referer') }}" class="btn td-btn">Продолжить покупки</a>
+                    <div class="pull-left btns-block">
+                        {% include 'AppMainBundle:Misc:_btn_back_to_shop.html.twig' %}
                         <button class="btn td-btn apply-tooltip" title="Сохранить изменения и пересчитать стоимость">Сохранить</button>
-                        <a href="#" class="btn td-btn-bay"><span class="icon-bay"></span> Оформить заказ</a>
+                        <a href="#" class="btn td-btn-bay pull-right"><span class="icon-bay"></span> Оформить заказ</a>
                     </div>
                 </div>
                 <div class="clearfix"></div>
             </form>
         {% else %}
-            <a href="{{ app.request.headers.get('referer') }}" class="btn td-btn">Продолжить покупки</a>
+            {% include 'AppMainBundle:Misc:_btn_back_to_shop.html.twig' %}
         {% endif %}
     </div>
 {% endblock %}

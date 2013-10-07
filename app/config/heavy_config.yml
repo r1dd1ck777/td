@@ -75,5 +75,9 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+rid_page:
+    template:
+        layout: AppMainBundle::layout.html.twig
+
 parameters:
     kernel.web_dir: "%kernel.root_dir%/../www.technodevice.com.ua/"

@@ -40,11 +40,16 @@ class Cart
         return null;
     }
 
-    public function getCount()
+    public function getCountHtml()
     {
         $count = $this->getItems()->count();
 
         return $count > 0 ? "({$count})" : '';
+    }
+
+    public function getCount()
+    {
+        return $this->getItems()->count();
     }
 
     public function getTotal()

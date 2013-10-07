@@ -2,6 +2,7 @@
 
 namespace App\MainBundle\Controller;
 
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 class CartItemController extends BaseCardController
@@ -15,7 +16,7 @@ class CartItemController extends BaseCardController
         $cart->addItem($cartItem);
         $this->persistAndFlush($cart);
 
-        return $this->redirect($this->getRequest()->headers->get('referer'));
+        return new JsonResponse(array('count' => 1));
     }
 
     public function deleteAction()
@@ -27,6 +28,6 @@ class CartItemController extends BaseCardController
             $this->setFlash('success', 'delete');
         }
 
-        return $this->redirectToIndex($resource);
+        return $this->redirect($this->generateUrl('app_main_cart_list'));
     }
 }

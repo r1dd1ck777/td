@@ -40,14 +40,14 @@ class CartManager
     public function getCurrentCart()
     {
         $id = $this->session->get(self::CART_KEY);
-        if (!is_null($id)) {
+        $cart = null;
+        if ($id) {
             try{
                 $cart = $this->repository->findWithItems($id);
             }catch(NoResultException $e){
-                $cart = null;
             }
         }
-        if (is_null($cart)){
+        if (!$cart){
             $cart = $this->repository->createNew();
             $this->em->persist($cart);
             $this->em->flush();
