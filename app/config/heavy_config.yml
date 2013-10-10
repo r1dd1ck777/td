@@ -9,6 +9,7 @@ imports:
     - { resource: bundle/sylius_resource.yml }
     - { resource: bundle/fos_user.yml }
     - { resource: bundle/rid_image.yml }
+    - { resource: bundle/snc_redis.yml }
 
 framework:
     router:

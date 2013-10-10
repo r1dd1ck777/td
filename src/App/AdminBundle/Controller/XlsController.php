@@ -3,10 +3,22 @@
 namespace App\AdminBundle\Controller;
 
 use App\MainBundle\Form\XlsType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Security\Core\SecurityContext;
 
 class XlsController extends CoreController
 {
+    public function statusAction()
+    {
+        $status = array(
+            'total' => 1555,
+            'done' => 212,
+            'isInProgress' => false
+        );
+
+        return new JsonResponse($status);
+    }
+
     public function formAction()
     {
         $form = $this->getForm(null, array(

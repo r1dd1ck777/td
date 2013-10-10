@@ -11,3 +11,8 @@ app_admin_xls_save:
     pattern: /admin/import/save
     defaults: { _controller: AppAdminBundle:Xls:save }
     methods: [POST]
+
+app_admin_xls_status:
+    pattern: /admin/import/status
+    defaults: { _controller: AppAdminBundle:Xls:status }
+    methods: [GET]

@@ -41,7 +41,9 @@
 
         "sylius/resource-bundle": "0.3.*",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "codeplex/phpexcel": "1.7.8"
+        "codeplex/phpexcel": "1.7.8",
+        "snc/redis-bundle": "1.1.6",
+        "predis/predis": "v0.8.4"
     },
     "scripts": {
         "post-install-cmd": [

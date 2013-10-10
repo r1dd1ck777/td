@@ -9,10 +9,14 @@
 
 {% block content %}
     {% set formView = form %}
-    <div class="app-admin xls form">
-        {{ form_start(formView) }}
-            {{ form_widget(formView) }}
-        {{ form_end(formView) }}
+    <div ng-app ng-controller="ImportFormCtrl">
+        <div class="app-admin xls form ng-cloak" >
+            <div class="ng-cloak" ng-cloak ng-show="!flag.inProgress">
+                {{ form_start(formView) }}
+                {{ form_widget(formView) }}
+                {{ form_end(formView) }}
+            </div>
+        </div>
     </div>
 {% endblock %}
 
@@ -20,8 +24,31 @@
     {{ parent() }}
     <script type="text/javascript">
         "use strict";
-        jQuery(document).ready(function(){
+        var ImportFormCtrl = function($scope, $http, $timeout){
+            $scope.flag = {
+                inProgress: true
+            }
 
-        });
+            var checkStatus = function(){
+                $http.get('{{ path('app_admin_xls_status') }}')
+                        .then(function(response){
+                            var data = response.data;
+                            console.log(data);
+                            $scope.flag.inProgress = data.isInProgress;
+                        });
+            }
+
+            var checkStatusTimeOuted = function(){
+                $timeout(function(){
+                    if ($scope.flag.inProgress){
+                        checkStatus();
+                        checkStatusTimeOuted();
+                    }
+                }, 2000);
+            }
+
+            checkStatus();
+            checkStatusTimeOuted();
+        }
     </script>
 {% endblock %}

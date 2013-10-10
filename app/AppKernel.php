@@ -58,6 +58,7 @@ class AppKernel extends Kernel
                 new Application\Sonata\MediaBundle\ApplicationSonataMediaBundle(),
                 // seo
                 new Sonata\SeoBundle\SonataSeoBundle(),
+                new Snc\RedisBundle\SncRedisBundle(),
             ));
         }
 
