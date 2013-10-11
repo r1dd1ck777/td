@@ -16,6 +16,7 @@ services:
             - [ setPrototypeRepository, [ @app.repository.prototype ] ]
             - [ setEm, [ @doctrine.orm.entity_manager ] ]
             - [ setWebPath, [ %kernel.web_dir% ] ]
+            - [ setRedis, [ @snc_redis.default ]]
 
     app.main.services.cart_manager:
         class: App\MainBundle\Services\CartManager

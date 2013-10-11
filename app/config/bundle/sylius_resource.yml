@@ -25,7 +25,7 @@ sylius_resource:
             templates: AppMainBundle:Prototype
             classes:
                 model: App\MainBundle\Entity\Prototype
-#                repository: App\MainBundle\Entity\ProductRepository
+                repository: App\MainBundle\Entity\PrototypeRepository
 
         app.cart:
             driver: doctrine/orm

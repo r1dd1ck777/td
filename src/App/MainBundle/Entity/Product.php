@@ -34,6 +34,13 @@ class Product
     /**
      * @var string
      *
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $guaranty;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $info;
@@ -521,5 +528,28 @@ class Product
     public function getImage4()
     {
         return $this->image4;
+    }
+
+    /**
+     * Set guaranty
+     *
+     * @param  integer $guaranty
+     * @return Product
+     */
+    public function setGuaranty($guaranty)
+    {
+        $this->guaranty = $guaranty;
+
+        return $this;
+    }
+
+    /**
+     * Get guaranty
+     *
+     * @return integer
+     */
+    public function getGuaranty()
+    {
+        return $this->guaranty;
     }
 }

@@ -9,6 +9,8 @@ abstract class Xls
     /** @var \PHPExcel_Worksheet */
     protected $sheet;
     protected $filepath;
+    public $tmpDir;
+    public $tmpFilename;
 
     protected function getMaxRowCount()
     {
@@ -30,20 +32,35 @@ abstract class Xls
         $this->sheet =$aSheet;
     }
 
-    public function toArray()
+    public function toArray($from = 1, $to = null)
     {
+        if (is_null($to)) {$to=$this->getHighestRow();}
         $result = array();
-        $maxRow = $this->sheet->getHighestRow();
-        for ($row = 1; $row<$maxRow; $row++) {
-            if ($this->getMaxRowCount() > 0 && $row >= $this->getMaxRowCount()) {break;}
+        for ($row = $from; $row<$to; $row++) {
             $rowData = $this->getRow($row);
-//            if (!$this->isRow($rowData)) {
-//                break;
-//            }
             $result[] = $rowData;
         }
 
         return $result;
+    }
+
+    public function getHighestRow()
+    {
+        return $this->sheet->getHighestRow();
+    }
+
+    public function generateTmpDir()
+    {
+        $this->tmpDir = $this->webPath . self::PATH;
+
+        return $this->tmpDir;
+    }
+
+    public function generateTmpFilename()
+    {
+        $this->tmpFilename = substr(sha1(uniqid(time(), true)), 0, 16). '.xls';
+
+        return $this->tmpFilename;
     }
 
     protected function isRow(array $row)
@@ -64,6 +81,6 @@ abstract class Xls
 
     protected function getColumnCount()
     {
-        return 5;
+        return 6;
     }
 }

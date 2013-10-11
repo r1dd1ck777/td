@@ -42,12 +42,12 @@ class CartManager
         $id = $this->session->get(self::CART_KEY);
         $cart = null;
         if ($id) {
-            try{
+            try {
                 $cart = $this->repository->findWithItems($id);
-            }catch(NoResultException $e){
+            } catch (NoResultException $e) {
             }
         }
-        if (!$cart){
+        if (!$cart) {
             $cart = $this->repository->createNew();
             $this->em->persist($cart);
             $this->em->flush();

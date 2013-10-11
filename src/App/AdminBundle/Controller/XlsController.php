@@ -10,10 +10,13 @@ class XlsController extends CoreController
 {
     public function statusAction()
     {
+        /** @var \App\MainBundle\Services\XlsImport $xls */
+        $xls = $this->get('app.main.services.xls_import');
+
         $status = array(
-            'total' => 1555,
-            'done' => 212,
-            'isInProgress' => false
+            'total' => $xls->total(),
+            'done' => $xls->done(),
+            'status' => $xls->status()
         );
 
         return new JsonResponse($status);
@@ -53,16 +56,23 @@ class XlsController extends CoreController
         if (!isset($data['file']) || !$form->isValid()) {
             return $response;
         }
+        /** @var \App\MainBundle\Services\XlsImport $xls */
+        $xls = $this->get('app.main.services.xls_import');
         /** @var \Symfony\Component\HttpFoundation\File\UploadedFile $file */
         $file = $data['file'];
-        if ($file->getClientMimeType() !== 'application/vnd.ms-excel') {
+        if ($file->getClientMimeType() !== 'application/vnd.ms-excel' || $xls->status()) {
             return $response;
         }
+        $file->move($xls->generateTmpDir(), $xls->generateTmpFilename());
+//        $xls->createFrom($xls->tmpDir.$xls->tmpFilename);
+//        $xls->import(1200, 1700);
+//        die;
+        $cmd = "php ../app/console app:admin:import_supervizor --xls=".$xls->tmpDir.$xls->tmpFilename;
+        exec(sprintf("%s > %s 2>&1 & echo $! >> %s", $cmd, '../app/logs/import.log', '../app/logs/import.pid'));
+        $xls->status(true);
+        $xls->done(0);
 
-        $xls = $this->get('app.main.services.xls_import');
-        $xls->createFrom($file->getRealPath());
-        $xls->import();
-        $this->addFlash('sonata_flash_success', 'Готово.');
+        $this->addFlash('sonata_flash_success', 'Загружено. Возможно придется подождать.');
 
         return $this->redirect($this->generateUrl('app_admin_xls_form'));
     }

@@ -32,7 +32,10 @@ class XlsType extends AbstractType
                 'label' => 'Файл'
             ))
             ->add('submit', 'submit', array(
-                'label' => 'Импортировать'
+                'label' => 'Импортировать',
+                'attr' => array(
+                    'class' => 'btn btn-primary'
+                )
             ))
         ;
     }

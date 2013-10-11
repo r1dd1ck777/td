@@ -450,3 +450,56 @@ $color-gray: #5b5b5b;
 .ng-cloak{
   display: none !important;
 }
+
+.product-filter-list{
+
+  .product-filter{
+    margin-top: 10px;
+    background-color: #eaeaea;
+
+    h4{
+      font-size: 14px;
+      padding: 0 12px;
+      display: block;
+      width: 278px;
+      line-height: 37px;
+      height: 37px;
+      @include gradient(#ffffff, #ededed);
+      @include box-shadow(2px 2px 3px #d1d1d1);
+      border: 1px solid #dcdcdc;
+      margin: 0px;
+      cursor: pointer;
+
+      .filter-label{
+        margin-left: 15px;
+        color: $color-blue;
+      }
+
+      .arrow-box-right{
+        background-color: $color-blue;
+        &:after {
+          border-left-color: $color-blue;
+          border-width: 5px;
+          margin-top: -5px;
+        }
+      }
+
+      &.collapsed{
+        .arrow-box-right{
+          top: 34%;
+          left: 0;
+          &:after {
+            border-top-color: $color-blue;
+            border-left-color: transparent;
+            left: 50%;
+            top:0;
+          }
+        }
+      }
+    }
+    .body{
+      margin-top: 4px;
+      padding: 10px;
+    }
+  }
+}

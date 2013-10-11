@@ -100,9 +100,10 @@
         </div>
         <div class="layout-main">
             <div class="breadcrumbs">
-                {% block breadcrumbs %}
+                <a href="{{ path('app_main_homepage') }}">Главная</a>{% block breadcrumbs %}{% endblock %}
+                
                     {#<a href="#">asdasdasd  ad</a> &rarr; <span class="text-muted">asd ad asd asd asd</span>#}
-                {% endblock %}
+
             </div>
         </div>
     </div>
@@ -208,14 +209,16 @@
     {% javascripts
 
     output='js/compiled/main.js'
+    "../src/App/MainBundle/Resources/assets/js/uri.js"
     "../vendor/jlong/sass-twitter-bootstrap/assets/js/jquery.js"
     "../src/App/MainBundle/Resources/assets/js/jquery.menu-aim.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/dropdown.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/tooltip.js"
+    "../vendor/jlong/sass-twitter-bootstrap/js/collapse.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/carousel.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/modal.js"
     "../vendor/jlong/sass-twitter-bootstrap/js/transition.js"
-    "../web/libs/angular/js/angular.min.1.1.5.js"
+    "../www.technodevice.com.ua/libs/angular/js/angular.min.1.1.5.js"
     %}
     {#"../web/libs/lightbox/js/lightbox-2.6.min.js"#}
     <script src="{{ asset_url }}" type="text/javascript"></script>

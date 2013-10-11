@@ -11,10 +11,14 @@
     {% set formView = form %}
     <div ng-app ng-controller="ImportFormCtrl">
         <div class="app-admin xls form ng-cloak" >
-            <div class="ng-cloak" ng-cloak ng-show="!flag.inProgress">
+            <div class="ng-cloak" ng-cloak ng-show="!flag.status">
                 {{ form_start(formView) }}
                 {{ form_widget(formView) }}
                 {{ form_end(formView) }}
+            </div>
+            <div class="ng-cloak" ng-cloak ng-show="flag.status">
+                Импорт еще не закончен.
+                {% raw %}{{ flag.done }}{% endraw %} / {% raw %}{{ flag.total }}{% endraw %}
             </div>
         </div>
     </div>
@@ -26,7 +30,9 @@
         "use strict";
         var ImportFormCtrl = function($scope, $http, $timeout){
             $scope.flag = {
-                inProgress: true
+                status: true,
+                total: 0,
+                done: 0
             }
 
             var checkStatus = function(){
@@ -34,13 +40,13 @@
                         .then(function(response){
                             var data = response.data;
                             console.log(data);
-                            $scope.flag.inProgress = data.isInProgress;
+                            $scope.flag = data;
                         });
             }
 
             var checkStatusTimeOuted = function(){
                 $timeout(function(){
-                    if ($scope.flag.inProgress){
+                    if ($scope.flag.status){
                         checkStatus();
                         checkStatusTimeOuted();
                     }

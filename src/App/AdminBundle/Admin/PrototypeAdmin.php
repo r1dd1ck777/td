@@ -21,6 +21,7 @@ class PrototypeAdmin extends Admin
             ->add('id')
             ->add('name')
             ->add('properties')
+            ->add('categories')
         ;
     }
 
@@ -39,6 +40,7 @@ class PrototypeAdmin extends Admin
                 'property' => 'fullName',
                 'multiple' => true
             ))
+            ->add('categories')
             ->end();
     }
 
@@ -53,6 +55,7 @@ class PrototypeAdmin extends Admin
             ->addIdentifier('id')
             ->add('name')
             ->add('properties')
+            ->add('categories')
             ->add('create_product', 'string', array('template' => 'AppAdminBundle:Prototype:_create_product.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
