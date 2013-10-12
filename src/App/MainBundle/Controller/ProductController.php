@@ -11,40 +11,26 @@ class ProductController extends ResourceController
         $request=$this->getRequest();
         $config = $this->getConfiguration();
 
-        $criteria = $config->getCriteria();
-        $sorting = $config->getSorting();
+        $category = $this->get('app.repository.category')->find((int)$request->get('id'));
 
         $pluralName = $config->getPluralResourceName();
         $repository = $this->getRepository();
 
-        if ($config->isPaginated()) {
-            $resources = $this
-                ->getResourceResolver()
-                ->getResource($repository, $config, 'createPaginator', array($criteria, $sorting))
-            ;
+        $qb = $repository->findByCategoryId($category->getId());
+        $resources = $repository->getPaginator($qb);
 
-            $resources
-                ->setCurrentPage($request->get('page', 1), true, true)
-                ->setMaxPerPage($config->getPaginationMaxPerPage())
-            ;
-        } else {
-            $resources = $this
-                ->getResourceResolver()
-                ->getResource($repository, $config, 'findBy', array($criteria, $sorting, $config->getLimit()))
-            ;
-        }
-
-        if (count($resources) <=0) {
-            return $this->redirect($this->generateUrl('app_main_category_show', array('id'=> $request->get('id'))));
-        }
-
-        $view = $this
-            ->view()
-            ->setTemplate($config->getTemplate('index.html'))
-            ->setTemplateVar($pluralName)
-            ->setData($resources)
+        $resources
+            ->setCurrentPage($request->get('page', 1), true, true)
+            ->setMaxPerPage($config->getPaginationMaxPerPage())
         ;
 
-        return $this->handleView($view);
+        if (count($resources) <=0) {
+            return $this->redirect($this->generateUrl('app_main_category_show', array('id'=> $category->getId())));
+        }
+
+        return $this->render('AppMainBundle:Product:list.html.twig', array(
+            $pluralName => $resources,
+            'category' => $category
+        ));
     }
 }

@@ -2,6 +2,9 @@
 
 {% block html_attr %}ng-controller="MainCtrl" id="ng-app" ng-app="ProductShowApp"{% endblock %}
 
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.product(product) }}{% endblock %}
+
 {% block layout_left %}
     <div class="info-block hidden">
         {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}

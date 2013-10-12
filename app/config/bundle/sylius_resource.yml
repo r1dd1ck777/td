@@ -13,6 +13,7 @@ sylius_resource:
             classes:
                 model: App\MainBundle\Entity\Product
                 controller: App\MainBundle\Controller\ProductController
+                repository: App\MainBundle\Entity\ProductRepository
 
         app.property:
             driver: doctrine/orm

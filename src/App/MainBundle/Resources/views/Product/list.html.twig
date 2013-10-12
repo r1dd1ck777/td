@@ -1,5 +1,8 @@
 {% extends 'AppMainBundle::layout.html.twig' %}
 
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.category(category) }}{% endblock %}
+
 {% block layout_left %}
     <div class="info-block" ng-app="ProductFilterModule" ng-controller="ProductFilterCtrl">
         <form action="{{ path('app_main_product_list', {id:app.request.get('id')}) }}" method="get">
