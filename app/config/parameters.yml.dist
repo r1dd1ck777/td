@@ -15,3 +15,5 @@ parameters:
 
     ruby_dir: '/home/ruslan/.rvm/rubies/ruby-2.0.0-p0/bin/ruby'
     sass_dir: '/home/ruslan/.rvm/gems/ruby-2.0.0-p0/bin/sass'
+
+    redis.default.dsn: 'redis://admin@localhost'

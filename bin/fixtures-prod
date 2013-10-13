@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+require_once __DIR__.'/base_script.php';
+
+$env = 'dev';
+
+if ($argc>1)
+{
+    for ($i=1; $i<$argc; $i++)
+    {
+        $option = explode("=", $argv[$i]);
+        switch ($option[0])
+        {
+            case "-e":
+                $env = $option[1];
+                break;
+        }
+    }
+}
+
+$prodDir = __DIR__. '/../src/App/MainBundle/DataFixtures/Production/ORM';
+
+show_run("Updating schema", "app/console --env=$env doctrine:database:drop --force");
+show_run("Updating schema", "app/console --env=$env doctrine:database:create");
+show_run("Updating schema", "app/console --env=$env doctrine:schema:create");
+show_run("fixtures:load", "app/console --env=$env doctrine:fixtures:load --fixtures=$prodDir");
+
+show_run("Fix code style", "php-cs-fixer fix ./ --config=sf21");
+
+exit(0);

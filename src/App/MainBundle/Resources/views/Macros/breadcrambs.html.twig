@@ -1,0 +1,17 @@
+{% macro parentCategory(category) %}
+    {% if category is not null %}
+        {{ _self.parentCategory(category.parent) }} &rarr; <a href="{{ path('app_main_product_list', {id: category.id}) }}">{{ category.name }}</a>
+    {% endif %}
+{% endmacro %}
+
+{% macro category(category) %}
+    {{ _self.parentCategory(category.parent) }} &rarr; <span class="text-muted">{{ category.name }}</span>
+{% endmacro %}
+
+{% macro product(product) %}
+    {{ _self.parentCategory(product.category) }} &rarr; <span class="text-muted">{{ product.name }}</span>
+{% endmacro %}
+
+{% macro rid_page(page) %}
+    &rarr; <span class="text-muted">{{ page.title }}</span>
+{% endmacro %}
