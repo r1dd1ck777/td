@@ -5,7 +5,12 @@
 {% endmacro %}
 
 {% macro category(category) %}
-    {{ _self.parentCategory(category.parent) }} &rarr; <span class="text-muted">{{ category.name }}</span>
+    {% if category is not null %}
+        {{ _self.parentCategory(category.parent) }} &rarr; <span class="text-muted">{{ category.name }}</span>
+    {% else %}
+        &rarr; <span class="text-muted">Поиск</span>
+    {% endif %}
+
 {% endmacro %}
 
 {% macro product(product) %}
@@ -14,4 +19,20 @@
 
 {% macro rid_page(page) %}
     &rarr; <span class="text-muted">{{ page.title }}</span>
+{% endmacro %}
+
+{% macro cart(cart) %}
+    &rarr; <span class="text-muted">Корзина</span>
+{% endmacro %}
+
+{% macro parentCart() %}
+    &rarr; <a href="{{ path('app_main_cart_list') }}">Корзина</a>
+{% endmacro %}
+
+{% macro checkout() %}
+    {{ _self.parentCart() }} &rarr; <span class="text-muted">Оформление заказа</span>
+{% endmacro %}
+
+{% macro feedback() %}
+    &rarr; <span class="text-muted">Контакты</span>
 {% endmacro %}

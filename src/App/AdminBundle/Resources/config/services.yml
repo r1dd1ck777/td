@@ -34,6 +34,7 @@ services:
             - 'AppAdminBundle:Prototype'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
+            - [ setCategoryRepository, [@app.repository.category]]
 
     app.admin.admin.product:
         class: App\AdminBundle\Admin\ProductAdmin
@@ -48,3 +49,14 @@ services:
             - [ setCategoryRepository, [ @app.repository.category ]]
             - [ setSession, [@session]]
             - [ setPrototypeRepository, [@app.repository.prototype]]
+
+    app.admin.admin.slide:
+        class: App\AdminBundle\Admin\SlideAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Слайды', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Slide
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]

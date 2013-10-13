@@ -1,4 +1,8 @@
 {% extends 'AppMainBundle::layout.html.twig' %}
+
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.category(category) }}{% endblock %}
+
 {% block content %}
     <div class="app-main category show">
         {% include 'AppMainBundle:Category/partials:_list_wrapper.html.twig' with { categories: category.getChilds } %}

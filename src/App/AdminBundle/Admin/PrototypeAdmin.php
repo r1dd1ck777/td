@@ -10,6 +10,13 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class PrototypeAdmin extends Admin
 {
+   protected $categoryRepository;
+
+    public function setCategoryRepository($categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
      *
@@ -32,6 +39,12 @@ class PrototypeAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+        $categories = $this->categoryRepository->findWithPrototypes()->getQuery()->execute();
+        if (is_array($categories)){
+            $categories = array_filter($categories, function($c){
+                return $c->getPrototypes()->count() <= 0 || $c->getPrototypes()->contains($this->getSubject());
+            });
+        }
         $formMapper
             ->with('General')
             ->add('name')
@@ -40,7 +53,11 @@ class PrototypeAdmin extends Admin
                 'property' => 'fullName',
                 'multiple' => true
             ))
-            ->add('categories')
+            ->add('categories', 'entity', array(
+                'class' => 'AppMainBundle:Category',
+                'multiple' => true,
+                'choices' => $categories
+            ))
             ->end();
     }
 

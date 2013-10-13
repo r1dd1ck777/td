@@ -31,3 +31,8 @@ services:
             - { name: twig.extension }
         calls:
             - [ setCartManager, [ @app.main.services.cart_manager ] ]
+
+    app.main.services.product_filter:
+        class: App\MainBundle\Services\ProductFilter
+        calls:
+            - [ setRepository, [ @app.repository.product ] ]

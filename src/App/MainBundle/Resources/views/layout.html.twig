@@ -23,7 +23,7 @@
         <div class="navbar" role="navigation">
             <ul class="first">
                 <li class="">
-                    <a href="{{ path('rid_page_show', {slug:'form'}) }}">
+                    <a href="{{ path('app_main_feedback_form') }}">
                         Обратная связь
                     </a>
                 </li>
@@ -80,8 +80,8 @@
                 </a>
                 <div class="clearfix"></div>
                 <div class="input-group">
-                    <form>
-                        <input class="form-control" type="text" placeholder="Поиск среди 60 000 товаров">
+                    <form action="{{ path('app_main_product_list', {id:'all'}) }}" method="get">
+                        <input class="form-control" name="q" type="text" placeholder="Поиск среди 60 000 товаров">
                         <button class="">Поиск</button>
                     </form>
                 </div>
@@ -115,7 +115,7 @@
 
                 <div class="info-block">
                     <h2 class="header">
-                        <a href="#">
+                        <a href="{{ path('rid_page_show', {slug:'actions'}) }}">
                             АКЦИИ И СКИДКИ
                         </a>
                     </h2>
@@ -125,6 +125,9 @@
         </div>
         <div class="layout-main">
             <div class="layout-content">
+                {% block flash_message %}
+                    {% include 'AppMainBundle:partials:_flash.html.twig' %}
+                {% endblock %}
                 {% block content %}
 
                 {% endblock %}
@@ -203,6 +206,9 @@
 </body>
 
 {% block javascripts %}
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     {#filter="yui_js"#}
     {% javascripts
 

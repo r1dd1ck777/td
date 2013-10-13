@@ -31,4 +31,34 @@ class CategoryRepository extends EntityRepository
 
         return $qb;
     }
+
+    public function findWithPrototypes()
+    {
+        $qb = $this->createQueryBuilder($this->getAlias())
+            ->select(array($this->getAlias(), 'p'))
+            ->leftJoin($this->getPropertyName('prototypes'), 'p')
+        ;
+
+        return $qb;
+    }
+
+//    public function findWithoutPrototype()
+//    {
+//        $qb = $this->createQueryBuilder($this->getAlias());
+//        $qb2 = $this->_em->createQueryBuilder();
+//        $qb
+//            ->where(
+//                $qb->expr()->notIn(
+//                    $this->getPropertyName('id'),
+//                    $qb2
+//                        ->select('c2')
+//                        ->from('AppMainBundle:Category', 'c2')
+//                        ->leftJoin("c2.prototypes", 'p')
+//                        ->getDQL()
+//                )
+//            )
+//        ;
+//
+//        return $qb;
+//    }
 }

@@ -16,7 +16,11 @@ class ProductController extends ResourceController
         $pluralName = $config->getPluralResourceName();
         $repository = $this->getRepository();
 
-        $qb = $repository->findByCategoryId($category->getId());
+        $qb = $repository->findByCategoryId($request->get('id'));
+        /** @var \App\MainBundle\Services\ProductFilter $filter */
+        $filter = $this->get('app.main.services.product_filter');
+        $filter->handleQuery($request, $qb);
+        $filter->getForm($category);
         $resources = $repository->getPaginator($qb);
 
         $resources

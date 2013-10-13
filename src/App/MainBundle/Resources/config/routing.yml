@@ -2,6 +2,16 @@ app_main_homepage:
     pattern:  /
     defaults: { _controller: AppMainBundle:Default:index }
 
+app_main_feedback_form:
+    pattern:  /feedback
+    defaults: { _controller: AppMainBundle:Default:feedbackForm }
+    methods: [GET]
+
+app_main_feedback:
+    pattern:  /feedback
+    defaults: { _controller: AppMainBundle:Default:feedback }
+    methods: [POST]
+
 _app_main_category:
     prefix:  /category
     resource: 'routing/category.yml'

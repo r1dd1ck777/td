@@ -31,7 +31,7 @@ class Prototype
     private $properties;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", cascade={"detach"})
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="prototypes", cascade={"detach"})
      * @ORM\JoinTable(name="prototype_category",
      *      joinColumns={@ORM\JoinColumn(name="prototype_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}

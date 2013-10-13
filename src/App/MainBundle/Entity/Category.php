@@ -59,6 +59,11 @@ class Category
      */
     private $image;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="Prototype", mappedBy="categories", cascade={"detach"})
+     */
+    private $prototypes;
+
     public function setImage(RidImage $image)
     {
         $this->image = $image;
@@ -82,6 +87,12 @@ class Category
         $this->childs = new \Doctrine\Common\Collections\ArrayCollection();
         $this->brands = new \Doctrine\Common\Collections\ArrayCollection();
         $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->prototypes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function getPrototype()
+    {
+        return $this->prototypes->first();
     }
     //--
 
@@ -261,5 +272,38 @@ class Category
     public function getProducts()
     {
         return $this->products;
+    }
+
+    /**
+     * Add prototypes
+     *
+     * @param \App\MainBundle\Entity\Prototype $prototypes
+     * @return Category
+     */
+    public function addPrototype(\App\MainBundle\Entity\Prototype $prototypes)
+    {
+        $this->prototypes[] = $prototypes;
+
+        return $this;
+    }
+
+    /**
+     * Remove prototypes
+     *
+     * @param \App\MainBundle\Entity\Prototype $prototypes
+     */
+    public function removePrototype(\App\MainBundle\Entity\Prototype $prototypes)
+    {
+        $this->prototypes->removeElement($prototypes);
+    }
+
+    /**
+     * Get prototypes
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPrototypes()
+    {
+        return $this->prototypes;
     }
 }

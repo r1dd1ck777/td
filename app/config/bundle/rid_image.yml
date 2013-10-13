@@ -28,6 +28,15 @@ rid_image:
                     width: 160
                     height: 110
                     type: outbound
+
+        slideImage:
+            path: uploads/slider/
+            thumbnails:
+                mid:
+                    width: 640
+                    height: 205
+                    type: outbound
+
     fields:
         App\MainBundle\Entity\Category:
             image: categoryImage
@@ -36,3 +45,5 @@ rid_image:
             image2: productImage
             image3: productImage
             image4: productImage
+        App\MainBundle\Entity\Slide:
+            image: slideImage

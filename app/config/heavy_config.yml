@@ -79,6 +79,7 @@ doctrine:
 rid_page:
     template:
         layout: AppMainBundle::layout.html.twig
+        show: AppMainBundle:Page:show.html.twig
 
 parameters:
     kernel.web_dir: "%kernel.root_dir%/../www.technodevice.com.ua/"

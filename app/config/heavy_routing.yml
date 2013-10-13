@@ -43,5 +43,5 @@ fos_user_change_password:
 #
 rid_page:
     resource: "@RidPageBundle/Resources/config/routing.yml"
-    prefix:   /pages
+    prefix:   /info
 

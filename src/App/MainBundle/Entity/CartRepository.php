@@ -6,11 +6,11 @@ class CartRepository extends EntityRepository
 {
     public function findWithItems($id)
     {
-        $qb = $this->createQueryBuilder('c')
-            ->select(array('c', 'ci', 'p'))
-            ->leftJoin('c.items', 'ci')
+        $qb = $this->createQueryBuilder($this->getAlias())
+            ->select(array($this->getAlias(), 'ci', 'p'))
+            ->leftJoin($this->getPropertyName('items'), 'ci')
             ->leftJoin('ci.product', 'p')
-            ->where('c.id = :id')
+            ->where($this->getPropertyName('id').' = :id')
             ->setParameter('id' ,$id)
             ->getQuery()
             ->getSingleResult()

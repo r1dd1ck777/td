@@ -1,0 +1,13 @@
+{% for message in app.session.flashbag.get('notice') %}
+    <div class="alert alert-success">
+        {#<strong>{{ 'flash.success'|trans({}, 'AppMainBundle') }}</strong>#}
+        {{ message }}
+    </div>
+{% endfor %}
+
+{% for message in app.session.flashbag.get('error') %}
+    <div class="alert alert-danger">
+        {#<strong>{{ 'flash.danger'|trans({}, 'AppMainBundle') }}</strong>#}
+        {{ message }}
+    </div>
+{% endfor %}

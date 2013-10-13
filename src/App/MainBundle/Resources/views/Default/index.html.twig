@@ -3,32 +3,20 @@
     <div class="app-main default index">
         <div id="carousel-example-captions" class="apply-carousel carousel slide bs-docs-carousel-example">
             <ol class="carousel-indicators">
-                <li data-target="#carousel-example-captions" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-captions" data-slide-to="1"></li>
-                <li data-target="#carousel-example-captions" data-slide-to="2"></li>
+                {% for slide in slides %}
+                    <li data-target="#carousel-example-captions" data-slide-to="{{ loop.index-1 }}" class="{{ loop.first ? 'active' }}"></li>
+                {% endfor %}
             </ol>
             <div class="carousel-inner">
-                <div class="item active">
-                    <img data-src="{{ asset('img/fix-product.png') }}" src="{{ asset('img/fix-product.png') }}" alt="First slide image">
-                    <div class="carousel-caption">
-                        <h3>First slide label</h3>
-                        <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                {% for slide in slides %}
+                    <div class="item {{ loop.first ? 'active' }}">
+                        <img data-src="{{ asset(slide.image.mid) }}" src="{{ asset(slide.image.mid) }}" alt="">
+                        <div class="carousel-caption">
+                            <h3>{{ slide.title }}</h3>
+                            <p>{{ slide.description }}</p>
+                        </div>
                     </div>
-                </div>
-                <div class="item">
-                    <img data-src="{{ asset('img/fix-product.png') }}" src="{{ asset('img/fix-product.png') }}" alt="Second slide image">
-                    <div class="carousel-caption">
-                        <h3>Second slide label</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="item">
-                    <img data-src="{{ asset('img/fix-product.png') }}" src="{{ asset('img/fix-product.png') }}" alt="Third slide image">
-                    <div class="carousel-caption">
-                        <h3>Third slide label</h3>
-                        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
             <a class="left carousel-control" href="#carousel-example-captions" data-slide="prev">
                 <span class="icon-prev"></span>

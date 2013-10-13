@@ -42,3 +42,9 @@ sylius_resource:
             classes:
                 controller: App\MainBundle\Controller\CartItemController
                 model: App\MainBundle\Entity\CartItem
+
+        app.slide:
+            driver: doctrine/orm
+            templates: AppMainBundle:Slide
+            classes:
+                model: App\MainBundle\Entity\Slide

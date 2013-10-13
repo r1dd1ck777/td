@@ -12,6 +12,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class ProductPropertyType extends AbstractType
 {
+
     public function __construct()
     {
     }

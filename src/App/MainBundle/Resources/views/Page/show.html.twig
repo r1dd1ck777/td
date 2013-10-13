@@ -1,0 +1,4 @@
+{% extends 'RidPageBundle:Page:show.html.twig' %}
+
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.rid_page(page) }}{% endblock %}

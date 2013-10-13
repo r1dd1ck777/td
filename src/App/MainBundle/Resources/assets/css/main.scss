@@ -306,6 +306,26 @@ $color-gray: #5b5b5b;
         margin-top: 20px;
       }
     }
+    &.feedback-from{
+      .td-1{
+        width: 310px;
+      }
+      .td-2{
+        width: 330px;
+        padding-left: 10px;
+
+        textarea{
+          height: 150px;
+        }
+      }
+      .form-group{
+        margin-bottom: 0;
+      }
+      .td-btn{
+        margin-top: 15px;
+        float: right;
+      }
+    }
   }
 
   .rid-page{
