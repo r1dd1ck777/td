@@ -1207,12 +1207,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/l3pp4rd/DoctrineExtensions.git",
-                "reference": "74811d3add014aa20e0bf3530bb0008d72e1792d"
+                "reference": "67615ac3fa45369e25806ac1932235b3a09e3f35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/74811d3add014aa20e0bf3530bb0008d72e1792d",
-                "reference": "74811d3add014aa20e0bf3530bb0008d72e1792d",
+                "url": "https://api.github.com/repos/l3pp4rd/DoctrineExtensions/zipball/67615ac3fa45369e25806ac1932235b3a09e3f35",
+                "reference": "67615ac3fa45369e25806ac1932235b3a09e3f35",
                 "shasum": ""
             },
             "require": {
@@ -1279,7 +1279,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2013-09-29 05:33:00"
+            "time": "2013-10-10 07:21:45"
         },
         {
             "name": "genemu/form-bundle",
@@ -2605,12 +2605,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/r1dd1ck777/page_bundle.git",
-                "reference": "887a8827bfccc7d8161e5d4ef4c14a97739a5f38"
+                "reference": "ba3682c75cf2a137a131baef735e23899f16f5d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/r1dd1ck777/page_bundle/zipball/887a8827bfccc7d8161e5d4ef4c14a97739a5f38",
-                "reference": "887a8827bfccc7d8161e5d4ef4c14a97739a5f38",
+                "url": "https://api.github.com/repos/r1dd1ck777/page_bundle/zipball/ba3682c75cf2a137a131baef735e23899f16f5d3",
+                "reference": "ba3682c75cf2a137a131baef735e23899f16f5d3",
                 "shasum": ""
             },
             "require": {
@@ -2640,7 +2640,7 @@
                 "Symfony2",
                 "page"
             ],
-            "time": "2013-09-08 16:45:57"
+            "time": "2013-10-11 15:25:43"
         },
         {
             "name": "sensio/distribution-bundle",
