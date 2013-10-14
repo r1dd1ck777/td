@@ -23,6 +23,7 @@ class ProductFilter
             return;
         }
         $prototype = $category->getPrototype();
+        if (is_null($prototype)){return;}
         foreach($prototype->getProperties() as $property){
 //            var_dump($property->getType() . $property->getPid(). $property->getTitle());
         }
