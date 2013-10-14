@@ -1,1 +1,28 @@
 Logout: Вихід з системи
+
+category:
+    db_label: Категорії
+
+product:
+    db_label: Товари
+
+app_admin: ' '
+
+ui:
+    general: Основні поля
+Dashboard: Головна
+Image: Зображення
+Title: Заголовок
+Slug: URL-ключ
+Description: Опис
+"Category List": Список категорій
+
+Category: Категорія
+Logo: Логотип
+Logo2: Детальне фото
+Weight: Фасовка
+Price: Ціна
+"Description F": Опис
+"Is Action": Акція
+"Is Published": Чи опубліковано
+"Product List": Список товарів

@@ -2,11 +2,7 @@
 
 {% block content %}
     <div class="app-admin security login">
-        <h1 class="title">Login</h1>
-
-        <p>
-            Choose between two default users: <em>user/userpass</em> <small>(ROLE_USER)</small> or <em>admin/adminpass</em> <small>(ROLE_ADMIN)</small>
-        </p>
+        <h1 class="title">{{ 'Вход в систему'|trans }}</h1>
 
         {% if error %}
             <div class="error">{{ error.message }}</div>
@@ -14,16 +10,16 @@
 
         <form action="{{ path("app_admin_security_check") }}" method="post" id="login">
             <div>
-                <label for="username">Username</label>
+                <label for="username">{{ 'Логин'|trans }}</label>
                 <input type="text" id="username" name="_username" value="{{ last_username }}" />
             </div>
 
             <div>
-                <label for="password">Password</label>
+                <label for="password">{{ 'Пароль'|trans }}</label>
                 <input type="password" id="password" name="_password" />
             </div>
 
-            <button type="submit" class="btn btn-primary">Login</button>
+            <button type="submit" class="btn btn-primary">{{ 'Далі'|trans }}</button>
         </form>
     </div>
 {% endblock %}

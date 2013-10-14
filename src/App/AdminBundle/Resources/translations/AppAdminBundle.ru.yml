@@ -1,0 +1,48 @@
+Logout: Выход из системы
+
+category:
+    db_label: Категории
+
+product:
+    db_label: Товары
+
+app_admin: ' '
+
+ui:
+    general: Основные поля
+Dashboard: Главная
+Image: Изображение
+Title: Заглавие
+Slug: URL-ключ
+Description: Описание
+"Category List": Список категорий
+
+Category: Категория
+Price: Цена
+"Description F": Описание
+"Is Action": Акцыя
+"Is Published": Опубликовано
+"Product List": Список товаров
+'Вхід в систему': Вход в систему
+Логін: Логин
+
+product: Продукт
+General: Главное
+Name: Наименование
+Parent: Родитель
+Page: Страница
+Action: Действие
+Categories: Категории
+"Brand List": Список производителей
+Properties: Параметры
+"Prototype List": Прототипы
+"Create Product": Создать продукт
+Brand: Производитель
+Code: Код
+Info: Краткое описание
+"Is Present": В наличии
+Image2: Изображение 2
+Image3: Изображение 3
+Image4: Изображение 4
+Images: Изображения
+"Slide List": Слайды
