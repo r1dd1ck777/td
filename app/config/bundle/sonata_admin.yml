@@ -1,6 +1,7 @@
 sonata_admin:
     title:      Админ панель
     options:
+        use_select2: false
         confirm_exit:   false # disable confirmation when quitting with unsaved changes
     templates:
          layout:  AppAdminBundle::standard_layout.html.twig

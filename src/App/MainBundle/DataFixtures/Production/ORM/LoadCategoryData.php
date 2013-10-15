@@ -29,7 +29,7 @@ class LoadCategoryData extends AbstractFixture implements FixtureInterface, Cont
         /** @var \App\MainBundle\Services\XlsImport $xls */
         $xls = $this->container->get('app.main.services.xls_import');
         $xls->createFrom(__DIR__.'/price.xls');
-        $cats = $xls->extractCategories($xls->toArray());
+        $cats = $xls->extractCategories($xls->toArray(2));
 
         foreach ($cats as $name => $value) {
             $cat = $this->create($name);

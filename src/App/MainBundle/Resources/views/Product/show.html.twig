@@ -37,6 +37,8 @@
         <h2>{{ product.name }}</h2>
         <span class="text-muted">Код товара: {{ product.code }}</span>
         <div class="clearfix"></div>
+        <span class="text-muted">Производитель: {{ product.brand }}</span>
+        <div class="clearfix"></div>
         <p class="short-info">{{ product.info }}</p>
         <div class="clearfix"></div>
         <span class="price">{{ product.price|number_format(0, ' ', ' ') }} <span class="price-desc">грн.</span></span>

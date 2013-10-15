@@ -24,7 +24,7 @@ class Category
 
     /**
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="childs")
-     * @ORM\JoinColumn(name="parent_id", nullable=true)
+     * @ORM\JoinColumn(name="parent_id", nullable=true, onDelete="SET NULL")
      */
     private $parent;
 
@@ -39,7 +39,7 @@ class Category
     private $brands;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"detach"})
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"all"})
      */
     private $products;
 

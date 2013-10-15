@@ -84,7 +84,7 @@ class Product
 
     /**
      * @ORM\ManyToOne(targetEntity="Brand", inversedBy="products")
-     * @ORM\JoinColumn(name="brand_id", nullable=true)
+     * @ORM\JoinColumn(name="brand_id", nullable=true, onDelete="SET NULL")
      */
     private $brand;
 

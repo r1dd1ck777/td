@@ -29,7 +29,7 @@ class Brand
     private $name;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Category", inversedBy="brands", cascade={"detach"})
+     * @ORM\ManyToMany(targetEntity="Category", inversedBy="brands", cascade={"all"})
      * @ORM\JoinTable(name="brand_category",
      *      joinColumns={@ORM\JoinColumn(name="brand_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="category_id", referencedColumnName="id")}
@@ -38,7 +38,7 @@ class Brand
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="brand", cascade={"detach"})
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="brand", cascade={"remove"})
      */
     private $products;
 

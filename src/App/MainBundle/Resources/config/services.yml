@@ -36,3 +36,10 @@ services:
         class: App\MainBundle\Services\ProductFilter
         calls:
             - [ setRepository, [ @app.repository.product ] ]
+
+    app.main.entity_listener:
+        class: App\MainBundle\EntityListener\EntityListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: preRemove }

@@ -10,6 +10,17 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CategoryAdmin extends Admin
 {
+    /** @var \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository $categoryRepository */
+    protected $categoryRepository;
+
+    /**
+     * @param \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository $categoryRepository
+     */
+    public function setCategoryRepository($categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
+
     /**
      * @param \Sonata\AdminBundle\Show\ShowMapper $showMapper
      *
@@ -31,11 +42,14 @@ class CategoryAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
+
         $formMapper
             ->with('General')
             ->add('name')
             ->add('image', 'rid_image')
-            ->add('parent')
+            ->add('parent', null, array(
+                'required' => false
+            ))
             ->add('page')
             ->end();
     }

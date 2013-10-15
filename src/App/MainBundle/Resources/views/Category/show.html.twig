@@ -13,3 +13,9 @@
         {% render(controller('RidPageBundle:Page:renderPage', {slug: category.page.slug})) %}
     {% endif %}
 {% endblock %}
+
+{% block init %}
+    {% if category is not null and category.page is not null %}
+        {{ rid_page_setup_seo(category.page) }}
+    {% endif %}
+{% endblock %}

@@ -1,3 +1,4 @@
+{% block init %}{% endblock %}
 <!DOCTYPE html>
 <html {{ sonata_seo_html_attributes() }} {% block html_attr %}{% endblock %}>
 <head>
@@ -73,7 +74,7 @@
         </h1>
         <div class="search-block">
             <div class="content">
-                <span class="phones">0472 00-00-00, 093 000-00-00</span>
+                <span class="phones">0472 35-92-85, 093 731-85-03</span>
                 {% set cart = get_current_cart() %}
                 <a class="cart" href="{{ path('app_main_cart_list') }}">
                     Моя корзина <span ng-bind="cartCountBind">{{ cart.getCountHtml() }}</span>

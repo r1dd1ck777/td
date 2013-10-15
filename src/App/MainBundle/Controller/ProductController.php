@@ -13,6 +13,11 @@ class ProductController extends ResourceController
 
         $category = $this->get('app.repository.category')->find((int)$request->get('id'));
 
+        $ridPage = $category->getPage();
+        if ($ridPage){
+            $this->get('rid_page')->setupSeo($ridPage);
+        }
+
         $pluralName = $config->getPluralResourceName();
         $repository = $this->getRepository();
 

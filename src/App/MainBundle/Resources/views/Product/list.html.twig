@@ -7,36 +7,36 @@
     <div class="info-block" ng-app="ProductFilterModule" ng-controller="ProductFilterCtrl">
         <form action="{{ path('app_main_product_list', {id:app.request.get('id')}) }}" method="get">
             <ul class="product-filter-list">
-                <li class="product-filter">
-                    <h4 data-toggle="collapse" class="collapsed" data-target="#filter-1">
-                        <span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>
-                    </h4>
-                    <div class="clearfix"></div>
-                    <div class="body collapse" id="filter-1">
-                        min <input ng-model="filters.min_price" type="text" name="filters[min_price]">
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-                <li class="product-filter">
-                    <h4 data-toggle="collapse" class="collapsed" data-target="#filter-2">
-                        <span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>
-                    </h4>
-                    <div class="clearfix"></div>
-                    <div class="body collapse" id="filter-2">
-                        asd ad asd asd asd asd
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
-                <li class="product-filter">
-                    <h4 data-toggle="collapse" class="collapsed" data-target="#filter-3">
-                        <span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>
-                    </h4>
-                    <div class="clearfix"></div>
-                    <div class="body collapse" id="filter-3">
-                        asd ad asd asd asd asd
-                    </div>
-                    <div class="clearfix"></div>
-                </li>
+                {#<li class="product-filter">#}
+                    {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-1">#}
+                        {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
+                    {#</h4>#}
+                    {#<div class="clearfix"></div>#}
+                    {#<div class="body collapse" id="filter-1">#}
+                        {#min <input ng-model="filters.min_price" type="text" name="filters[min_price]">#}
+                    {#</div>#}
+                    {#<div class="clearfix"></div>#}
+                {#</li>#}
+                {#<li class="product-filter">#}
+                    {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-2">#}
+                        {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
+                    {#</h4>#}
+                    {#<div class="clearfix"></div>#}
+                    {#<div class="body collapse" id="filter-2">#}
+                        {#asd ad asd asd asd asd#}
+                    {#</div>#}
+                    {#<div class="clearfix"></div>#}
+                {#</li>#}
+                {#<li class="product-filter">#}
+                    {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-3">#}
+                        {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
+                    {#</h4>#}
+                    {#<div class="clearfix"></div>#}
+                    {#<div class="body collapse" id="filter-3">#}
+                        {#asd ad asd asd asd asd#}
+                    {#</div>#}
+                    {#<div class="clearfix"></div>#}
+                {#</li>#}
             </ul>
         </form>
     </div>
@@ -48,6 +48,12 @@
         {% include 'AppMainBundle:Product/partials:_list_wrapper.html.twig' with { products: products } %}
     </div>
     {{ pagination(products) }}
+
+    {% if category.page is not null %}
+        <div class="clearfix"></div>
+        {% render(controller('RidPageBundle:Page:renderPage', {slug: category.page.slug})) %}
+        {{ rid_page_setup_seo(category.page.slug) }}
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

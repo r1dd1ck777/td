@@ -12,6 +12,7 @@ services:
             - 'SonataAdminBundle:CRUD'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
+            - [ setCategoryRepository, [@app.repository.category]]
 
     app.admin.admin.brand:
         class: App\AdminBundle\Admin\BrandAdmin
