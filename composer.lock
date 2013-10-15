@@ -2555,12 +2555,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/r1dd1ck777/image_bundle.git",
-                "reference": "9aebc9788a12d13a5fb2dc1078acb868993da8f0"
+                "reference": "dd8115aaa1ba8f61b07a269328ab5b6e4f61f284"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/r1dd1ck777/image_bundle/zipball/9aebc9788a12d13a5fb2dc1078acb868993da8f0",
-                "reference": "9aebc9788a12d13a5fb2dc1078acb868993da8f0",
+                "url": "https://api.github.com/repos/r1dd1ck777/image_bundle/zipball/dd8115aaa1ba8f61b07a269328ab5b6e4f61f284",
+                "reference": "dd8115aaa1ba8f61b07a269328ab5b6e4f61f284",
                 "shasum": ""
             },
             "require": {
@@ -2596,7 +2596,7 @@
                 "image",
                 "thumbnail"
             ],
-            "time": "2013-09-07 20:58:14"
+            "time": "2013-10-14 18:33:35"
         },
         {
             "name": "rid/page-bundle",
@@ -2605,12 +2605,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/r1dd1ck777/page_bundle.git",
-                "reference": "ba3682c75cf2a137a131baef735e23899f16f5d3"
+                "reference": "630422614aad7000290f65c57619f7add6c3182d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/r1dd1ck777/page_bundle/zipball/ba3682c75cf2a137a131baef735e23899f16f5d3",
-                "reference": "ba3682c75cf2a137a131baef735e23899f16f5d3",
+                "url": "https://api.github.com/repos/r1dd1ck777/page_bundle/zipball/630422614aad7000290f65c57619f7add6c3182d",
+                "reference": "630422614aad7000290f65c57619f7add6c3182d",
                 "shasum": ""
             },
             "require": {
@@ -2640,7 +2640,7 @@
                 "Symfony2",
                 "page"
             ],
-            "time": "2013-10-11 15:25:43"
+            "time": "2013-10-15 20:16:17"
         },
         {
             "name": "sensio/distribution-bundle",
