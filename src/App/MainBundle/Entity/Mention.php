@@ -133,10 +133,10 @@ class Mention
     /**
      * Set createdAt
      *
-     * @param \detetime $createdAt
+     * @param \DateTime $createdAt
      * @return Mention
      */
-    public function setCreatedAt(\detetime $createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -146,7 +146,7 @@ class Mention
     /**
      * Get createdAt
      *
-     * @return \detetime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {

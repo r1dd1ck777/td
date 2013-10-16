@@ -279,10 +279,10 @@ class Order
     /**
      * Set createdAt
      *
-     * @param \detetime $createdAt
+     * @param \DateTime $createdAt
      * @return Order
      */
-    public function setCreatedAt(\detetime $createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
 
@@ -292,7 +292,7 @@ class Order
     /**
      * Get createdAt
      *
-     * @return \detetime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
