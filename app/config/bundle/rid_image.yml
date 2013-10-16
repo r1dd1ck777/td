@@ -6,6 +6,7 @@ rid_image:
             path: uploads/category/
             thumbnails:
                 mid:
+                    default: img/def-product-show.png
                     width: 305
                     height: 180
                     type: outbound
@@ -13,18 +14,22 @@ rid_image:
             path: uploads/product/
             thumbnails:
                 mid:
+                    default: img/def-product-mid.png
                     width: 200
                     height: 140
                     type: outbound
                 show:
+                    default: img/def-product-show.png
                     width: 280
                     height: 195
                     type: outbound
                 tiny:
+                    default: img/def-product-tiny.png
                     width: 60
                     height: 35
                     type: outbound
                 cart:
+                    default: img/def-product-cart.png
                     width: 160
                     height: 110
                     type: outbound

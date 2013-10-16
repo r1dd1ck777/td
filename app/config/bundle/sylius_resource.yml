@@ -48,3 +48,15 @@ sylius_resource:
             templates: AppMainBundle:Slide
             classes:
                 model: App\MainBundle\Entity\Slide
+
+        app.order:
+            driver: doctrine/orm
+            templates: AppMainBundle:Order
+            classes:
+                model: App\MainBundle\Entity\Order
+
+        app.mention:
+            driver: doctrine/orm
+            templates: AppMainBundle:Mention
+            classes:
+                model: App\MainBundle\Entity\Mention

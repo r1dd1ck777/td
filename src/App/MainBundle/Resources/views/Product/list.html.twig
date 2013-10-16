@@ -49,7 +49,7 @@
     </div>
     {{ pagination(products) }}
 
-    {% if category.page is not null %}
+    {% if category is not null and category.page is not null %}
         <div class="clearfix"></div>
         {% render(controller('RidPageBundle:Page:renderPage', {slug: category.page.slug})) %}
         {{ rid_page_setup_seo(category.page.slug) }}

@@ -14,6 +14,8 @@ imports:
 framework:
     router:
         resource: "%kernel.root_dir%/config/heavy_routing.yml"
+    templating:
+        assets_version: %assets_version%
 
 twig:
     form:
@@ -82,4 +84,5 @@ rid_page:
         show: AppMainBundle:Page:show.html.twig
 
 parameters:
+    assets_version: 1
     kernel.web_dir: "%kernel.root_dir%/../www.technodevice.com.ua/"
