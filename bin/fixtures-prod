@@ -3,7 +3,7 @@
 
 require_once __DIR__.'/base_script.php';
 
-$env = 'dev';
+$env = 'test';
 
 if ($argc>1)
 {

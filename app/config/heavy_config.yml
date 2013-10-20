@@ -84,5 +84,5 @@ rid_page:
         show: AppMainBundle:Page:show.html.twig
 
 parameters:
-    assets_version: 1
+    assets_version: 2
     kernel.web_dir: "%kernel.root_dir%/../www.technodevice.com.ua/"

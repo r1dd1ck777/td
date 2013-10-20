@@ -3,10 +3,10 @@
 namespace App\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Table()
+ * @ORM\Table(name="cart_order")
  * @ORM\Entity
  */
 class Order
@@ -34,46 +34,54 @@ class Order
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $fio;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $town;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $address;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $phone;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $email;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $paymentType;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $comments;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $deliveryType;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\NotBlank()
      */
     protected $createdAt;
 

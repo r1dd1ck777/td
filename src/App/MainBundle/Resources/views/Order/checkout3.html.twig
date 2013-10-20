@@ -1,0 +1,86 @@
+{% extends 'AppMainBundle::layout.html.twig' %}
+
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.checkout() }}{% endblock %}
+
+{% block layout_left %}
+    <div class="info-block hidden">
+        {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
+    </div>
+{% endblock %}
+
+{% block wide_content %}
+    <div class="app-main checkout accept">
+        <table class="order-preview">
+            <thead>
+            <tr>
+                <th class="first-col">
+                    &nbsp;
+                </th>
+                <th>
+                    <h3>Заказ от {{ order.createdAt|date('d-m-Y H:i') }}</h3>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    Заказчик:
+                </td>
+                <td>
+                    <span class="text-blue">{{ order.fio }}</span><br>
+                    <span class="text-muted">{{ order.town }} {{ order.address }}</span><br>
+                    <span class="text-muted">{{ order.phone }}</span><br>
+                    <span class="text-muted">{{ order.email }}</span><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Оплата:
+                </td>
+                <td>
+                    <span class="text-blue">{{ order.paymentType }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Доставка:
+                </td>
+                <td>
+                    <span class="text-blue">{{ order.deliveryType }}</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Комментарий к заказу:
+                </td>
+                <td>
+                    <span class="text-muted">{{ order.comments }}</span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <a href="{{ path('app_main_checkout_2_edit') }}" class="pull-right">Редактировать</a>
+        <div class="clearfix"></div>
+        <div class="app-main cart list">
+            {% include 'AppMainBundle:Cart:_list.html.twig' with {cart: get_current_cart()} %}
+            <div class="clearfix"></div>
+            <div class="cart-bottom">
+                {% include 'AppMainBundle:Cart:_total_price.html.twig' %}
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <p class="text-center text-muted">
+            <br>
+            Пожалуйста, внимательно проверьте информацию выше на этой странице и подтвердите свой заказ. Обратите внимание - подтвержая заказ, Вы также соглашаетесь с <a href="{{ path('rid_page_show', {slug:'agreement'}) }}" target="_blank">пользовательским соглашением</a>.
+        </p>
+        <div class="clearfix"></div>
+        <form method="post" action="{{ path('app_main_checkout_4') }}">
+            <button class="btn td-btn-bay final-btn">Подтвердить заказ</button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

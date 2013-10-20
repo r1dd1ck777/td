@@ -1,0 +1,44 @@
+# register
+app_main_checkout_1:
+    pattern: /login
+    methods: [GET]
+    defaults:
+        _controller: app.controller.order:checkout1Action
+
+# data form
+app_main_checkout_2:
+    pattern: /order/new
+    methods: [GET, POST]
+    defaults:
+        _controller: app.controller.order:createAction
+        _sylius:
+            template: AppMainBundle:Order:checkout2.html.twig
+            redirect: app_main_checkout_3
+
+# edit order
+app_main_checkout_2_edit:
+    pattern: /order/edit
+    methods: [GET, POST]
+    defaults:
+        _controller: app.controller.order:updateAction
+        _sylius:
+            template: AppMainBundle:Order:checkout2.html.twig
+            redirect: app_main_checkout_3
+
+# show order
+app_main_checkout_3:
+    pattern: /accept
+    methods: [GET]
+    defaults:
+        _controller: app.controller.order:showAction
+        _sylius:
+            template: AppMainBundle:Order:checkout3.html.twig
+
+# finally and save order
+app_main_checkout_4:
+    pattern: /final
+    methods: [POST]
+    defaults:
+        _controller: app.controller.order:finalAction
+        _sylius:
+            template: AppMainBundle:Order:checkout4.html.twig

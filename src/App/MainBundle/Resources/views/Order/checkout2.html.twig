@@ -1,0 +1,87 @@
+{% extends 'AppMainBundle::layout.html.twig' %}
+
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.checkout() }}{% endblock %}
+
+{% block layout_left %}
+    <div class="info-block hidden">
+        {% render(controller('AppMainBundle:Default:renderCategoryMenu')) %}
+    </div>
+{% endblock %}
+
+{% block wide_content %}
+    {% set formView = form %}
+    <div class="app-main checkout order">
+        {% form_theme formView 'AppMainBundle:Form:fields.html.twig' %}
+        {% import 'AppMainBundle:Macros:form.html.twig' as form_macros %}
+
+        {{ form_start(formView) }}
+        <table>
+            <thead>
+            <tr>
+                <th class="first-col">
+                    <div>
+                        Заказчик
+                    </div>
+                </th>
+                <th class="second-col">
+                    <div>
+                        Доставка и оплата
+                    </div>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="first-col">
+                    <ul>
+                        <li>
+                            {{ form_errors(formView.fio) }}
+                            {{ form_macros.widget(formView.fio) }}
+                        </li>
+                        <li>
+                            {{ form_errors(formView.town) }}
+                            {{ form_macros.widget(formView.town) }}
+                        </li>
+                        <li>
+                            {{ form_errors(formView.address) }}
+                            {{ form_macros.widget(formView.address) }}
+                        </li>
+                        <li>
+                            {{ form_errors(formView.phone) }}
+                            {{ form_macros.widget(formView.phone) }}
+                        </li>
+                        <li>
+                            {{ form_errors(formView.email) }}
+                            {{ form_macros.widget(formView.email) }}
+                        </li>
+                    </ul>
+                </td>
+                <td class="second-col">
+                    <ul>
+                        <li>
+                            {{ form_errors(formView.paymentType) }}
+                            {{ form_row(formView.paymentType) }}
+                        </li>
+                        <li>
+                            {{ form_errors(formView.deliveryType) }}
+                            {{ form_row(formView.deliveryType) }}
+                        </li>
+                        <li>
+                            {{ form_errors(formView.comments) }}
+                            {{ form_row(formView.comments) }}
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        {{ form_rest(formView) }}
+        {{ form_end(formView) }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

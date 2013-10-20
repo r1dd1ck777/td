@@ -2,12 +2,17 @@ parameters:
 #    app_main.example.class: App\MainBundle\Example
 
 services:
+#forms
+    app.main.form_type.order:
+        class: App\MainBundle\Form\OrderType
+        tags:
+            - { name: form.type, alias: app_order }
+
     app.main.form_type.product_property:
         class: App\MainBundle\Form\ProductPropertyType
         tags:
             - { name: form.type, alias: app_product_property }
-#            arguments: [ @doctrine.orm.entity_manager, @translator ]
-
+#services
     app.main.services.xls_import:
         class: App\MainBundle\Services\XlsImport
         calls:
@@ -36,6 +41,24 @@ services:
         class: App\MainBundle\Services\ProductFilter
         calls:
             - [ setRepository, [ @app.repository.product ] ]
+
+    app.main.services.redirect_q:
+        class: App\MainBundle\Services\RedirectQ
+        calls:
+            - [ setSession, [ @session ] ]
+
+    app.main.security.success_handler:
+        class: App\MainBundle\Services\Security\LoginHandler
+        calls:
+            - [ setRedirectQ, [ @app.main.services.redirect_q ] ]
+            - [ setRouting, [ @router ] ]
+
+    app.main.security.subscriber:
+        class: App\MainBundle\Services\Security\Subscriber
+        calls:
+            - [ setRedirectQ, [ @app.main.services.redirect_q ] ]
+        tags:
+            - { name: kernel.event_subscriber }
 
     app.main.entity_listener:
         class: App\MainBundle\EntityListener\EntityListener

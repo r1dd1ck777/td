@@ -1,0 +1,19 @@
+<div class="app-main cart list">
+    {% if cart.items.count > 0 %}
+        <form action="{{ path('app_main_cart_save') }}" method="post">
+            {% include 'AppMainBundle:Cart:_list.html.twig' with {cart:cart, isForm: true} %}
+            <div class="clearfix"></div>
+            <div class="cart-bottom">
+                {% include 'AppMainBundle:Cart:_total_price.html.twig' %}
+                <div class="pull-left btns-block">
+                    {% include 'AppMainBundle:Misc:_btn_back_to_shop.html.twig' %}
+                    <button class="btn td-btn apply-tooltip" title="Сохранить изменения и пересчитать стоимость">Сохранить</button>
+                    <a href="{{ path('app_main_checkout_1') }}" class="btn td-btn-bay pull-right"><span class="icon-bay"></span> Оформить заказ</a>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </form>
+    {% else %}
+        {% include 'AppMainBundle:Misc:_btn_back_to_shop.html.twig' %}
+    {% endif %}
+</div>

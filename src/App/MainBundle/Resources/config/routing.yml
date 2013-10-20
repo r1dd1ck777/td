@@ -12,6 +12,10 @@ app_main_feedback:
     defaults: { _controller: AppMainBundle:Default:feedback }
     methods: [POST]
 
+_app_main_checkout:
+    prefix:  /checkout
+    resource: 'routing/checkout.yml'
+
 _app_main_category:
     prefix:  /category
     resource: 'routing/category.yml'

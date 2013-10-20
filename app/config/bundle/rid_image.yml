@@ -6,7 +6,7 @@ rid_image:
             path: uploads/category/
             thumbnails:
                 mid:
-                    default: img/def-product-show.png
+                    default: img/def-category-mid.png
                     width: 305
                     height: 180
                     type: outbound

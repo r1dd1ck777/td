@@ -1,0 +1,22 @@
+---------------
+Пользователь:
+---------------
+ФИО: {{ order.fio }}
+Телефон: {{ order.phone }}
+Город: {{ order.town }}
+Адрес: {{ order.address }}
+Оплата: {{ order.paymentType }}
+Доставка: {{ order.deliveryType }}
+Примечания: {{ order.comments }}
+
+---------------
+Заказ:
+---------------
+№: {{ order.id }}
+Дата: {{ order.createdAt|date('d-m-Y H:i') }}
+Всего: {{ order.cart.getTotal() }}грн.
+Товары:
+{% for cartItem in order.cart.items %}
+    {% set product = cartItem.product %}
+    {{ loop.index }}. {{ product.code }} {{ product.name }} x {{ cartItem.quantity }}шт. = {{ cartItem.getPrice }}грн.
+{% endfor %}

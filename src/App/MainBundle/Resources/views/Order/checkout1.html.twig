@@ -1,0 +1,24 @@
+{% extends 'AppMainBundle::layout.html.twig' %}
+
+{% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
+{% block breadcrumbs %}{{ breadcrambs.checkout() }}{% endblock %}
+
+{% block content %}
+    <div class="app-main checkout login">
+        <ul>
+            <li>
+                <a class="btn td-btn" href="{{ path('fos_user_security_login') }}">Войти и купить</a>
+            </li>
+            <li>
+                <a class="btn td-btn" href="{{ path('fos_user_registration_register') }}">Зарегистрироваться и купить</a>
+            </li>
+            <li>
+                <a class="btn td-btn" href="{{ path('app_main_checkout_2') }}">Купить без регистрации</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

@@ -53,6 +53,7 @@ sylius_resource:
             driver: doctrine/orm
             templates: AppMainBundle:Order
             classes:
+                controller: App\MainBundle\Controller\OrderController
                 model: App\MainBundle\Entity\Order
 
         app.mention:

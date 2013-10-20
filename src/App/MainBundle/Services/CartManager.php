@@ -61,4 +61,9 @@ class CartManager
     {
         $this->session->set(self::CART_KEY, $cart->getId());
     }
+
+    public function clearSessionCart()
+    {
+        $this->session->remove(self::CART_KEY);
+    }
 }

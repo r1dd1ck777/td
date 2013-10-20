@@ -10,9 +10,13 @@ $color-gradient-red: #eb4909;
 $color-orange: #f35e1b;
 $color-blue: #00457c;
 $color-gray: #5b5b5b;
+$color-gray-soft: #ededed;
 
 @import "layout";
 
+.text-blue{
+  color: $color-blue;
+}
 .btn{
   &.td-btn{
     @include gradient(white, #e3e3e3);
@@ -55,6 +59,90 @@ $color-gray: #5b5b5b;
 
 .app-main{
   @import "controller/default";
+
+  &.checkout{
+    &.login{
+      li{
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+
+    &.order{
+      margin-top: 15px;
+
+      thead{
+        tr{
+          th{
+            div{
+              background-color: $color-gray-soft;
+              padding: 7px;
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+
+      .first-col{
+        width: 280px;
+
+        & > ul{
+          & > li{
+            padding-bottom: 15px;
+
+            & > ul{
+              & > li{
+                color: #800000;
+              }
+            }
+          }
+        }
+      }
+
+      .second-col{
+        width: 680px;
+        padding-left: 20px;
+      }
+
+      .td-btn-bay{
+        margin-bottom: 40px;
+      }
+    }
+
+    &.accept{
+      .first-col{
+        width: 300px;
+      }
+      .order-preview{
+        margin-top: 15px;
+        width: 100%;
+
+        thead{
+          tr{
+            background-color: $color-gray-soft;
+
+            th{
+              padding: 7px 0;
+            }
+          }
+          h3{
+            margin: 0;
+            color: $color-orange;
+            font-size: 18px;
+          }
+        }
+        tbody{
+          td{
+            padding: 7px 0;
+            border-bottom: 1px solid $color-gray-soft;
+          }
+        }
+      }
+      .final-btn{
+        margin: 20px 0 50px 391px;
+      }
+    }
+  }
 
   .category-list{
     .category-block{
@@ -377,14 +465,14 @@ $color-gray: #5b5b5b;
 
         thead{
           tr{
-            background-color: #ededed;
+            background-color: $color-gray-soft;
             line-height: 35px;
           }
         }
 
         tbody{
           tr{
-            border-bottom: 1px solid #ededed;
+            border-bottom: 1px solid $color-gray-soft;
             td{
               padding-top: 10px;
               padding-bottom: 10px;
@@ -484,7 +572,7 @@ $color-gray: #5b5b5b;
       width: 278px;
       line-height: 37px;
       height: 37px;
-      @include gradient(#ffffff, #ededed);
+      @include gradient(#ffffff, $color-gray-soft);
       @include box-shadow(2px 2px 3px #d1d1d1);
       border: 1px solid #dcdcdc;
       margin: 0px;

@@ -1,0 +1,3 @@
+{% macro widget(form) %}
+    {{ form_widget(form, { 'attr': { 'class' : form.vars.block_prefixes[1] in ['text', 'integer', 'choice'] ? (form.vars.attr.class|default('') ~ ' form-control')|trim }}) }}
+{% endmacro %}

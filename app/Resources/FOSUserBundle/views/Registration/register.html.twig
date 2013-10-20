@@ -3,5 +3,9 @@
 {% block content %}
 <div class="app-main security registration">
     {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    <p class="text-center text-muted">
+        <br>
+        Регистрируясь, Вы соглашаетесь с <a href="{{ path('rid_page_show', {slug:'agreement'}) }}" target="_blank">пользовательским соглашением</a>.
+    </p>
 </div>
 {% endblock content %}
