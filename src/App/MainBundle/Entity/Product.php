@@ -83,6 +83,16 @@ class Product
     private $category;
 
     /**
+     * @ORM\OneToMany(targetEntity="Mention", mappedBy="product", orphanRemoval=true)
+     */
+    private $mentions;
+
+    /**
+     * @ORM\OneToMany(targetEntity="CartItem", mappedBy="product", orphanRemoval=true)
+     */
+    private $carts;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Brand", inversedBy="products")
      * @ORM\JoinColumn(name="brand_id", nullable=true, onDelete="SET NULL")
      */
@@ -551,5 +561,71 @@ class Product
     public function getGuaranty()
     {
         return $this->guaranty;
+    }
+
+    /**
+     * Add mentions
+     *
+     * @param \App\MainBundle\Entity\Mention $mentions
+     * @return Product
+     */
+    public function addMention(\App\MainBundle\Entity\Mention $mentions)
+    {
+        $this->mentions[] = $mentions;
+
+        return $this;
+    }
+
+    /**
+     * Remove mentions
+     *
+     * @param \App\MainBundle\Entity\Mention $mentions
+     */
+    public function removeMention(\App\MainBundle\Entity\Mention $mentions)
+    {
+        $this->mentions->removeElement($mentions);
+    }
+
+    /**
+     * Get mentions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMentions()
+    {
+        return $this->mentions;
+    }
+
+    /**
+     * Add carts
+     *
+     * @param \App\MainBundle\Entity\Cart $carts
+     * @return Product
+     */
+    public function addCart(\App\MainBundle\Entity\Cart $carts)
+    {
+        $this->carts[] = $carts;
+
+        return $this;
+    }
+
+    /**
+     * Remove carts
+     *
+     * @param \App\MainBundle\Entity\Cart $carts
+     */
+    public function removeCart(\App\MainBundle\Entity\Cart $carts)
+    {
+        $this->carts->removeElement($carts);
+    }
+
+    /**
+     * Get carts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCarts()
+    {
+        return $this->carts;
     }
 }

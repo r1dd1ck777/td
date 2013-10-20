@@ -20,7 +20,7 @@ class CartItem
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Product", cascade={"detach", "persist"})
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="carts", cascade={"detach", "persist"})
      * @ORM\JoinColumn(name="product_id", nullable=false)
      */
     protected $product;

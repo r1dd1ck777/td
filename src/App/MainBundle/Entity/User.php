@@ -18,6 +18,16 @@ class User extends BaseUser
      */
     protected $id;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Order", mappedBy="user", orphanRemoval=true)
+     */
+    protected $orders;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Mention", mappedBy="user", orphanRemoval=true)
+     */
+    protected $mentions;
+
     public function __construct()
     {
         parent::__construct();
@@ -98,5 +108,71 @@ class User extends BaseUser
     public function getLastname()
     {
         return $this->lastname;
+    }
+
+    /**
+     * Add orders
+     *
+     * @param \App\MainBundle\Entity\Order $orders
+     * @return User
+     */
+    public function addOrder(\App\MainBundle\Entity\Order $orders)
+    {
+        $this->orders[] = $orders;
+
+        return $this;
+    }
+
+    /**
+     * Remove orders
+     *
+     * @param \App\MainBundle\Entity\Order $orders
+     */
+    public function removeOrder(\App\MainBundle\Entity\Order $orders)
+    {
+        $this->orders->removeElement($orders);
+    }
+
+    /**
+     * Get orders
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getOrders()
+    {
+        return $this->orders;
+    }
+
+    /**
+     * Add mentions
+     *
+     * @param \App\MainBundle\Entity\Mention $mentions
+     * @return User
+     */
+    public function addMention(\App\MainBundle\Entity\Mention $mentions)
+    {
+        $this->mentions[] = $mentions;
+
+        return $this;
+    }
+
+    /**
+     * Remove mentions
+     *
+     * @param \App\MainBundle\Entity\Mention $mentions
+     */
+    public function removeMention(\App\MainBundle\Entity\Mention $mentions)
+    {
+        $this->mentions->removeElement($mentions);
+    }
+
+    /**
+     * Get mentions
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getMentions()
+    {
+        return $this->mentions;
     }
 }

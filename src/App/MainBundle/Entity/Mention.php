@@ -3,7 +3,7 @@
 namespace App\MainBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Table()
@@ -21,23 +21,25 @@ class Mention
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="mention")
      * @ORM\JoinColumn(name="user_id", nullable=true)
      */
     protected $user;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $fio;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $email;
 
     /**
      * @ORM\Column(type="string")
+     * @Assert\NotBlank()
      */
     protected $comments;
 
@@ -45,6 +47,12 @@ class Mention
      * @ORM\Column(type="datetime")
      */
     protected $createdAt;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Product", inversedBy="mentions")
+     * @ORM\JoinColumn(name="product_id", nullable=false)
+     */
+    protected $product;
 
     public function __construct()
     {
@@ -174,5 +182,28 @@ class Mention
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \App\MainBundle\Entity\Product $product
+     * @return Mention
+     */
+    public function setProduct(\App\MainBundle\Entity\Product $product)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \App\MainBundle\Entity\Product 
+     */
+    public function getProduct()
+    {
+        return $this->product;
     }
 }

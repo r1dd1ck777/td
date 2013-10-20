@@ -34,12 +34,21 @@ rid_image:
                     height: 110
                     type: outbound
 
+
         slideImage:
             path: uploads/slider/
             thumbnails:
                 mid:
                     width: 640
                     height: 205
+                    type: outbound
+
+        actionImage:
+            path: uploads/action/
+            thumbnails:
+                mid:
+                    width: 280
+                    height: 400
                     type: outbound
 
     fields:
@@ -52,3 +61,5 @@ rid_image:
             image4: productImage
         App\MainBundle\Entity\Slide:
             image: slideImage
+        App\MainBundle\Entity\Action:
+            image: actionImage

@@ -61,3 +61,36 @@ services:
             - 'SonataAdminBundle:CRUD'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
+
+    app.admin.admin.mention:
+        class: App\AdminBundle\Admin\MentionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Отзывы', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Mention
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]
+
+    app.admin.admin.user:
+        class: App\AdminBundle\Admin\UserAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Пользователи', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\User
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]
+
+    app.admin.admin.action:
+        class: App\AdminBundle\Admin\ActionAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Акции', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Action
+            - 'SonataAdminBundle:CRUD'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]

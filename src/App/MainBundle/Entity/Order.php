@@ -27,7 +27,7 @@ class Order
     protected $cart;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="orders")
      * @ORM\JoinColumn(name="user_id", nullable=true)
      */
     protected $user;
@@ -84,6 +84,11 @@ class Order
      * @Assert\NotBlank()
      */
     protected $createdAt;
+
+    public function __toString()
+    {
+        return $this->getCreatedAt()->format('d-m-Y H:i'). " | " . $this->getCart()->getTotal().'грн.';
+    }
 
     public function __construct()
     {

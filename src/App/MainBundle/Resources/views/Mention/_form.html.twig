@@ -1,0 +1,10 @@
+{% form_theme form 'AppMainBundle:Form:fields.html.twig' %}
+
+    {{ form_start(form, { 'action' : path('app_main_mention_create', {id:id}) }) }}
+<div class="hidden">
+    {{ form_widget(form.product) }}
+</div>
+
+        {{ form_rest(form) }}
+
+    {{ form_end(form) }}

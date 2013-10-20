@@ -4,6 +4,7 @@ namespace App\MainBundle\Controller;
 
 use App\MainBundle\Form\FeedbackType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -32,6 +33,18 @@ class DefaultController extends Controller
         return $this->render('AppMainBundle:Default/partials:_category_menu.html.twig',
             array('categories' => $categories)
         );
+    }
+
+    public function renderLastActionAction()
+    {
+        /** @var \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository $repository */
+        $repository = $this->get('app.repository.action');
+        $actions = $repository->findAll();
+        $action = reset($actions);
+
+        return $this->render('AppMainBundle:Default/partials:_action_img.html.twig', array(
+            'action' => $action
+        ));
     }
 
     public function feedbackAction()

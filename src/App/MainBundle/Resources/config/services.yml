@@ -8,6 +8,13 @@ services:
         tags:
             - { name: form.type, alias: app_order }
 
+    app.main.form_type.mention:
+        class: App\MainBundle\Form\MentionType
+        tags:
+            - { name: form.type, alias: app_mention }
+        calls:
+            - [ setSecurityContext ,[ @security.context ]]
+            
     app.main.form_type.product_property:
         class: App\MainBundle\Form\ProductPropertyType
         tags:

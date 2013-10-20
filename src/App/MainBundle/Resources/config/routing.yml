@@ -27,3 +27,7 @@ _app_main_product:
 _app_main_cart:
     prefix:  /cart
     resource: 'routing/cart.yml'
+
+_app_main_mention:
+    prefix:  /mention
+    resource: 'routing/mention.yml'

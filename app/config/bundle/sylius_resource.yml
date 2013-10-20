@@ -60,4 +60,11 @@ sylius_resource:
             driver: doctrine/orm
             templates: AppMainBundle:Mention
             classes:
+                controller: App\MainBundle\Controller\MentionController
                 model: App\MainBundle\Entity\Mention
+
+        app.action:
+            driver: doctrine/orm
+            templates: AppMainBundle:Action
+            classes:
+                model: App\MainBundle\Entity\Action

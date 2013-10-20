@@ -38,7 +38,7 @@ class Brand
     private $categories;
 
     /**
-     * @ORM\OneToMany(targetEntity="Product", mappedBy="brand", cascade={"remove"})
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="brand", cascade={"remove"}, orphanRemoval=true)
      */
     private $products;
 
