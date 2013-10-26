@@ -33,4 +33,26 @@ class ProductRepository extends EntityRepository
             ->setParameter('key', "%{$key}%")
             ;
     }
+
+    public function joinProperties(QueryBuilder $qb)
+    {
+        $qb
+//            ->from('App\MainBundle\Entity\ProductProperty', 'productProperty')
+//            ->leftJoin("{$this->getPropertyName('productProperties')}", 'productProperty')
+        ;
+    }
+
+    public function mqProperty(QueryBuilder $qb, $pid, $value)
+    {
+        $subQb = $this->_em->createQueryBuilder()
+        ->select('m.id')
+        ->from('App\MainBundle\Entity\Property', 'property')
+        ->leftJoin('ms.membre', 'm')
+        ->where('ms.id != ?1')
+        ;
+        $qb
+            ->from('App\MainBundle\Entity\Property', 'property')
+            ->leftJoin("{$this->getPropertyName('productProperties')}", 'productProperty')
+        ;
+    }
 }

@@ -2,42 +2,51 @@
 
 {% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
 {% block breadcrumbs %}{{ breadcrambs.category(category) }}{% endblock %}
+{% form_theme filterForm _self %}
+
+{% block between_widget %}
+    {{ form_widget(form.min) }}
+    {{ form_widget(form.max) }}
+{% endblock %}
 
 {% block layout_left %}
+
     <div class="info-block" ng-app="ProductFilterModule" ng-controller="ProductFilterCtrl">
         <form action="{{ path('app_main_product_list', {id:app.request.get('id')}) }}" method="get">
             <ul class="product-filter-list">
+                {{ form_widget(filterForm) }}
                 {#<li class="product-filter">#}
-                    {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-1">#}
-                        {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
-                    {#</h4>#}
-                    {#<div class="clearfix"></div>#}
-                    {#<div class="body collapse" id="filter-1">#}
-                        {#min <input ng-model="filters.min_price" type="text" name="filters[min_price]">#}
-                    {#</div>#}
-                    {#<div class="clearfix"></div>#}
+                {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-1">#}
+                {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
+                {#</h4>#}
+                {#<div class="clearfix"></div>#}
+                {#<div class="body collapse" id="filter-1">#}
+                {#min <input ng-model="filters.min_price" type="text" name="filters[min_price]">#}
+                {#</div>#}
+                {#<div class="clearfix"></div>#}
                 {#</li>#}
                 {#<li class="product-filter">#}
-                    {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-2">#}
-                        {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
-                    {#</h4>#}
-                    {#<div class="clearfix"></div>#}
-                    {#<div class="body collapse" id="filter-2">#}
-                        {#asd ad asd asd asd asd#}
-                    {#</div>#}
-                    {#<div class="clearfix"></div>#}
+                {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-2">#}
+                {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
+                {#</h4>#}
+                {#<div class="clearfix"></div>#}
+                {#<div class="body collapse" id="filter-2">#}
+                {#asd ad asd asd asd asd#}
+                {#</div>#}
+                {#<div class="clearfix"></div>#}
                 {#</li>#}
                 {#<li class="product-filter">#}
-                    {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-3">#}
-                        {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
-                    {#</h4>#}
-                    {#<div class="clearfix"></div>#}
-                    {#<div class="body collapse" id="filter-3">#}
-                        {#asd ad asd asd asd asd#}
-                    {#</div>#}
-                    {#<div class="clearfix"></div>#}
+                {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-3">#}
+                {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
+                {#</h4>#}
+                {#<div class="clearfix"></div>#}
+                {#<div class="body collapse" id="filter-3">#}
+                {#asd ad asd asd asd asd#}
+                {#</div>#}
+                {#<div class="clearfix"></div>#}
                 {#</li>#}
             </ul>
+            <button>send</button>
         </form>
     </div>
 {% endblock %}
@@ -47,7 +56,7 @@
     <div class="app-main category show">
         {% include 'AppMainBundle:Product/partials:_list_wrapper.html.twig' with { products: products } %}
     </div>
-    {{ pagination(products) }}
+    {#{{ pagination(products) }}#}
 
     {% if category is not null and category.page is not null %}
         <div class="clearfix"></div>

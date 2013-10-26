@@ -496,6 +496,8 @@ class Choices
 
     public static function get($key)
     {
-        return isset(self::$choices[$key]) ? self::$choices[$key] : array();
+        $choices = isset(self::$choices[$key]) ? self::$choices[$key] : array();
+
+        return array_merge(array('' => ''), $choices);
     }
 }

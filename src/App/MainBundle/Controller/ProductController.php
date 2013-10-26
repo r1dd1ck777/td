@@ -22,24 +22,25 @@ class ProductController extends ResourceController
         $repository = $this->getRepository();
 
         $qb = $repository->findByCategoryId($request->get('id'));
-        /** @var \App\MainBundle\Services\ProductFilter $filter */
+        /** @var \App\MainBundle\Filter\ProductFilter $filter */
         $filter = $this->get('app.main.services.product_filter');
-        $filter->handleQuery($request, $qb);
-        $filter->getForm($category);
-        $resources = $repository->getPaginator($qb);
+        $filterForm = $filter->buildFields($category)->handleQuery($request, $qb)->getForm();
+//        $resources = $repository->getPaginator($qb);
+//
+//        $resources
+//            ->setCurrentPage($request->get('page', 1), true, true)
+//            ->setMaxPerPage($config->getPaginationMaxPerPage())
+//        ;
 
-        $resources
-            ->setCurrentPage($request->get('page', 1), true, true)
-            ->setMaxPerPage($config->getPaginationMaxPerPage())
-        ;
-
+        $resources = $qb->getQuery()->execute();
         if (count($resources) <=0) {
-            return $this->redirect($this->generateUrl('app_main_category_show', array('id'=> $category->getId())));
+//            return $this->redirect($this->generateUrl('app_main_category_show', array('id'=> $category->getId())));
         }
 
         return $this->render('AppMainBundle:Product:list.html.twig', array(
             $pluralName => $resources,
-            'category' => $category
+            'category' => $category,
+            'filterForm' => $filterForm->createView()
         ));
     }
 }

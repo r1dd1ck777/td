@@ -61,13 +61,13 @@ class ProductPropertyType extends AbstractType
                     )
                 );
             }
-//            if ($data->getType() == 'checkbox') {
-//                $form->add('value', 'checkbox', array(
-//                        'label' => $data->getTitle(),
-//                        'required' => false,
-//                    )
-//                );
-//            }
+            if ($data->getType() == 'checkbox') {
+                $form->add('value', 'checkbox', array(
+                        'label' => $data->getTitle(),
+                        'required' => false,
+                    )
+                );
+            }
 
             if ($data->getType() == 'integer') {
                 $form->add('value', 'integer', array(

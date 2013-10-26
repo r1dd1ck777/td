@@ -19,6 +19,17 @@ services:
         class: App\MainBundle\Form\ProductPropertyType
         tags:
             - { name: form.type, alias: app_product_property }
+
+    app.main.form_type.filter:
+        class: App\MainBundle\Form\FilterType
+        tags:
+            - { name: form.type, alias: product_filter }
+
+    app.main.form_type.checkbox_extension:
+        class: App\MainBundle\Form\CheckboxExtension
+        tags:
+            - { name: form.type_extension, alias: checkbox }
+
 #services
     app.main.services.xls_import:
         class: App\MainBundle\Services\XlsImport
@@ -45,9 +56,10 @@ services:
             - [ setCartManager, [ @app.main.services.cart_manager ] ]
 
     app.main.services.product_filter:
-        class: App\MainBundle\Services\ProductFilter
+        class: App\MainBundle\Filter\ProductFilter
         calls:
             - [ setRepository, [ @app.repository.product ] ]
+            - [ setFormFactory, [@form.factory]]
 
     app.main.services.redirect_q:
         class: App\MainBundle\Services\RedirectQ
