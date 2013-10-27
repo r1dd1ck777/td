@@ -13,11 +13,12 @@ class FilterField
 {
     /** @var \App\MainBundle\Entity\Property */
     protected $property;
-    protected $formFactory;
+    /** @var \App\MainBundle\Entity\ProductRepository */
+    protected $repository;
 
-    public function setFormFactory($formFactory)
+    public function setRepository($repository)
     {
-        $this->formFactory = $formFactory;
+        $this->repository = $repository;
     }
 
     public function addField($form, array $options = array())
@@ -38,13 +39,15 @@ class FilterField
         if ($data->getType() == 'choice') {
             $form->add($data->getId(), 'choice', array(
                     'label' => $data->getTitle(),
-                    'choices' => Choices::get($data->getPid())
+                    'choices' => Choices::get($data->getPid()),
+                    'attr' => array('class' => 'f-select2')
                 )
             );
         }
         if ($data->getType() == 'checkbox') {
             $form->add($data->getId(), 'checkbox', array(
                     'label' => $data->getTitle(),
+                    'attr' => array('class' => 'f-checkbox')
                 )
             );
         }
@@ -62,18 +65,52 @@ class FilterField
         if ($data == ''){return null;}
         if ($this->property->getType() == 'integer' && $data['min']=='' && $data['max']==''){return null;}
         $id = (string)$this->property->getId();
-        var_dump(array(
-            "{$id}_value" => $data,
-            "{$id}_property_id" => $id
-        ));
 
-        if ($this->property->getType() == 'checkbox'){
+        $joinAlias = "pp_{$id}";
+        $idParam = "property_id_{$id}";
+        $valueParam = "value_{$id}";
+        $type = $this->property->getType();
+
+        if (in_array($type, array('checkbox', 'choice'))){
             $qb
-                ->andWhere("productProperty.value = :id_{$id} AND productProperty.property = :property_id_{$id} AND productProperty.product = o.id")
-                ->setParameter("id_{$id}", $data)
-                ->setParameter("property_id_{$id}", $id)
+                ->leftJoin("o.productProperties", $joinAlias)
+                ->andWhere("{$joinAlias}.property = :$idParam AND {$joinAlias}.value = :$valueParam")
+                ->setParameter($valueParam, $data)
+                ->setParameter($idParam, $id)
                 ;
         }
+
+        if (in_array($type, array('text'))){
+            $qb
+                ->leftJoin("o.productProperties", $joinAlias)
+                ->andWhere("{$joinAlias}.property = :$idParam AND {$joinAlias}.value LIKE :$valueParam")
+                ->setParameter($valueParam, "%{$data}%")
+                ->setParameter($idParam, $id)
+            ;
+        }
+
+        if (in_array($type, array('integer'))){
+            $qb
+                ->leftJoin("o.productProperties", $joinAlias)
+                ->andWhere($this->getBetweenWhere("{$joinAlias}.value", $data, $joinAlias, $idParam))
+//                ->setParameter($valueParam, $data['min'])
+//                ->setParameter($valueParamMax, $data['max'])
+                ->setParameter($idParam, $id)
+            ;
+        }
+    }
+
+    public function getBetweenWhere($field, $data, $joinAlias, $idParam)
+    {
+        if (empty($data['min']) && empty($data['max'])){return null;}
+        if ($data['min'] == '' && $data['max'] != ''){
+            return "{$joinAlias}.property = :$idParam AND {$field} <= {$data['max']}";
+        }
+        if ($data['min'] != '' && $data['max'] == ''){
+            return "{$joinAlias}.property = :$idParam AND {$field} >= {$data['min']}";
+        }
+
+        return "{$joinAlias}.property = :$idParam AND {$field} BETWEEN {$data['min']} AND {$data['max']}";
     }
 
     public function setProperty(Property $property)

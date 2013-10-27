@@ -4,6 +4,7 @@ namespace App\MainBundle\Filter;
 
 use App\MainBundle\Entity\Category;
 use App\MainBundle\Entity\ProductRepository;
+use App\MainBundle\Form\BetweenType;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\Request;
@@ -54,9 +55,13 @@ class ProductFilter
         if ($this->form){
             return $this->form;
         }
-        $formBuilder = $this->formFactory->createNamedBuilder('f' ,'product_filter', null, array('required' => false, 'method' => 'GET'));
-        $formBuilder->add('name','text');
-        $formBuilder->add('price','text');
+        $formBuilder = $this->formFactory->createNamedBuilder('f' ,'product_filter', null, array('required' => false, 'method' => 'GET', 'csrf_protection' => false));
+        $formBuilder->add('name','text', array(
+            'label' => 'Название:'
+        ));
+        $formBuilder->add('price', new BetweenType(), array(
+            'label' => 'Цена:'
+        ));
         foreach($this->fields as $field){ $field->addField($formBuilder); }
 
         $this->form = $formBuilder->getForm();
@@ -65,13 +70,20 @@ class ProductFilter
 
     public function handleQuery(Request $request, QueryBuilder $qb)
     {
+        // global search
         $q = $request->get('q', false);
         if ($q){
             $this->repository->mqSearch($q, $qb);
         }
 
         $formData = $request->get($this->getForm()->getName(), array());
-        $this->repository->joinProperties($qb);
+        $this->getForm()->submit($formData);
+
+        // common params
+        if(isset($formData['name'])){$this->repository->mqName($formData['name'], $qb);}
+        if(isset($formData['price'])){$this->repository->mqPrice($formData['price'], $qb);}
+
+        // uncommon params
         foreach($formData as  $fieldKey => $fieldData){
             if (!isset($this->fields[$fieldKey])){continue;}
             $this->fields[$fieldKey]->modifyQueryBuilder($qb, $fieldData);
@@ -84,7 +96,6 @@ class ProductFilter
     {
         $filterField = new FilterField();
         $filterField->setProperty($property);
-        $filterField->setFormFactory($this->formFactory);
 
         return $filterField;
     }

@@ -17,7 +17,7 @@ class ProductRepository extends EntityRepository
         $qb->leftJoin("{$this->getAlias()}.category", 'c')
             ->where('c.id = :categoryId')
             ->setParameter('categoryId' , $categoryId)
-            ;
+        ;
 
         return $qb;
     }
@@ -31,28 +31,32 @@ class ProductRepository extends EntityRepository
             ->orWhere("{$this->getPropertyName('price')} LIKE :key")
             ->orWhere("{$this->getPropertyName('code')} LIKE :key")
             ->setParameter('key', "%{$key}%")
-            ;
-    }
-
-    public function joinProperties(QueryBuilder $qb)
-    {
-        $qb
-//            ->from('App\MainBundle\Entity\ProductProperty', 'productProperty')
-//            ->leftJoin("{$this->getPropertyName('productProperties')}", 'productProperty')
         ;
     }
 
-    public function mqProperty(QueryBuilder $qb, $pid, $value)
+    public function getBetweenWhere($field, $data)
     {
-        $subQb = $this->_em->createQueryBuilder()
-        ->select('m.id')
-        ->from('App\MainBundle\Entity\Property', 'property')
-        ->leftJoin('ms.membre', 'm')
-        ->where('ms.id != ?1')
-        ;
+        if (empty($data['min']) && empty($data['max'])){return null;}
+        if ($data['min'] == '' && $data['max'] != ''){
+            return "{$field} <= {$data['max']}";
+        }
+        if ($data['min'] != '' && $data['max'] == ''){
+            return "{$field} >= {$data['min']}";
+        }
+        return "{$field} BETWEEN {$data['min']} AND {$data['max']}";
+    }
+
+    public function mqPrice($data, QueryBuilder $qb)
+    {
+        $where = $this->getBetweenWhere($this->getPropertyName('price'), $data, $qb);
+        $qb->andWhere($where);
+    }
+
+    public function mqName($data, QueryBuilder $qb)
+    {
         $qb
-            ->from('App\MainBundle\Entity\Property', 'property')
-            ->leftJoin("{$this->getPropertyName('productProperties')}", 'productProperty')
+            ->andWhere("{$this->getPropertyName('name')} LIKE :name")
+            ->setParameter('name', "%{$data}%")
         ;
     }
 }

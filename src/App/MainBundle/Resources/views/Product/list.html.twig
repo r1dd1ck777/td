@@ -2,51 +2,16 @@
 
 {% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
 {% block breadcrumbs %}{{ breadcrambs.category(category) }}{% endblock %}
-{% form_theme filterForm _self %}
+{% form_theme filterForm 'AppMainBundle:Form:product_filter_fields.html.twig' %}
 
-{% block between_widget %}
-    {{ form_widget(form.min) }}
-    {{ form_widget(form.max) }}
-{% endblock %}
 
 {% block layout_left %}
-
-    <div class="info-block" ng-app="ProductFilterModule" ng-controller="ProductFilterCtrl">
+    <div class="info-block product-filter-block">
         <form action="{{ path('app_main_product_list', {id:app.request.get('id')}) }}" method="get">
+            <h3 class="filter-head">Подобрать по параметрам</h3>
             <ul class="product-filter-list">
                 {{ form_widget(filterForm) }}
-                {#<li class="product-filter">#}
-                {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-1">#}
-                {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
-                {#</h4>#}
-                {#<div class="clearfix"></div>#}
-                {#<div class="body collapse" id="filter-1">#}
-                {#min <input ng-model="filters.min_price" type="text" name="filters[min_price]">#}
-                {#</div>#}
-                {#<div class="clearfix"></div>#}
-                {#</li>#}
-                {#<li class="product-filter">#}
-                {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-2">#}
-                {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
-                {#</h4>#}
-                {#<div class="clearfix"></div>#}
-                {#<div class="body collapse" id="filter-2">#}
-                {#asd ad asd asd asd asd#}
-                {#</div>#}
-                {#<div class="clearfix"></div>#}
-                {#</li>#}
-                {#<li class="product-filter">#}
-                {#<h4 data-toggle="collapse" class="collapsed" data-target="#filter-3">#}
-                {#<span class="arrow-box-right"></span><span class="filter-label">asdasasdasd asd as</span>#}
-                {#</h4>#}
-                {#<div class="clearfix"></div>#}
-                {#<div class="body collapse" id="filter-3">#}
-                {#asd ad asd asd asd asd#}
-                {#</div>#}
-                {#<div class="clearfix"></div>#}
-                {#</li>#}
             </ul>
-            <button>send</button>
         </form>
     </div>
 {% endblock %}
@@ -68,16 +33,33 @@
 {% block javascripts %}
     {{ parent() }}
     <script type="text/javascript">
-        angular.module('ProductFilterModule', [])
-                .controller('ProductFilterCtrl', function($scope){
-//                    var url = parseUri(window.location);
-//                    console.log(url.queryKey);
-//                    if(url.queryKey['filters'] !== undefined){
-////                        $scope.filters = JSON.parse(url.queryKey['filters']);
-//                    }else{
-//                        $scope.filters = {};
-//                    }
-                })
-        ;
+        jQuery(document).ready(function(){
+            jQuery('.f-select2').select2({
+                width: 195
+            });
+
+            var resetFilter = function(event){
+                var uri = parseUri(window.location);
+                window.location = uri.protocol + '://' + uri.host + uri.path;
+            }
+            jQuery('.f-reset-btn').each(function(){
+                jQuery(this).on('click', resetFilter);
+            });
+
+            var toggleFilterBody = function(event){
+                var element = jQuery(this);
+                var body = jQuery(element.data('target'));
+                if(element.hasClass('f-collapsed')){
+                    element.removeClass('f-collapsed');
+                    body.slideDown(300);
+                }else{
+                    element.addClass('f-collapsed');
+                    body.slideUp(300);
+                }
+            }
+            jQuery('[data-toggle="f-collapse"]').each(function(){
+                jQuery(this).on('click', toggleFilterBody);
+            });
+        });
     </script>
 {% endblock %}

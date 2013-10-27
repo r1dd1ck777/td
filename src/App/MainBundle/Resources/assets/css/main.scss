@@ -559,55 +559,108 @@ $color-gray-soft: #ededed;
   display: none !important;
 }
 
-.product-filter-list{
+.product-filter-block{
+  .filter-head{
+    color: $color-orange;
+    font-size: 18px;
+    text-align: center;
+  }
 
-  .product-filter{
-    margin-top: 10px;
-    background-color: #eaeaea;
+  .product-filter-list{
+    & .form-control[type="text"], & .form-control[type="number"]{
+      float: left;
+      padding: 3px 7px;
+      height: 26px;
+    }
+    .form-control[type="text"]{
+      width: 205px;
+    }
 
-    h4{
-      font-size: 14px;
-      padding: 0 12px;
-      display: block;
-      width: 278px;
-      line-height: 37px;
-      height: 37px;
-      @include gradient(#ffffff, $color-gray-soft);
-      @include box-shadow(2px 2px 3px #d1d1d1);
-      border: 1px solid #dcdcdc;
-      margin: 0px;
+    .f-reset-btn{
+      font-size: 12px;
+      border-bottom: 1px dashed;
+      text-decoration: none;
       cursor: pointer;
-
-      .filter-label{
-        margin-left: 15px;
-        color: $color-blue;
-      }
-
-      .arrow-box-right{
-        background-color: $color-blue;
-        &:after {
-          border-left-color: $color-blue;
-          border-width: 5px;
-          margin-top: -5px;
+      @include transition(all 0.25s);
+    }
+    .between_widget{
+      label{
+        display: block;
+        float: left;
+        &.min{
+          width: 107px;
         }
       }
+      input{
+        width: 80px;
+        float: left;
+      }
 
-      &.collapsed{
+      .f-ok-btn{
+        margin-top: 18px;
+      }
+    }
+
+    .f-ok-btn{
+      float: right;
+      padding: 3px 12px;
+    }
+
+    .product-filter{
+      margin-top: 10px;
+      background-color: #eaeaea;
+
+      h4{
+        font-size: 14px;
+        padding: 0 12px;
+        display: block;
+        width: 278px;
+        line-height: 37px;
+        height: 37px;
+        @include gradient(#ffffff, $color-gray-soft);
+        @include box-shadow(2px 2px 3px #d1d1d1);
+        border: 1px solid #dcdcdc;
+        margin: 0px;
+        cursor: pointer;
+
+        .filter-label{
+          margin-left: 15px;
+          color: $color-blue;
+
+          label{
+            cursor: pointer;
+          }
+        }
+
         .arrow-box-right{
-          top: 34%;
-          left: 0;
+          background-color: $color-blue;
           &:after {
-            border-top-color: $color-blue;
-            border-left-color: transparent;
-            left: 50%;
-            top:0;
+            border-left-color: $color-blue;
+            border-width: 5px;
+            margin-top: -5px;
+          }
+        }
+
+        &.collapsed{
+          .arrow-box-right{
+            top: 34%;
+            left: 0;
+            &:after {
+              border-top-color: $color-blue;
+              border-left-color: transparent;
+              left: 50%;
+              top:0;
+            }
           }
         }
       }
-    }
-    .body{
-      margin-top: 4px;
-      padding: 10px;
+      .body{
+        &.f-collapsed{
+          display: none;
+        }
+        margin-top: 4px;
+        padding: 10px;
+      }
     }
   }
 }
