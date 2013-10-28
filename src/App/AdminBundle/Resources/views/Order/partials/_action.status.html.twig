@@ -1,0 +1,12 @@
+{% if object.status == constant('STATUS_NEW', object) %}
+<a href="{{ admin.generateObjectUrl('status', object) }}?status={{ constant('STATUS_DONE', object) }}"
+   class="btn btn-small" title="Пометить как обслуженый">
+    <i class="icon-check"></i>
+</a>
+{% else %}
+<a href="{{ admin.generateObjectUrl('status', object) }}?status={{ constant('STATUS_NEW', object) }}"
+   class="btn btn-small" title="Пометить как новый">
+    <i class="icon-repeat"></i>
+</a>
+{% endif %}
+

@@ -33,8 +33,9 @@ class OrderController extends BaseCardController
 
         if($this->getSecurityContext()->isGranted('IS_AUTHENTICATED_REMEMBERED')){
             $order->setUser($this->getUser());
-            $this->update($order);
         }
+        $order->setStatus(Order::STATUS_NEW);
+        $this->update($order);
 
         $message = \Swift_Message::newInstance()
             ->setSubject("Заказ № {$order->getId()}")

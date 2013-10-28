@@ -94,3 +94,14 @@ services:
             - 'SonataAdminBundle:CRUD'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
+
+    app.admin.admin.order:
+        class: App\AdminBundle\Admin\OrderAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: product, label: 'Заказы', label_catalogue: "AppAdminBundle" }
+        arguments:
+            - ~
+            - App\MainBundle\Entity\Order
+            - 'AppAdminBundle:Order'
+        calls:
+            - [ setTranslationDomain, [AppAdminBundle]]

@@ -11,6 +11,12 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Order
 {
+    const STATUS_NEW = 1;
+    const STATUS_DONE = 2;
+    const STATUS_CANCEL = 3;
+    const STATUS_IN_PROGRESS = 4;
+    const STATUS_NOT_READY = 5;
+
     /**
      * @var integer
      *
@@ -80,6 +86,12 @@ class Order
     protected $deliveryType;
 
     /**
+     * @ORM\Column(type="integer")
+     * for admins
+     */
+    protected $status = self::STATUS_NOT_READY;
+
+    /**
      * @ORM\Column(type="datetime")
      * @Assert\NotBlank()
      */
@@ -95,6 +107,7 @@ class Order
         $this->createdAt = new \DateTime();
     }
 
+    //--
     /**
      * Get id
      *
@@ -356,5 +369,28 @@ class Order
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set status
+     *
+     * @param integer $status
+     * @return Order
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * Get status
+     *
+     * @return integer 
+     */
+    public function getStatus()
+    {
+        return $this->status;
     }
 }

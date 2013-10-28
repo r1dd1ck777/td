@@ -1,0 +1,12 @@
+{% extends 'SonataAdminBundle:CRUD:base_show_field.html.twig' %}
+
+{% block field%}
+    Сумма: {{ object.cart.total }}грн.
+    <div class="clearfix"></div>
+
+    <div class="clearfix"></div>
+
+    {% for cartItem in object.cart.items %}
+        ({{ cartItem.product.code }})<a href="{{ path('admin_app_main_product_edit', {id:cartItem.product.id}) }}"> {{ cartItem.product }}</a> x {{ cartItem.quantity }}шт. = {{ cartItem.price }}грн.
+    {% endfor %}
+{% endblock %}
