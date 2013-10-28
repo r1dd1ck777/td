@@ -6,7 +6,7 @@
     {% set isChoice = form.vars.block_prefixes[1] in ['choice'] %}
     <li class="product-filter">
         <h4 data-toggle="f-collapse" class="{{ isEmpty ? 'f-collapsed' : '' }}" data-target="#f-{{ form.vars.id }}">
-            <span class="arrow-box-right"></span><span class="filter-label">{{ form_label(form) }}</span>
+            <span class="arrow-box-right"></span><span class="filter-label">{{ form.vars.label }}</span>
         </h4>
         <div class="clearfix"></div>
         <div class="body {{ isEmpty ? 'f-collapsed' : '' }}" id="f-{{ form.vars.id }}">

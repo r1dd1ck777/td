@@ -30,6 +30,13 @@ services:
         tags:
             - { name: form.type_extension, alias: checkbox }
 
+    app.main.form_type.brand_checkboxes:
+        class: App\MainBundle\Form\BrandCheckboxesType
+        tags:
+            - { name: form.type, alias: brand_checkboxes }
+        calls:
+            - [ setRepository , [@app.repository.brand]]
+
 #services
     app.main.services.xls_import:
         class: App\MainBundle\Services\XlsImport

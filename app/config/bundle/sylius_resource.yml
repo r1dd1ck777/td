@@ -68,3 +68,10 @@ sylius_resource:
             templates: AppMainBundle:Action
             classes:
                 model: App\MainBundle\Entity\Action
+
+        app.brand:
+            driver: doctrine/orm
+            templates: AppMainBundle:Brand
+            classes:
+                model: App\MainBundle\Entity\Brand
+                repository: App\MainBundle\Entity\BrandRepository

@@ -3,6 +3,7 @@
 namespace App\MainBundle\EntityListener;
 
 use App\MainBundle\Entity\Brand;
+use App\MainBundle\Entity\Category;
 use App\MainBundle\Entity\Page;
 use App\MainBundle\Entity\User;
 use Doctrine\ORM\Event\LifecycleEventArgs;
@@ -12,7 +13,7 @@ class EntityListener
     public function prePersist(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        if (!$entity instanceof User) {
+        if ($entity instanceof Category) {
             return;
         }
     }
@@ -20,7 +21,7 @@ class EntityListener
     public function preUpdate(LifecycleEventArgs $args)
     {
         $entity = $args->getEntity();
-        if (!$entity instanceof User) {
+        if ($entity instanceof Category) {
             return;
         }
     }

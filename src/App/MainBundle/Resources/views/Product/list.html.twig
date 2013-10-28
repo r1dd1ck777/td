@@ -60,6 +60,14 @@
             jQuery('[data-toggle="f-collapse"]').each(function(){
                 jQuery(this).on('click', toggleFilterBody);
             });
+
+            var submitParentForm = function(){
+                jQuery(this).closest('form').submit();
+            }
+
+            jQuery('.f-checkbox').each(function(){
+                jQuery(this).on('change', submitParentForm);
+            });
         });
     </script>
 {% endblock %}

@@ -64,6 +64,11 @@ class Category
      */
     private $prototypes;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $hasProducts = false;
+
     public function setImage(RidImage $image)
     {
         $this->image = $image;
@@ -305,5 +310,28 @@ class Category
     public function getPrototypes()
     {
         return $this->prototypes;
+    }
+
+    /**
+     * Set hasProducts
+     *
+     * @param boolean $hasProducts
+     * @return Category
+     */
+    public function setHasProducts($hasProducts)
+    {
+        $this->hasProducts = $hasProducts;
+
+        return $this;
+    }
+
+    /**
+     * Get hasProducts
+     *
+     * @return boolean 
+     */
+    public function getHasProducts()
+    {
+        return $this->hasProducts;
     }
 }

@@ -14,11 +14,33 @@ class BrandCheckboxesType extends AbstractType
 {
     protected $repository;
 
+    /**
+     * @param mixed $repository
+     */
+    public function setRepository($repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => null
+        ));
+
+        $resolver->setRequired(array(
+            'categoryId'
+        ));
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $categories = $this->repository->findBy(array('category' => $options['categoryId']));
-        foreach($categories as $category){
+        $brands = $this->repository->findByCategoryId($options['categoryId'])->getQuery()->execute();
+        foreach($brands as $brand){
+            $builder->add($brand->getId(), 'checkbox', array(
+                'label' => $brand->getName(),
 
+            ));
         }
     }
 

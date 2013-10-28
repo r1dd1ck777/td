@@ -19,6 +19,7 @@ class ProductFilter
     protected $form;
     /** @var \Symfony\Component\Form\FormFactory */
     protected $formFactory;
+    protected $category;
 
     public function setFormFactory(FormFactory $formFactory)
     {
@@ -36,6 +37,7 @@ class ProductFilter
 
     public function buildFields($category)
     {
+        $this->category = $category;
         $this->fields = array();
         if (is_null($category)){
             return $this;
@@ -57,11 +59,16 @@ class ProductFilter
         }
         $formBuilder = $this->formFactory->createNamedBuilder('f' ,'product_filter', null, array('required' => false, 'method' => 'GET', 'csrf_protection' => false));
         $formBuilder->add('name','text', array(
-            'label' => 'Название:'
+            'label' => 'Название'
         ));
         $formBuilder->add('price', new BetweenType(), array(
-            'label' => 'Цена:'
+            'label' => 'Цена'
         ));
+//        $formBuilder->add('brands', 'brand_checkboxes', array(
+//            'label' => 'Производитель',
+//            'categoryId' => $this->category->getId()
+//        ));
+
         foreach($this->fields as $field){ $field->addField($formBuilder); }
 
         $this->form = $formBuilder->getForm();
