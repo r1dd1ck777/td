@@ -27,3 +27,4 @@ behat.yml
 www.technodevice.com.ua/sandbox
 www.technodevice.com.ua/tmp
 www.technodevice.com.ua/robots.txt
+www.technodevice.com.ua/*/compiled/*
