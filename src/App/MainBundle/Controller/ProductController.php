@@ -33,7 +33,7 @@ class ProductController extends ResourceController
         ;
 
         $resources = $qb->getQuery()->execute();
-        if (count($resources) <=0 && is_null($request->get('f', null))) {
+        if (count($resources) <=0 && is_null($request->get('f', null)) && is_null($request->get('q', null))) {
             return $this->redirect($this->generateUrl('app_main_category_show', array('id'=> $category->getId())));
         }
 
