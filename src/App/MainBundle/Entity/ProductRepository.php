@@ -16,6 +16,7 @@ class ProductRepository extends EntityRepository
 
         $qb->leftJoin("{$this->getAlias()}.category", 'c')
             ->where('c.id = :categoryId')
+            ->addOrderBy($this->getPropertyName('name'), 'ASC')
             ->setParameter('categoryId' , $categoryId)
         ;
 
@@ -52,8 +53,16 @@ class ProductRepository extends EntityRepository
         $qb->andWhere($where);
     }
 
+    public function mqBrands($data, QueryBuilder $qb)
+    {
+        $qb
+            ->andWhere("{$this->getPropertyName('brand')} IN " . '('.implode(',',array_keys($data)) .')')
+        ;
+    }
+
     public function mqName($data, QueryBuilder $qb)
     {
+        if (empty($data)){return null;}
         $qb
             ->andWhere("{$this->getPropertyName('name')} LIKE :name")
             ->setParameter('name', "%{$data}%")

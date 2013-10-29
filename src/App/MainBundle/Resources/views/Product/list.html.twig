@@ -2,8 +2,11 @@
 
 {% import 'AppMainBundle:Macros:breadcrambs.html.twig' as breadcrambs %}
 {% block breadcrumbs %}{{ breadcrambs.category(category) }}{% endblock %}
-{% form_theme filterForm 'AppMainBundle:Form:product_filter_fields.html.twig' %}
 
+{% form_theme filterForm 'AppMainBundle:Form:product_filter_fields.html.twig' %}
+{% if filterForm.vars.withBrands %}
+    {% form_theme filterForm.brands 'AppMainBundle:Form:product_filter_brand.html.twig' %}
+{% endif %}
 
 {% block layout_left %}
     <div class="info-block product-filter-block">
@@ -21,7 +24,7 @@
     <div class="app-main category show">
         {% include 'AppMainBundle:Product/partials:_list_wrapper.html.twig' with { products: products } %}
     </div>
-    {#{{ pagination(products) }}#}
+    {{ pagination(products) }}
 
     {% if category is not null and category.page is not null %}
         <div class="clearfix"></div>

@@ -24,7 +24,10 @@ class ProductController extends ResourceController
         $qb = $repository->findByCategoryId($request->get('id'));
         /** @var \App\MainBundle\Filter\ProductFilter $filter */
         $filter = $this->get('app.main.services.product_filter');
-        $filterForm = $filter->buildFields($category)->handleQuery($request, $qb)->getForm();
+        $filterForm = $filter->buildFields($category)
+            ->buildForm(is_null($request->get('q', null)))
+            ->handleQuery($request, $qb)
+            ->getForm();
         $resources = $repository->getPaginator($qb);
 
         $resources
@@ -32,7 +35,7 @@ class ProductController extends ResourceController
             ->setMaxPerPage($config->getPaginationMaxPerPage())
         ;
 
-        $resources = $qb->getQuery()->execute();
+//        $resources = $qb->getQuery()->execute();
         if (count($resources) <=0 && is_null($request->get('f', null)) && is_null($request->get('q', null))) {
             return $this->redirect($this->generateUrl('app_main_category_show', array('id'=> $category->getId())));
         }

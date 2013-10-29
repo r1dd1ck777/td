@@ -4,6 +4,8 @@
     {% set isCheckbox = form.vars.block_prefixes[1] in ['checkbox'] %}
     {% set isBetween = form.vars.block_prefixes[1] in ['between'] %}
     {% set isChoice = form.vars.block_prefixes[1] in ['choice'] %}
+    {% set isBrandCheckboxes = form.vars.block_prefixes[1] in ['brand_checkboxes'] %}
+    {% set isEmpty = isBrandCheckboxes ? isBrandFilterEmpty(form.vars.value) : isEmpty  %}
     <li class="product-filter">
         <h4 data-toggle="f-collapse" class="{{ isEmpty ? 'f-collapsed' : '' }}" data-target="#f-{{ form.vars.id }}">
             <span class="arrow-box-right"></span><span class="filter-label">{{ form.vars.label }}</span>
@@ -18,7 +20,9 @@
             {% if form.vars.block_prefixes[1] not in ['between', 'checkbox'] %}
                 <button class="btn td-btn f-ok-btn {{ isChoice ? 'is-choice' }}">OK</button>
             {% endif %}
-            <div class="clearfix"></div>
+            {% if form.vars.block_prefixes[1] not in ['brand_checkboxes'] %}
+                <div class="clearfix"></div>
+            {% endif %}
             <a class="f-reset-btn">Сбросить фильтр</a>
         </div>
         <div class="clearfix"></div>
@@ -40,3 +44,4 @@
             Да</label>
     {% endspaceless %}
 {% endblock %}
+

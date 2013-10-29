@@ -20,7 +20,7 @@ class BrandAdmin extends Admin
         $showMapper
             ->add('id')
             ->add('name')
-            ->add('categories')
+//            ->add('categories')
         ;
     }
 
@@ -34,7 +34,7 @@ class BrandAdmin extends Admin
         $formMapper
             ->with('General')
             ->add('name')
-            ->add('categories')
+//            ->add('categories')
             ->end();
     }
 
@@ -48,7 +48,7 @@ class BrandAdmin extends Admin
         $listMapper
             ->addIdentifier('id')
             ->add('name')
-            ->add('categories')
+//            ->add('categories')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),

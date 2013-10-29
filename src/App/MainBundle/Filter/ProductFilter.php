@@ -52,26 +52,32 @@ class ProductFilter
         return $this;
     }
 
-    public function getForm()
+    public function buildForm($withBrands = false)
     {
-        if ($this->form){
-            return $this->form;
-        }
-        $formBuilder = $this->formFactory->createNamedBuilder('f' ,'product_filter', null, array('required' => false, 'method' => 'GET', 'csrf_protection' => false));
+        $formBuilder = $this->formFactory->createNamedBuilder('f' ,'product_filter', null,
+            array('required' => false, 'method' => 'GET', 'csrf_protection' => false, 'withBrands' => $withBrands)
+        );
         $formBuilder->add('name','text', array(
             'label' => 'Название'
         ));
         $formBuilder->add('price', new BetweenType(), array(
             'label' => 'Цена'
         ));
-//        $formBuilder->add('brands', 'brand_checkboxes', array(
-//            'label' => 'Производитель',
-//            'categoryId' => $this->category->getId()
-//        ));
+        if ($withBrands) {
+            $formBuilder->add('brands', 'brand_checkboxes', array(
+                'label' => 'Производитель',
+                'categoryId' => $this->category
+            ));
+        }
 
         foreach($this->fields as $field){ $field->addField($formBuilder); }
-
         $this->form = $formBuilder->getForm();
+
+        return $this;
+    }
+
+    public function getForm()
+    {
         return $this->form;
     }
 
@@ -89,6 +95,7 @@ class ProductFilter
         // common params
         if(isset($formData['name'])){$this->repository->mqName($formData['name'], $qb);}
         if(isset($formData['price'])){$this->repository->mqPrice($formData['price'], $qb);}
+        if(isset($formData['brands'])){$this->repository->mqBrands($formData['brands'], $qb);}
 
         // uncommon params
         foreach($formData as  $fieldKey => $fieldData){

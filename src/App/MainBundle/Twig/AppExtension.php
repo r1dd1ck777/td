@@ -18,7 +18,18 @@ class AppExtension extends \Twig_Extension
     {
         return array(
             'get_current_cart' => new \Twig_SimpleFunction('get_current_cart', array( $this, 'getCurrentCart') ),
+            'isBrandFilterEmpty' => new \Twig_SimpleFunction('isBrandFilterEmpty', array( $this, 'isBrandFilterEmpty') ),
+
         );
+    }
+
+    public function isBrandFilterEmpty($brands)
+    {
+        foreach($brands as $brand){
+            if ($brand){return false;}
+        }
+
+        return true;
     }
 
     public function getCurrentCart()

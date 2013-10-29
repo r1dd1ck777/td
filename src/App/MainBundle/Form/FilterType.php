@@ -3,6 +3,8 @@
 namespace App\MainBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormInterface;
+use Symfony\Component\Form\FormView;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -12,6 +14,9 @@ class FilterType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => null,
+        ));
+        $resolver->setRequired(array(
+            'withBrands'
         ));
     }
 
@@ -25,6 +30,14 @@ class FilterType extends AbstractType
                 )
             ))
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function buildView(FormView $view, FormInterface $form, array $options)
+    {
+        $view->vars['withBrands'] = $options['withBrands'];
     }
 
     public function getName()

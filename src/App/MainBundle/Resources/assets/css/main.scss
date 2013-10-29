@@ -551,6 +551,12 @@ $color-gray-soft: #ededed;
           color: $color-orange;
         }
       }
+      &.active{
+        a{
+          color: $color-orange;
+          font-weight: bold;
+        }
+      }
     }
   }
 }
@@ -661,6 +667,21 @@ $color-gray-soft: #ededed;
         margin-top: 4px;
         padding: 10px;
       }
+    }
+  }
+  #f-f_brands{
+    ul{
+      li{
+        label{
+          font-weight: normal;
+        }
+      }
+    }
+    .f-ok-btn{
+      margin-bottom: 10px;
+    }
+    .f-reset-btn{
+      line-height: 28px;
     }
   }
 }
