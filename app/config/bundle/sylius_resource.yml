@@ -6,6 +6,7 @@ sylius_resource:
             classes:
                 model: App\MainBundle\Entity\Category
                 repository: App\MainBundle\Entity\CategoryRepository
+                controller: App\MainBundle\Controller\CategoryController
 
         app.product:
             driver: doctrine/orm
