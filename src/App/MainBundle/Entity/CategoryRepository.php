@@ -6,8 +6,9 @@ class CategoryRepository extends EntityRepository
 {
     public function findTop()
     {
-        $qb = $this->createQueryBuilder('c')
-            ->where('c.parent IS NULL')
+        $qb = $this->createQueryBuilder($this->getAlias())
+            ->where($this->getPropertyName('parent').' IS NULL')
+            ->addOrderBy($this->getPropertyName('name'), 'ASC')
         ;
 
         return $qb;
@@ -37,6 +38,7 @@ class CategoryRepository extends EntityRepository
         $qb = $this->createQueryBuilder($this->getAlias())
             ->select(array($this->getAlias(), 'p'))
             ->leftJoin($this->getPropertyName('prototypes'), 'p')
+            ->addOrderBy($this->getPropertyName('name'), 'ASC')
         ;
 
         return $qb;
