@@ -35,8 +35,33 @@
 
     <script type="text/javascript">
         jQuery(document).ready(function(){
-            jQuery('select').select2({
+            var $ = jQuery;
+            $('select').select2({
                 allowClear: true
+            });
+            $('.app-admin.category-list-priority a').on('click', sendPriority);
+            var sendPriority = function(){
+                var div = $(this).parent();
+                $(this).attr('href', $(this).attr('href') + '?value=' + div.find('input').val());
+            }
+            var onEnter = function(e){
+                console.log(e.which);
+                if(e.which != 13) {
+                    return;
+                }
+                e.preventDefault();
+                var link = $(this).next('a');
+                sendPriority.call(link);
+                window.location = link.attr('href');
+
+                return false;
+            }
+            $('.app-admin.category-list-priority input').on('focus', function(){
+                $(this).on('keypress', onEnter);
+            });
+
+            $('.app-admin.category-list-priority input').on('blur', function(){
+                $(this).off('keypress', onEnter);
             });
         });
     </script>

@@ -41,7 +41,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"all"})
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\OrderBy({"priority" = "DESC"})
      */
     private $products;
 
@@ -70,6 +70,11 @@ class Category
      * @ORM\Column(type="boolean")
      */
     private $hasProducts = false;
+
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $priority;
 
     public function setImage(RidImage $image)
     {
@@ -335,5 +340,28 @@ class Category
     public function getHasProducts()
     {
         return $this->hasProducts;
+    }
+
+    /**
+     * Set priority
+     *
+     * @param integer $priority
+     * @return Category
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+
+        return $this;
+    }
+
+    /**
+     * Get priority
+     *
+     * @return integer 
+     */
+    public function getPriority()
+    {
+        return $this->priority;
     }
 }

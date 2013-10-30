@@ -8,7 +8,7 @@ class CategoryRepository extends EntityRepository
     {
         $qb = $this->createQueryBuilder($this->getAlias())
             ->where($this->getPropertyName('parent').' IS NULL')
-            ->addOrderBy($this->getPropertyName('name'), 'ASC')
+            ->addOrderBy($this->getPropertyName('priority'), 'ASC')
         ;
 
         return $qb;
@@ -38,7 +38,7 @@ class CategoryRepository extends EntityRepository
         $qb = $this->createQueryBuilder($this->getAlias())
             ->select(array($this->getAlias(), 'p'))
             ->leftJoin($this->getPropertyName('prototypes'), 'p')
-            ->addOrderBy($this->getPropertyName('name'), 'ASC')
+            ->addOrderBy($this->getPropertyName('priority'), 'ASC')
         ;
 
         return $qb;

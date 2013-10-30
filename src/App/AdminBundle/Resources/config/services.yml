@@ -9,7 +9,7 @@ services:
         arguments:
             - ~
             - App\MainBundle\Entity\Category
-            - 'SonataAdminBundle:CRUD'
+            - 'AppAdminBundle:Category'
         calls:
             - [ setTranslationDomain, [AppAdminBundle]]
             - [ setCategoryRepository, [@app.repository.category]]

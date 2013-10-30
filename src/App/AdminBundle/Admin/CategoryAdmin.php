@@ -10,6 +10,11 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class CategoryAdmin extends Admin
 {
+    protected $datagridValues = array(
+        '_page'       => 1,
+        '_sort_order' => 'ASC', // sort direction
+        '_sort_by' => 'priority' // field name
+    );
     /** @var \Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository $categoryRepository */
     protected $categoryRepository;
 
@@ -42,10 +47,10 @@ class CategoryAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-
         $formMapper
             ->with('General')
             ->add('name')
+            ->add('priority')
             ->add('image', 'rid_image')
             ->add('parent', null, array(
                 'required' => false
@@ -65,6 +70,7 @@ class CategoryAdmin extends Admin
             ->addIdentifier('id')
             ->add('name')
             ->add('parent')
+            ->add('priority', null, array('template' => 'AppAdminBundle:Category:priority.html.twig'))
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'view' => array(),
@@ -86,11 +92,13 @@ class CategoryAdmin extends Admin
             ->add('id')
             ->add('name')
             ->add('parent')
+            ->add('priority')
         ;
     }
 
     protected function configureRoutes(RouteCollection $collection)
     {
 //        $collection->remove('create');
+        $collection->add('priority', $this->getRouterIdParameter(). '/priority' );
     }
 }
