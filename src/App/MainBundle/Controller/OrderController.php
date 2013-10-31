@@ -40,7 +40,10 @@ class OrderController extends BaseCardController
         $message = \Swift_Message::newInstance()
             ->setSubject("Заказ № {$order->getId()}")
             ->setFrom('robot@technodevice.com.ua')
-            ->setTo($this->container->getParameter('admin_email'))
+            ->setTo(array(
+                $this->container->getParameter('admin_email'),
+                $order->getEmail()
+            ))
             ->setBody(
                 $this->get('templating')->render('AppMainBundle:Order/partials:_admin_mail.txt.twig', array(
                     'order' => $order

@@ -39,10 +39,13 @@
             $('select').select2({
                 allowClear: true
             });
-            $('.app-admin.category-list-priority a').on('click', sendPriority);
+            $('.app-admin.category-list-priority a').on('click', function(){
+                sendPriority.call($(this));
+            });
             var sendPriority = function(){
                 var div = $(this).parent();
-                $(this).attr('href', $(this).attr('href') + '?value=' + div.find('input').val());
+                $(this).data('url', $(this).data('url') + '?value=' + div.find('input').val());
+                window.location = $(this).data('url');
             }
             var onEnter = function(e){
                 console.log(e.which);
@@ -52,7 +55,6 @@
                 e.preventDefault();
                 var link = $(this).next('a');
                 sendPriority.call(link);
-                window.location = link.attr('href');
 
                 return false;
             }

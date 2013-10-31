@@ -3,7 +3,7 @@
 {% block field%}
     <div class="app-admin category-list-priority">
         <input type="text" value="{{ object.priority }}" maxlength="5" size="3"/>
-        <a href="{{ admin.generateObjectUrl('priority', object) }}" class="btn btn-small">OK</a>
+        <a data-url="{{ admin.generateObjectUrl('priority', object) }}" class="btn btn-small">OK</a>
     </div>
 
 {% endblock %}
