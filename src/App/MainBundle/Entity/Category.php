@@ -41,7 +41,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"all"})
-     * @ORM\OrderBy({"priority" = "DESC"})
+     * @ORM\OrderBy({"name" = "DESC"})
      */
     private $products;
 
