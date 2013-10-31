@@ -30,7 +30,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Category", mappedBy="parent", cascade={"persist", "detach"})
-     * @ORM\OrderBy({"name" = "ASC"})
+     * @ORM\OrderBy({"priority" = "ASC"})
      */
     private $childs;
 
@@ -41,7 +41,7 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity="Product", mappedBy="category", cascade={"all"})
-     * @ORM\OrderBy({"name" = "DESC"})
+     * @ORM\OrderBy({"name" = "ASC"})
      */
     private $products;
 
