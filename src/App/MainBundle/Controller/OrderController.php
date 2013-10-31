@@ -39,7 +39,7 @@ class OrderController extends BaseCardController
 
         $message = \Swift_Message::newInstance()
             ->setSubject("Заказ № {$order->getId()}")
-            ->setFrom('robot@technodevice.com.ua')
+            ->setFrom('modern-pc@mail.ua')
             ->setTo(array(
                 $this->container->getParameter('admin_email'),
                 $order->getEmail()
