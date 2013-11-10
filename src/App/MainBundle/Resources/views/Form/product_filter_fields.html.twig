@@ -8,7 +8,8 @@
     {% set isEmpty = isBrandCheckboxes ? isBrandFilterEmpty(form.vars.value) : isEmpty  %}
     <li class="product-filter">
         <h4 data-toggle="f-collapse" class="{{ isEmpty ? 'f-collapsed' : '' }}" data-target="#f-{{ form.vars.id }}">
-            <span class="arrow-box-right"></span><span class="filter-label">{{ form.vars.label }}</span>
+            <i class="fa fa-caret-right"></i><i class="fa fa-caret-down"></i>
+            <span class="filter-label">{{ form.vars.label }}</span>
         </h4>
         <div class="clearfix"></div>
         <div class="body {{ isEmpty ? 'f-collapsed' : '' }}" id="f-{{ form.vars.id }}">

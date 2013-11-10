@@ -520,12 +520,12 @@ $color-gray-soft: #ededed;
     }
   }
 
- &.security{
-   &.registration{
-     width: 300px;
-     margin: 0 auto;
-   }
- }
+  &.security{
+    &.registration{
+      width: 300px;
+      margin: 0 auto;
+    }
+  }
 }
 
 #form-sign-up{
@@ -638,25 +638,18 @@ $color-gray-soft: #ededed;
           }
         }
 
-        .arrow-box-right{
-          background-color: $color-blue;
-          &:after {
-            border-left-color: $color-blue;
-            border-width: 5px;
-            margin-top: -5px;
-          }
+        .fa{
+          color: $color-blue;
         }
-
-        &.collapsed{
-          .arrow-box-right{
-            top: 34%;
-            left: 0;
-            &:after {
-              border-top-color: $color-blue;
-              border-left-color: transparent;
-              left: 50%;
-              top:0;
-            }
+        .fa-caret-right{
+          display: none;
+        }
+        &.f-collapsed{
+          .fa-caret-down{
+            display: none;
+          }
+          .fa-caret-right{
+            display: inline-block;
           }
         }
       }
