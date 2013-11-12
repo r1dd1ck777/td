@@ -128,7 +128,8 @@ class XlsImport extends Xls
 
     protected function getCategory($name)
     {
-        $object = $this->categoryRepository->findOneBy(array('name' => trim($name)));
+        $name = trim($name);
+        $object = $this->categoryRepository->findOneBy(array('name' => $name));
 
         return $object;
     }

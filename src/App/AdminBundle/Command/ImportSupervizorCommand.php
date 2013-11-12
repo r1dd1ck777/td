@@ -26,6 +26,7 @@ class ImportSupervizorCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $logger = $this->get('logger');
         $file = $input->getOption('xls');
         /** @var \App\MainBundle\Services\XlsImport $xls */
         $xls = $this->get('app.main.services.xls_import');
@@ -38,10 +39,12 @@ class ImportSupervizorCommand extends ContainerAwareCommand
         $o = null;
         for ($i = 0; $i < $cmds; $i++) {
             $start = ($i * self::ITEMS_PER_CMD) + $firstRow;
+            $logger->info("RUN: {$this->getCmd($file, $start, $start + self::ITEMS_PER_CMD)}");
             exec($this->getCmd($file, $start, $start + self::ITEMS_PER_CMD), $o);
             $output->writeln(var_export($o));
         }
         $start = ($i * self::ITEMS_PER_CMD) + $firstRow;
+        $logger->info("RUN: {$this->getCmd($file, $start, $start + self::ITEMS_PER_CMD)}");
         exec($this->getCmd($file, $start, $total), $o);
         $output->writeln(var_export($o));
 

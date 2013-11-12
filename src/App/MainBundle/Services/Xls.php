@@ -38,6 +38,7 @@ abstract class Xls
         $result = array();
         for ($row = $from; $row<$to; $row++) {
             $rowData = $this->getRow($row);
+            if(!$this->isRow($rowData)){continue;}
             $result[] = $rowData;
         }
 

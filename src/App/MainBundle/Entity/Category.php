@@ -74,7 +74,7 @@ class Category
     /**
      * @ORM\Column(type="float")
      */
-    private $priority;
+    private $priority = 0;
 
     public function setImage(RidImage $image)
     {
