@@ -34,9 +34,9 @@ abstract class Xls
 
     public function toArray($from = 1, $to = null)
     {
-        if (is_null($to)) {$to=$this->getHighestRow();}
+        if (is_null($to)) {$to=$this->getHighestRow()+1;}
         $result = array();
-        for ($row = $from; $row<$to; $row++) {
+        for ($row = $from; $row<=$to; $row++) {
             $rowData = $this->getRow($row);
             if(!$this->isRow($rowData)){continue;}
             $result[] = $rowData;
@@ -66,7 +66,7 @@ abstract class Xls
 
     protected function isRow(array $row)
     {
-        return isset($row[0]) && ('' != $row[0]);
+        return isset($row[0]) && is_numeric($row[0]);
     }
 
     protected function getRow($row)
@@ -74,7 +74,9 @@ abstract class Xls
         $result = array();
         $count = $this->getColumnCount();
         for ($column = 0; $column <= $count; $column++) {
-            $result[] = $this->sheet->getCellByColumnAndRow($column, $row)->getValue();
+            $value = $this->sheet->getCellByColumnAndRow($column, $row)->getValue();
+            if (in_array($column, array(0,6))){$value = (int)$value;}
+            $result[] = $value;
         }
 
         return $result;

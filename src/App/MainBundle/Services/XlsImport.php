@@ -23,6 +23,7 @@ class XlsImport extends Xls
     {
         if (is_null($val)) { return (boolean) $this->redis->get(self::KEY_STATUS); }
         $this->redis->set(self::KEY_STATUS, (int) $val);
+        $this->redis->expire(self::KEY_STATUS, 3600);
     }
 
     public function total($val = null)
@@ -60,6 +61,7 @@ class XlsImport extends Xls
     public function import($from = null, $to = null)
     {
         $rows = $this->toArray($from, $to);
+//        var_dump($from, $to);
 
         $this->createCategories($rows);
         $this->em->flush();

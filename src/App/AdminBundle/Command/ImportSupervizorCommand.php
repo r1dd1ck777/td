@@ -27,12 +27,14 @@ class ImportSupervizorCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $logger = $this->get('logger');
+        $logger->info("XLS: start");
         $file = $input->getOption('xls');
         /** @var \App\MainBundle\Services\XlsImport $xls */
         $xls = $this->get('app.main.services.xls_import');
         $xls->createFrom($file);
         $firstRow = 2;
-        $total = $xls->getHighestRow() - $firstRow;
+        $total = $xls->getHighestRow();
+        var_dump($total);
         $cmds = floor($total / self::ITEMS_PER_CMD);
         $xls->status(true);
         $xls->total($total);
@@ -50,6 +52,7 @@ class ImportSupervizorCommand extends ContainerAwareCommand
 
         $xls->status(false);
         $output->writeln($this->getMemoryInfo());
+        $logger->info("XLS: end");
     }
 
     protected function getCmd($file, $start, $end)

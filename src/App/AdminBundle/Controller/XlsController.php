@@ -68,6 +68,7 @@ class XlsController extends CoreController
 //        $xls->import(2);
 //        die;
         $cmd = "php ../app/console app:admin:import_supervizor --xls=".$xls->tmpDir.$xls->tmpFilename;
+//        die($cmd);
         exec(sprintf("%s > %s 2>&1 & echo $! >> %s", $cmd, '../app/logs/import.log', '../app/logs/import.pid'));
         $xls->status(true);
         $xls->done(0);
