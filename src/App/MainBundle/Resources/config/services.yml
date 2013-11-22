@@ -14,6 +14,7 @@ services:
             - { name: form.type, alias: app_mention }
         calls:
             - [ setSecurityContext ,[ @security.context ]]
+            - [ setTransformer ,[ @app.main.form_transformer.string_to_product]]
             
     app.main.form_type.product_property:
         class: App\MainBundle\Form\ProductPropertyType
@@ -92,3 +93,7 @@ services:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.event_listener, event: preRemove }
+
+    app.main.form_transformer.string_to_product:
+        class: App\MainBundle\Form\Transformer\StringToProductTransformer
+        arguments: [ @app.repository.product ]

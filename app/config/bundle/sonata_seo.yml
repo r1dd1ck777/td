@@ -2,11 +2,11 @@ sonata_seo:
     default:          sonata.seo.page.default
     encoding:         UTF-8
     page:
-        title:            Sonata Project
+        title: Интернет магазин бытовой техники Технодевайс Черкассы | technodevice.com.ua
         metas:
             name:
-                keywords:             foo bar
-                description:          The description
+                keywords: интернет-магазин для всей семьи в городе Черкассы
+                description: 093 731-85-03 | Современный интернет-магазин для всей семьи в городе Черкассы
                 robots:               index, follow
 
             property:
@@ -16,8 +16,8 @@ sonata_seo:
 
                 # Open Graph information
                 # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
-                'og:site_name':       Sonata Project Sandbox
-                'og:description':     A demo of the some rich bundles for your Symfony2 projects
+                'og:site_name':       technodevice.com.ua
+                'og:description':     093 731-85-03 | Современный интернет-магазин для всей семьи в городе Черкассы
 
             http-equiv:
                 'Content-Type':         text/html; charset=utf-8

@@ -44,7 +44,9 @@ class MentionController extends BaseCardController
 
     public function formAction(Request $request)
     {
+        $product = $this->get('app.repository.product')->find($request->get('id'));
         $resource = $this->createNew();
+        $resource->setProduct($product);
         if($this->getSecurityContext()->isGranted('IS_AUTHENTICATED_REMEMBERED')){
             $resource->setFio($this->getUser()->getUsername());
             $resource->setEmail($this->getUser()->getEmail());

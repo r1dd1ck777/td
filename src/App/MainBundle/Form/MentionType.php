@@ -8,7 +8,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class MentionType extends AbstractType
 {
+    protected $transformer;
     protected $securityContext;
+
+    public function setTransformer($transformer)
+    {
+        $this->transformer = $transformer;
+    }
 
     public function setSecurityContext($securityContext)
     {
@@ -25,6 +31,13 @@ class MentionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add(
+                $builder
+                    ->create('product', 'hidden', array(
+//                        'data' => $this->sessionPage->getPage()->getId()
+                    ))
+                    ->addModelTransformer($this->transformer)
+            )
             ->add('fio', 'text', array(
                 'label' => 'ФИО *',
                 'attr' => array(
@@ -43,7 +56,6 @@ class MentionType extends AbstractType
                     'placeholder' => 'Отзыв'
                 )
             ))
-            ->add('product')
             ->add('submit', 'submit', array(
                 'label' => 'Отправить',
                 'attr' => array(
